@@ -32,7 +32,7 @@ function AboutSlider() {
     },
     {
       title: "GROUP VENTURES",
-      image: "/leadership.jpg",
+      image: "/group.jpg",
       path: "/group-ventures",
     },
   ];
@@ -42,8 +42,8 @@ function AboutSlider() {
 
       {/* LEFT STATIC CONTENT */}
       <div className="left-content">
-        <h1>WE HAVE A LEGACY OF OVER 40 YEARS</h1>
-        <p>"We don’t just build walls, we build a lifestyle"</p>
+        <h1>Building More Than Spaces We Build Futures.</h1>
+        <p>SNS GROUP is a modern real estate and construction company committed to delivering high-quality developments with precision, trust, and innovation.</p>
       </div>
 
       {/* RIGHT SWIPER */}

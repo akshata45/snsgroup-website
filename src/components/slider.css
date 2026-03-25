@@ -1,12 +1,16 @@
 /* MAIN SECTION */
 .about-section {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 30px;
+
+  padding: 10px 30px 0;   /* ✅ reduced top space */
+  margin-top: -20;      /* ✅ pulls section slightly upward */
+
   background: #f6f4ef;
   width: 100%;
   box-sizing: border-box;
+  min-height: 90vh;       /* ✅ slightly less than full screen */
 }
 
 /* LEFT SIDE STATIC */
@@ -32,14 +36,20 @@
 .slider-wrapper {
   width: 65%;
   position: relative;
-  padding-bottom: 40px;
+  padding-bottom: 0;               /* ❌ REMOVE this (was causing gap) */
   display: flex;
-  justify-content: flex-start;   /* aligns image closer to content */
+  align-items: center;             /* ✅ vertical align */
+  height: 100%;                    /* ✅ take full height */
 }
 
 /* SWIPER FIX */
 .swiper {
   width: 100%;
+  height: 75vh;                    /* ✅ controlled height (premium look) */
+}
+.swiper-slide {
+  display: flex;
+  align-items: center;
 }
 
 /* CARD STYLE */
@@ -48,13 +58,17 @@
   overflow: hidden;
   background: white;
   cursor: pointer;
-  height: 520px;
+
+  height: 100%;                    /* ✅ instead of fixed 520px */
+  display: flex;
+  flex-direction: column;
 }
 
 .card img {
   width: 100%;
-  height: 440px;
+  height: 100%;
   object-fit: cover;
+  flex: 1;                         /* ✅ fills card */
 }
 
 .label {
@@ -532,6 +546,11 @@
 
 .venture-link:hover{
   text-decoration:underline;
+}
+
+.venture-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
 }
 
 /* ============================= */

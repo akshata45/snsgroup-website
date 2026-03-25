@@ -29,28 +29,25 @@ function Story() {
 
         <div className="slider-wrapper">
           <img
-            src="/about.jpg"
+            src="/about.jpeg"
             alt="SNS Group"
             className="about-image"
           />
         </div>
 
         <div className="left-content">
-          <h1>WHO WE ARE</h1>
+          <h1>About SNS GROUP</h1>
 
           <p>
-            SNS Group is a trusted name built on strong values,
-            integrity, and commitment to excellence.
+            Founded in 2019, SNS GROUP was established with a vision to redefine the construction landscape by blending traditional industry expertise with modern execution practices.
           </p>
 
           <p>
-            We focus on creating developments that combine modern
-            design, innovation, and sustainability.
+           With over 1 million sq. ft. of successfully delivered projects, we specialize in residential, commercial, villa, and hospitality developments.
           </p>
 
           <p>
-            Our goal is to deliver spaces that enhance lifestyle
-            and create long-term value for our customers.
+            At SNS GROUP, we don’t just build structures — we create long-term value, trust, and meaningful spaces that fulfill dreams.
           </p>
         </div>
 
@@ -63,10 +60,11 @@ function Story() {
           <h2>OUR JOURNEY</h2>
 
           <p>
-            Under the leadership of Mr. Rasesh Kanakia and Mr. Himanshu Kanakia,
-            Kanakia Group set up its first project in the year 1986 in suburb of
-            Mumbai. Over the years the group has developed remarkable
-            theme-based projects all over the city of Mumbai.
+            SNS GROUP was born from a strong foundation of industry knowledge and a passion for excellence.
+
+What started as a vision to transform real estate into a value-driven experience has grown into a trusted name known for quality, transparency, and timely delivery.
+
+Every project reflects our commitment to innovation, precision, and creating spaces that stand the test of time.
           </p>
 
           <button className="journey-btn">Know More</button>
@@ -153,86 +151,138 @@ function Story() {
       </section>
 
       {/* LEADERSHIP */}
-      <section id="leadership" className="leadership-section">
+<section id="leadership" className="leadership-section">
 
-        <h2 className="leadership-title">THE LEADERSHIP</h2>
+  <h2 className="leadership-title">THE LEADERSHIP</h2>
 
-        <div className="leadership-container">
+  <div className="leadership-container">
 
-          <div className="leader-card">
-            <img src="/rasesh.jpg" alt="Mr Rasesh B Kanakia" className="leader-img"/>
-            <h3>Mr. Rasesh B. Kanakia</h3>
-            <p className="leader-role">Chairman</p>
-            <p className="leader-desc">
-              Mr. Rasesh B. Kanakia began his career as a real estate consultant
-              and subsequently ventured into real estate development in 1986.
-            </p>
-          </div>
+    {/* Ranjeet Mahatre */}
+    <div className="leader-card">
+      <img src="/Ranjeet.jpg" alt="Ranjeet Mahatre" className="leader-img"/>
+      <h3>Ranjeet Mahatre</h3>
+      <p className="leader-role">Architect</p>
+      <p className="leader-desc">
+        With a strong foundation in architecture and real estate consulting, he bridges design vision with execution excellence, ensuring precision and timely delivery.
+      </p>
+    </div>
 
-          <div className="leader-card">
-            <img src="/himanshu.jpg" alt="Mr Himanshu B Kanakia" className="leader-img"/>
-            <h3>Mr. Himanshu B. Kanakia</h3>
-            <p className="leader-role">Managing Director</p>
-            <p className="leader-desc">
-              Mr. Himanshu B. Kanakia is a Civil Engineer by qualification
-              and leads the day-to-day management of SNS Group.
-            </p>
-          </div>
+    {/* Amit Shah */}
+    <div className="leader-card">
+      <img src="/Amit.jpg" alt="Amit Shah" className="leader-img"/>
+      <h3>Amit Shah</h3>
+      <p className="leader-role">Chief Financial Officer (CFO)</p>
+      <p className="leader-desc">
+        A seasoned finance leader driving strategic growth, operational excellence, and long-term value creation through strong financial management.
+      </p>
+    </div>
 
-        </div>
+    {/* Nishant Sanghavi */}
+    <div className="leader-card">
+      <img src="/Nishant.jpg" alt="Nishant Sanghavi" className="leader-img"/>
+      <h3>Nishant Sanghavi</h3>
+      <p className="leader-role">Civil Engineer</p>
+      <p className="leader-desc">                 
+        The force behind day-to-day operations and expansion, managing projects, acquisitions, and execution with energy, innovation, and strategic vision.
+      </p>
+    </div>
 
-      </section>
+    {/* Suketu Joshi */}
+    <div className="leader-card">
+      <img src="/Suketu.jpg" alt="Suketu Joshi" className="leader-img"/>
+      <h3>Suketu Joshi</h3>
+      <p className="leader-role">Chief Business Officer (CBO)</p>
+      <p className="leader-desc">
+        Leading project acquisitions and investor relations, he ensures sustainable growth while bridging legal compliance with business expansion.
+      </p>
+    </div>
+
+    {/* Aayush Shah */}
+    <div className="leader-card">
+      <img src="/Aayush.jpg" alt="Aayush Shah" className="leader-img"/>
+      <h3>Aayush Shah</h3>
+      <p className="leader-role">Chief Innovation Officer (CIO)</p>
+      <p className="leader-desc">
+        Driving digital transformation and brand storytelling, he integrates technology and design to elevate project presentation and innovation.
+      </p>
+    </div>
+
+  </div>
+
+</section>
 
       {/* GROUP VENTURES */}
-      <section id="ventures" className="ventures-section">
+<section id="ventures" className="ventures-section">
 
-        <h2 className="ventures-title">
-          OTHER <br/> GROUP VENTURES
-        </h2>
+  <h2 className="ventures-title">
+    OTHER <br/> GROUP VENTURES
+  </h2>
 
-        <div className="ventures-container">
+  <div className="ventures-container">
 
-          <div className="venture-item">
-            <div className="venture-logo">
-              <img src="/kanakia-hospitality.jpg" alt="Kanakia Hospitality"/>
-            </div>
-            <div className="venture-content">
-              <p>
-                Kanakia Group is synonymous with premium real estate developments
-                and entering the hospitality industry was therefore a natural transition.
-              </p>
-              <a href="#" className="venture-link">Know More</a>
-            </div>
-          </div>
+    {/* Hospitality */}
+    <div className="venture-item">
+      <div className="venture-icon">🏨</div>
+      <div className="venture-content">
+        <p>
+          SNS GROUP is expanding into the hospitality sector, creating premium lifestyle experiences that combine comfort and luxury.
+        </p>
+      </div>
+    </div>
 
-          <div className="venture-item">
-            <div className="venture-logo">
-              <img src="/rbk.jpg" alt="RBK School"/>
-            </div>
-            <div className="venture-content">
-              <p>
-                Our vision for children is to develop new learning skills
-                driven by our credo ‘knowledge is light’.
-              </p>
-              <a href="#" className="venture-link">Know More</a>
-            </div>
-          </div>
+    {/* Logistic Warehouse */}
+    <div className="venture-item">
+      <div className="venture-icon">🚚</div>
+      <div className="venture-content">
+        <p>
+          Our logistics and warehousing solutions support modern supply chains with efficient and scalable infrastructure.
+        </p>
+      </div>
+    </div>
 
-          <div className="venture-item">
-            <div className="venture-logo">
-              <img src="/cineline.jpg" alt="CineLine"/>
-            </div>
-            <div className="venture-content">
-              <p>
-                Rexine seats on iron frames. 35 mm screens. Partly air-conditioned halls.
-              </p>
-              <a href="#" className="venture-link">Know More</a>
-            </div>
-          </div>
+    {/* Financial Services */}
+    <div className="venture-item">
+      <div className="venture-icon">💼</div>
+      <div className="venture-content">
+        <p>
+          We create value-driven financial solutions that support sustainable growth for partners and stakeholders.
+        </p>
+      </div>
+    </div>
 
-        </div>
+    {/* Educational Institutions */}
+    <div className="venture-item">
+      <div className="venture-icon">🎓</div>
+      <div className="venture-content">
+        <p>
+          Investing in education to empower future generations through innovation and knowledge-driven environments.
+        </p>
+      </div>
+    </div>
 
-      </section>
+    {/* Townships */}
+    <div className="venture-item">
+      <div className="venture-icon">🏙️</div>
+      <div className="venture-content">
+        <p>
+          Developing integrated townships that offer modern infrastructure and enhanced lifestyle experiences.
+        </p>
+      </div>
+    </div>
+
+    {/* Technology Parks */}
+    <div className="venture-item">
+      <div className="venture-icon">💻</div>
+      <div className="venture-content">
+        <p>
+          Building technology parks that foster innovation and support future-ready business ecosystems.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
 
       <Footer />
     </>

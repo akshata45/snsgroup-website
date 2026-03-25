@@ -9,6 +9,7 @@
   gap:60px;
 }
 
+/* LEFT */
 .projects-left h1{
   font-size:38px;
   color:#b08a3e;
@@ -53,25 +54,74 @@
   border:1px solid #ccc;
 }
 
+/* RIGHT */
 .projects-right{
-  display:flex;
-  gap:40px;
+  position:relative;
+  overflow:hidden;
 }
 
+/* SWIPER */
+.projects-right .swiper{
+  width:100%;
+  padding-bottom:50px;
+}
+
+/* ✅ FIXED PREMIUM EFFECT (NO BLUR) */
+/* DEFAULT (before swipe → all equal) */
+.projects-right .swiper-slide{
+  display:flex;
+  justify-content:center;
+  transition:transform 0.4s ease, opacity 0.4s ease;
+  opacity:1;
+
+  /* blur fix */
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  transform:translateZ(0);
+}
+
+/* ON HOVER / INTERACTION (premium feel) */
+.projects-right .swiper-slide:hover{
+  transform:scale(1.03);
+}
+
+/* OPTIONAL: active slight highlight (very subtle) */
+.projects-right .swiper-slide-active{
+  transform:scale(1.02);
+}
+/* ACTIVE CENTER CARD */
+.projects-right .swiper-slide-active{
+  transform:scale(1);
+  opacity:1;
+}
+
+/* SIDE CARDS (LESS SCALE = SHARP) */
+.projects-right .swiper-slide-prev,
+.projects-right .swiper-slide-next{
+  transform:scale(0.92);
+  opacity:0.7;
+}
+
+/* CARD */
 .project-card{
   width:320px;
-  background:white;
   border-radius:20px;
   overflow:hidden;
+  background:white;
   box-shadow:0 8px 20px rgba(0,0,0,0.1);
 }
 
+/* IMAGE FIX */
 .project-card img{
   width:100%;
   height:420px;
   object-fit:cover;
+
+  /* 🔥 SHARPNESS FIX */
+  image-rendering:-webkit-optimize-contrast;
 }
 
+/* INFO */
 .project-info{
   padding:15px;
   background:#e8e0cf;
@@ -83,4 +133,41 @@
 
 .project-info p{
   color:#333;
+}
+
+/* PREMIUM ARROWS (BOTTOM STYLE) */
+.swiper-button-prev,
+.swiper-button-next{
+  background:black;
+  color:white;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  top:auto;
+  bottom:0;
+}
+
+.swiper-button-prev{
+  left:0;
+}
+
+.swiper-button-next{
+  right:0;
+}
+
+/* ARROW ICON SIZE */
+.swiper-button-prev::after,
+.swiper-button-next::after{
+  font-size:18px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .projects-container{
+    grid-template-columns:1fr;
+  }
+
+  .projects-left{
+    margin-bottom:30px;
+  }
 }
