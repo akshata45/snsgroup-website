@@ -1,10 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";  // ✅ add this
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { useState } from "react";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
-  const navigate = useNavigate();   // ✅ initialize
+  const [menuOpen, setMenuOpen] = useState(false);   // ✅ REQUIRED
+  const navigate = useNavigate();
 
   const toggleTheme = () => {
     document.body.classList.toggle("dark-theme");
@@ -14,19 +15,21 @@ function Navbar() {
   return (
     <div className="navbar">
       
-      {/* ✅ LOGO CLICK WORKING */}
+      {/* LOGO */}
       <div className="logo" onClick={() => navigate("/")}>
         <img src="/snslogo.png" alt="logo" />
       </div>
 
-      <div className="nav-links">
-        <Link to="/story">ABOUT US</Link>
-        <Link to="/journey">OUR PROJECTS</Link>
-        <Link to="/initiatives">OUR INITIATIVES</Link>
+      {/* NAV LINKS */}
+      <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+        <Link to="/story" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
+        <Link to="/journey" onClick={() => setMenuOpen(false)}>OUR PROJECTS</Link>
+        <Link to="/initiatives" onClick={() => setMenuOpen(false)}>OUR INITIATIVES</Link>
         <Link to="/">BUYER'S GUIDE</Link>
         <Link to="/">JOIN SNS GROUP</Link>
       </div>
 
+      {/* ICONS */}
       <div className="icons">
         <span onClick={toggleTheme}>
           {darkMode ? "🌙" : "☀️"}
@@ -34,7 +37,14 @@ function Navbar() {
 
         <a href="tel:+919999999999">📞</a>
         <Link to="/login">👤</Link>
-        <span>☰</span>
+
+        {/* ✅ MENU BUTTON */}
+        <span
+          className="menu-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "✖" : "☰"}
+        </span>
       </div>
 
     </div>

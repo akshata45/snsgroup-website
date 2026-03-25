@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 70px;          /* ✅ FIXED HEIGHT */
-  padding: 0 60px;       /* remove vertical padding */
+  height: 70px;
+  padding: 0 60px;
 
   background: #f6f4ef;
   position: sticky;
@@ -16,14 +16,14 @@
 .logo {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .logo img {
-  height: 150px;          /* ✅ bigger logo */
+  height: 150px;
   width: auto;
   object-fit: contain;
-
-  transform: scale(1.2); /* ✅ visually bigger */
+  transform: scale(1.2);
 }
 
 .logo img:hover {
@@ -69,6 +69,12 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+/* MENU BUTTON (hidden on desktop) */
+.menu-btn {
+  display: none;
+}
+
 /* DARK THEME */
 .dark-theme {
   background: #111;
@@ -83,17 +89,52 @@
   color: #fff;
 }
 
-/* MOBILE */
+/* ============================= */
+/* MOBILE NAVBAR */
+/* ============================= */
+
 @media (max-width: 768px) {
+
   .navbar {
     padding: 10px 20px;
   }
 
   .logo img {
-    height: 42px; /* smaller on mobile */
+    height: 42px;
+    transform: none;
   }
 
+  /* SHOW MENU BUTTON */
+  .menu-btn {
+    display: block;
+    font-size: 26px;
+  }
+
+  /* MOBILE MENU */
   .nav-links {
-    display: none;
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: #f6f4ef;
+
+    display: flex;              /* IMPORTANT */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  /* WHEN ACTIVE */
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    margin: 20px 0;
+    font-size: 18px;
   }
 }
