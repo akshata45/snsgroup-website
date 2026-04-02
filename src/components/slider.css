@@ -5,7 +5,7 @@
   justify-content: space-between;
 
   padding: 10px 30px 0;   /* ✅ reduced top space */
-  margin-top: -20;      /* ✅ pulls section slightly upward */
+  margin-top: -20px;      /* ✅ pulls section slightly upward */
 
   background: #f6f4ef;
   width: 100%;
@@ -17,6 +17,8 @@
 .left-content {
   width: 32%;
   flex-shrink: 0;
+    align-self: flex-start;   /* ⭐ breaks vertical sync with swiper */
+  margin-top: 70px;
 }
 
 .left-content h1 {
