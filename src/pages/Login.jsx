@@ -56,20 +56,14 @@ function Login() {
     width: "100%",
     padding: "14px 12px",
     borderRadius: "8px",
-    border:
-      focused === name
-        ? "1px solid #f26522"
-        : "1px solid #dad6d4",
-    background: "#ffffff",
+    border: focused === name ? "1px solid #f26522" : "1px solid #f5f1e8",
+    background: "#f5f1e8",
     color: "#09332c",
     outline: "none",
     fontSize: "14px",
     transition: "0.3s",
     cursor: "text",
-    boxShadow:
-      focused === name
-        ? "0 0 8px rgba(242,101,34,0.3)"
-        : "none",
+    boxShadow: focused === name ? "0 0 8px rgba(242,101,34,0.3)" : "none",
   });
 
   const labelStyle = (active) => ({
@@ -78,7 +72,7 @@ function Login() {
     top: active ? "-8px" : "14px",
     fontSize: active ? "11px" : "14px",
     color: active ? "#f26522" : "#5b6062",
-    background: "#ffffff",
+    background: "#f5f1e8",
     padding: "0 4px",
     transition: "0.3s",
     pointerEvents: "none",
@@ -102,9 +96,7 @@ function Login() {
           padding: "40px",
           borderRadius: "16px",
           background: "#ffffff",
-          boxShadow: animate
-            ? "0 20px 50px rgba(0,0,0,0.08)"
-            : "none",
+          boxShadow: animate ? "0 20px 50px rgba(0,0,0,0.08)" : "none",
           transform: animate ? "translateY(0px)" : "translateY(40px)",
           opacity: animate ? 1 : 0,
           transition: "all 0.6s ease",
@@ -114,15 +106,10 @@ function Login() {
           border: "1px solid #eee",
         }}
       >
-        <h2 style={{ color: "#09332c", textAlign: "center" }}>
-          Welcome Back
-        </h2>
+        <h2 style={{ color: "#09332c", textAlign: "center" }}>Welcome Back</h2>
 
         {/* Email */}
-        <div
-          style={inputWrapper()}
-          onClick={() => emailRef.current.focus()}
-        >
+        <div style={inputWrapper()} onClick={() => emailRef.current.focus()}>
           <input
             ref={emailRef}
             type="email"
@@ -139,10 +126,7 @@ function Login() {
         </div>
 
         {/* Password */}
-        <div
-          style={inputWrapper()}
-          onClick={() => passwordRef.current.focus()}
-        >
+        <div style={inputWrapper()} onClick={() => passwordRef.current.focus()}>
           <input
             ref={passwordRef}
             type="password"

@@ -72,10 +72,7 @@
   font-size: 14px;
 }
 
----
-
-# 📱 RESPONSIVE FIXES
-
+--- # 📱 RESPONSIVE FIXES 
 @media (max-width: 1024px) {
   .initiatives-section {
     flex-direction: column;

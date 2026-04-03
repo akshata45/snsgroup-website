@@ -1,4 +1,9 @@
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 function Footer() {
@@ -9,16 +14,16 @@ function Footer() {
         color: "#2b2b2b",
         padding: "100px 6% 50px",
         fontFamily: "'Playfair Display', serif",
-        position: "relative"
+        position: "relative",
       }}
     >
-
       {/* TOP GOLD LINE */}
       <div
         style={{
           height: "1px",
-          background: "linear-gradient(90deg, transparent, #d6b25e, transparent)",
-          marginBottom: "70px"
+          background:
+            "linear-gradient(90deg, transparent, #d6b25e, transparent)",
+          marginBottom: "70px",
         }}
       ></div>
 
@@ -28,21 +33,30 @@ function Footer() {
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)", // desktop fixed
           gap: "50px",
-          marginBottom: "70px"
+          marginBottom: "70px",
         }}
       >
-
         {[
           ["Accolades", "About Us", "Blogs", "NRI Corner"],
-          ["Get In Touch", "Careers", "Residential Projects", "Commercial Projects"],
-          ["Channel Partner", "Currency Calculator", "EMI Calculator", "Vendor Registration"]
+          [
+            "Get In Touch",
+            "Careers",
+            "Residential Projects",
+            "Commercial Projects",
+          ],
+          [
+            "Channel Partner",
+            "Currency Calculator",
+            "EMI Calculator",
+            "Vendor Registration",
+          ],
         ].map((col, i) => (
           <div
             key={i}
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "16px"
+              gap: "16px",
             }}
           >
             {col.map((item, idx) => (
@@ -55,7 +69,7 @@ function Footer() {
                   fontSize: "15px",
                   letterSpacing: "0.6px",
                   fontFamily: "Helvetica, Arial, sans-serif",
-                  transition: "all 0.35s ease"
+                  transition: "all 0.35s ease",
                 }}
                 onMouseEnter={(e) => {
                   e.target.style.color = "#c6a75e";
@@ -81,7 +95,7 @@ function Footer() {
           alignItems: "center",
           flexWrap: "wrap",
           gap: "25px",
-          marginBottom: "60px"
+          marginBottom: "60px",
         }}
       >
         <div>
@@ -90,7 +104,7 @@ function Footer() {
               fontSize: "13px",
               letterSpacing: "2px",
               color: "#c6a75e",
-              marginBottom: "8px"
+              marginBottom: "8px",
             }}
           >
             CONNECT WITH US
@@ -100,7 +114,7 @@ function Footer() {
             style={{
               fontSize: "20px",
               fontWeight: "500",
-              color: "#2b2b2b"
+              color: "#2b2b2b",
             }}
           >
             Experience Luxury Living
@@ -109,36 +123,40 @@ function Footer() {
 
         {/* ICONS */}
         <div style={{ display: "flex", gap: "16px" }}>
-          {[FaFacebookF, FaXTwitter, FaInstagram, FaLinkedinIn, FaYoutube].map((Icon, i) => (
-            <div
-              key={i}
-              style={{
-                width: "42px",
-                height: "42px",
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.6)",
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(198,167,94,0.25)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                transition: "all 0.4s ease"
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#c6a75e";
-                e.currentTarget.style.transform = "translateY(-6px) scale(1.05)";
-                e.currentTarget.style.boxShadow = "0 10px 30px rgba(198,167,94,0.35)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.6)";
-                e.currentTarget.style.transform = "translateY(0) scale(1)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              <Icon size={15} />
-            </div>
-          ))}
+          {[FaFacebookF, FaXTwitter, FaInstagram, FaLinkedinIn, FaYoutube].map(
+            (Icon, i) => (
+              <div
+                key={i}
+                style={{
+                  width: "42px",
+                  height: "42px",
+                  borderRadius: "50%",
+                  background: "rgba(255,255,255,0.6)",
+                  backdropFilter: "blur(10px)",
+                  border: "1px solid rgba(198,167,94,0.25)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  transition: "all 0.4s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#c6a75e";
+                  e.currentTarget.style.transform =
+                    "translateY(-6px) scale(1.05)";
+                  e.currentTarget.style.boxShadow =
+                    "0 10px 30px rgba(198,167,94,0.35)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(255,255,255,0.6)";
+                  e.currentTarget.style.transform = "translateY(0) scale(1)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                <Icon size={15} />
+              </div>
+            ),
+          )}
         </div>
       </div>
 
@@ -147,7 +165,7 @@ function Footer() {
         style={{
           height: "1px",
           background: "rgba(0,0,0,0.08)",
-          marginBottom: "30px"
+          marginBottom: "30px",
         }}
       ></div>
 
@@ -160,7 +178,7 @@ function Footer() {
           gap: "12px",
           fontSize: "13px",
           color: "#7a7a7a",
-          letterSpacing: "0.5px"
+          letterSpacing: "0.5px",
         }}
       >
         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
@@ -190,7 +208,6 @@ function Footer() {
           }
         }
       `}</style>
-
     </footer>
   );
 }

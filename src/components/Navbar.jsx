@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);   // ✅ REQUIRED
+  const [menuOpen, setMenuOpen] = useState(false); // ✅ REQUIRED
   const navigate = useNavigate();
 
   const toggleTheme = () => {
@@ -14,7 +14,6 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      
       {/* LOGO */}
       <div className="logo" onClick={() => navigate("/")}>
         <img src="/snslogo.png" alt="logo" />
@@ -22,31 +21,31 @@ function Navbar() {
 
       {/* NAV LINKS */}
       <div className={`nav-links ${menuOpen ? "active" : ""}`}>
-        <Link to="/story" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
-        <Link to="/journey" onClick={() => setMenuOpen(false)}>OUR PROJECTS</Link>
-        <Link to="/initiatives" onClick={() => setMenuOpen(false)}>OUR INITIATIVES</Link>
+        <Link to="/story" onClick={() => setMenuOpen(false)}>
+          ABOUT US
+        </Link>
+        <Link to="/journey" onClick={() => setMenuOpen(false)}>
+          OUR PROJECTS
+        </Link>
+        <Link to="/initiatives" onClick={() => setMenuOpen(false)}>
+          OUR INITIATIVES
+        </Link>
         <Link to="/">BUYER'S GUIDE</Link>
         <Link to="/">JOIN SNS GROUP</Link>
       </div>
 
       {/* ICONS */}
       <div className="icons">
-        <span onClick={toggleTheme}>
-          {darkMode ? "🌙" : "☀️"}
-        </span>
+        <span onClick={toggleTheme}>{darkMode ? "🌙" : "☀️"}</span>
 
         <a href="tel:+919999999999">📞</a>
         <Link to="/login">👤</Link>
 
         {/* ✅ MENU BUTTON */}
-        <span
-          className="menu-btn"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
+        <span className="menu-btn" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? "✖" : "☰"}
         </span>
       </div>
-
     </div>
   );
 }

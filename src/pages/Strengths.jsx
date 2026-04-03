@@ -4,7 +4,6 @@ import "./strengths.css";
 function Strengths() {
   return (
     <div className="strengths-page">
-
       {/* HERO IMAGE */}
       <section className="ventures-hero">
         <img src="/hospitality-banner.jpg" alt="Kanakia Hospitality" />
@@ -12,7 +11,6 @@ function Strengths() {
 
       {/* HOSPITALITY SECTION */}
       <section className="venture-section">
-
         <h2 className="venture-title">KANAKIA HOSPITALITY</h2>
 
         <p className="venture-desc">
@@ -23,9 +21,8 @@ function Strengths() {
         </p>
 
         <div className="hotel-grid">
-
           <div className="hotel-card">
-            <img src="/courtyard-logo.png" alt="Courtyard Marriott"/>
+            <img src="/courtyard-logo.png" alt="Courtyard Marriott" />
             <p>
               The Courtyard by Marriott located in Andheri East near the
               International Airport is a 4-star project by Kanakia Group.
@@ -33,7 +30,7 @@ function Strengths() {
           </div>
 
           <div className="hotel-card">
-            <img src="/hyatt-logo.png" alt="Hyatt Centric Goa"/>
+            <img src="/hyatt-logo.png" alt="Hyatt Centric Goa" />
             <p>
               Located in the heart of Goa, the Hyatt Centric offers a vibrant
               and comfortable stay experience with luxurious interiors.
@@ -41,24 +38,20 @@ function Strengths() {
           </div>
 
           <div className="hotel-card">
-            <img src="/novotel-logo.png" alt="Novotel Ahmedabad"/>
+            <img src="/novotel-logo.png" alt="Novotel Ahmedabad" />
             <p>
               Situated close to major locations of Ahmedabad city, Novotel
               offers business and family trips with luxury amenities.
             </p>
           </div>
-
         </div>
-
       </section>
 
       {/* RBK SECTION */}
       <section className="venture-image-section">
-
-        <img src="/rbk-building.jpg" alt="RBK International Academy"/>
+        <img src="/rbk-building.jpg" alt="RBK International Academy" />
 
         <div className="venture-text">
-
           <h2>RBK</h2>
 
           <p>
@@ -69,20 +62,13 @@ function Strengths() {
             character.
           </p>
 
-          <img
-            src="/rbk-logo.png"
-            alt="RBK Logo"
-            className="venture-logo"
-          />
-
+          <img src="/rbk-logo.png" alt="RBK Logo" className="venture-logo" />
         </div>
-
       </section>
 
       {/* CINELINE */}
       <section className="venture-section cine-section">
-
-        <img src="/cineline1.jpg" alt="CineLine" className="cine-banner"/>
+        <img src="/cineline1.jpg" alt="CineLine" className="cine-banner" />
 
         <h2>
           <span className="cine-red">CINE</span>LINE
@@ -103,9 +89,7 @@ function Strengths() {
           international ambience, enhanced sound and the best of food and
           beverages.
         </p>
-
       </section>
-
     </div>
   );
 }
