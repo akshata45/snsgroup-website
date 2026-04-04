@@ -8,6 +8,10 @@ function AboutSlider() {
   const velocityRef = useRef(0);
   const rafRef = useRef(null);
 
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
   const [cardsPerView, setCardsPerView] = useState(4);
   const [isMobile, setIsMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(true);
@@ -53,7 +57,7 @@ function AboutSlider() {
     });
   };
 
-  // inertia (desktop untouched)
+  // inertia
   useEffect(() => {
     const container = containerRef.current;
 
@@ -89,7 +93,41 @@ function AboutSlider() {
     };
   }, [isMobile]);
 
-  // parallax (mobile)
+  // drag scroll
+  useEffect(() => {
+    const container = containerRef.current;
+
+    const down = (e) => {
+      isDragging.current = true;
+      startX.current = e.pageX - container.offsetLeft;
+      scrollLeft.current = container.scrollLeft;
+    };
+
+    const leave = () => (isDragging.current = false);
+    const up = () => (isDragging.current = false);
+
+    const move = (e) => {
+      if (!isDragging.current) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX.current) * 1.4;
+      container.scrollLeft = scrollLeft.current - walk;
+    };
+
+    container.addEventListener("mousedown", down);
+    container.addEventListener("mouseleave", leave);
+    container.addEventListener("mouseup", up);
+    container.addEventListener("mousemove", move);
+
+    return () => {
+      container.removeEventListener("mousedown", down);
+      container.removeEventListener("mouseleave", leave);
+      container.removeEventListener("mouseup", up);
+      container.removeEventListener("mousemove", move);
+    };
+  }, []);
+
+  // parallax
   useEffect(() => {
     const container = containerRef.current;
 
@@ -133,27 +171,17 @@ function AboutSlider() {
           position: "relative",
         }}
       >
-        {/* LEFT CONTENT */}
         {cardsPerView >= 3 && !isMobile && (
           <div style={{ width: "15%", paddingTop: "50px" }}>
             <h2 style={{ color: "#b08a3e" }}>
               WE HAVE A LEGACY OF OVER 40 YEARS
             </h2>
-
-            <p
-              style={{
-                fontSize: "16px",
-                color: "#555",
-                margin: 0,
-                maxWidth: "220px",
-              }}
-            >
+            <p style={{ fontSize: "16px", color: "#555", margin: 0 }}>
               “We don’t just build walls, we build a lifestyle”
             </p>
           </div>
         )}
 
-        {/* SLIDER */}
         <div
           style={{
             width: cardsPerView >= 3 && !isMobile ? "85%" : "100%",
@@ -165,36 +193,12 @@ function AboutSlider() {
         >
           {/* MOBILE OVERLAY */}
           {isMobile && showOverlay && (
-            <div
-              style={{
-                position: "absolute",
-                top: "42%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                zIndex: 20,
-                width: cardsPerView <= 2 ? "55%" : "75%",
-                background: "rgba(255,255,255,0.72)",
-                backdropFilter: "blur(18px)",
-                borderRadius: "14px",
-                padding: "12px",
-              }}
-            >
-              <div onClick={() => setShowOverlay(false)} style={closeBtn}>
-                ✕
-              </div>
-
+            <div style={overlayStyle}>
+              <div onClick={() => setShowOverlay(false)} style={closeBtn}>✕</div>
               <h3 style={{ margin: 0, color: "#b08a3e", fontSize: "14px" }}>
                 WE HAVE A LEGACY OF OVER 40 YEARS
               </h3>
-
-              <p
-                style={{
-                  marginTop: "6px",
-                  fontSize: "12px",
-                  color: "#555",
-                  lineHeight: "1.4",
-                }}
-              >
+              <p style={{ marginTop: "6px", fontSize: "12px", color: "#555" }}>
                 “We don’t just build walls, we build a lifestyle”
               </p>
             </div>
@@ -210,6 +214,7 @@ function AboutSlider() {
               height: "100%",
               overflowX: isMobile ? "auto" : "hidden",
               scrollSnapType: isMobile ? "x mandatory" : "none",
+              cursor: "grab",
             }}
           >
             {cards.map((card, i) => {
@@ -221,57 +226,55 @@ function AboutSlider() {
                   onClick={() => navigate(card.path)}
                   style={{
                     flex: `0 0 ${cardWidth}`,
-
-                    // ✅ FULL HEIGHT FIX
                     height: isMobile ? "92%" : "100%",
-
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "flex-end",
                     cursor: "pointer",
                     scrollSnapAlign: "start",
-                    transition: "all 0.45s cubic-bezier(0.22,1,0.36,1)",
+                    transition: "transform 0.5s cubic-bezier(0.22,1,0.36,1)",
                   }}
                   onMouseEnter={(e) => {
-                    if (!isMobile && cardsPerView >= 3) {
+                    if (!isMobile) {
                       const el = e.currentTarget;
+                      const inner = el.querySelector(".card-inner");
 
-                      el.style.flex = `0 0 calc(${cardWidth} + 8%)`;
+                      const scale = 1.12;
+                      const shift = 90;
+
+                      inner.style.transform = `scaleX(${scale})`;
 
                       const siblings = [...el.parentNode.children];
-                      siblings.forEach((sib) => {
-                        if (sib !== el) {
-                          sib.style.transform = "translateX(8px)";
-                          sib.style.opacity = "0.85";
+                      siblings.forEach((sib, idx) => {
+                        if (idx > i) {
+                          sib.style.transform = `translateX(${shift}px)`;
                         }
                       });
-
-                      const img = el.querySelector("img");
-                      img.style.transform = "scale(1.05)";
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isMobile) {
                       const el = e.currentTarget;
+                      const inner = el.querySelector(".card-inner");
 
-                      el.style.flex = `0 0 ${cardWidth}`;
+                      inner.style.transform = "scaleX(1)";
 
                       const siblings = [...el.parentNode.children];
                       siblings.forEach((sib) => {
                         sib.style.transform = "translateX(0)";
-                        sib.style.opacity = "1";
                       });
-
-                      const img = el.querySelector("img");
-                      img.style.transform = "scale(1)";
                     }
                   }}
                 >
                   <div
+                    className="card-inner"
                     style={{
-                      height: isMobile ? "85%" : "88%", // ✅ increased for full feel
+                      position: "relative",
+                      height: isMobile ? "85%" : "88%",
                       borderRadius: "18px",
                       overflow: "hidden",
+                      transformOrigin: "left center",
+                      transition: "transform 0.5s cubic-bezier(0.22,1,0.36,1)",
                       boxShadow: `0 10px 30px rgba(0,0,0,${
                         0.15 + Math.abs(offset) * 0.0002
                       })`,
@@ -281,16 +284,15 @@ function AboutSlider() {
                       src={card.image}
                       alt={card.title}
                       style={{
-                        width: "100%", // ✅ FIXED (no more 110%)
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
                         height: "100%",
                         objectFit: "cover",
-
-                        // ✅ softer parallax (no breaking edges)
                         transform: isMobile
                           ? `translateX(${offset * 0.02}px)`
-                          : "scale(1)",
-
-                        transition: "transform 0.4s ease",
+                          : "none",
                       }}
                     />
                   </div>
@@ -303,22 +305,10 @@ function AboutSlider() {
             })}
           </div>
 
-          {/* FIXED ARROWS */}
-          <div
-            onClick={() => scroll("prev")}
-            style={arrowStyle(isMobile, "left")}
-          >
-            ←
-          </div>
-          <div
-            onClick={() => scroll("next")}
-            style={arrowStyle(isMobile, "right")}
-          >
-            →
-          </div>
+          <div onClick={() => scroll("prev")} style={arrowStyle(isMobile, "left")}>←</div>
+          <div onClick={() => scroll("next")} style={arrowStyle(isMobile, "right")}>→</div>
         </div>
 
-        {/* CALL BUTTON */}
         {isMobile && <div style={callStyle}>📞 Call</div>}
       </section>
     </>
@@ -326,6 +316,19 @@ function AboutSlider() {
 }
 
 /* STYLES */
+
+const overlayStyle = {
+  position: "absolute",
+  top: "42%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  zIndex: 20,
+  width: "70%",
+  background: "rgba(255,255,255,0.72)",
+  backdropFilter: "blur(18px)",
+  borderRadius: "14px",
+  padding: "12px",
+};
 
 const closeBtn = {
   position: "absolute",
@@ -356,30 +359,21 @@ const labelText = (isMobile) => ({
   fontWeight: "800",
 });
 
-// ✅ FINAL FIX HERE
 const arrowStyle = (isMobile, side) => ({
   position: "absolute",
   bottom: isMobile ? "65px" : "20px",
-
-  // tighter safe padding for desktop
   [side]: isMobile ? "20px" : "80px",
-
   width: isMobile ? "40px" : "58px",
   height: isMobile ? "40px" : "58px",
-
   borderRadius: "50%",
   background: "rgba(0, 0, 0, 0.44)",
   backdropFilter: "blur(10px)",
-
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-
   color: "#fff",
   cursor: "pointer",
   zIndex: 10,
-
-  transition: "all 0.3s ease",
 });
 
 const callStyle = {
