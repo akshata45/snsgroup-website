@@ -262,7 +262,7 @@ function Journey() {
                     justifyContent: "center",
                   }}
                 >
-                  <h3 style={{ margin: 0, color: "#b08a3e", fontSize: "20px" }}>
+                  <h3 style={{ margin: 0, color: "#b08a3e", fontSize: "26px" , fontWeight: "800"}}>
                     {item.name}
                   </h3>
                   <p style={{ margin: 0, color: "#444", fontSize: "13px" }}>

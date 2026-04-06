@@ -30,8 +30,8 @@ function Navbar() {
         <Link to="/initiatives" onClick={() => setMenuOpen(false)}>
           OUR INITIATIVES
         </Link>
-        <Link to="/">BUYER'S GUIDE</Link>
-        <Link to="/">JOIN SNS GROUP</Link>
+        <Link to="/BuyersGuide" onClick={() => setMenuOpen(false)}>BUYER'S GUIDE</Link>
+        <Link to="/CreativeShowcase" onClick={() => setMenuOpen(false)}>JOIN SNS GROUP</Link>
       </div>
 
       {/* ICONS */}

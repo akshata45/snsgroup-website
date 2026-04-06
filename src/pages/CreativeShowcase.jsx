@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-function Initiatives() {
+function Partners() {
   const navigate = useNavigate();
 
   const [index, setIndex] = useState(0);
@@ -10,8 +10,10 @@ function Initiatives() {
   const [showOverlay, setShowOverlay] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  const sliderRef = useRef(null);
+  const startX = useRef(0);
+  const isDragging = useRef(false);
 
+  // ✅ Responsive fix
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
@@ -19,18 +21,23 @@ function Initiatives() {
   }, []);
 
   const cards = [
-    { title: "CSR", subtitle: "Initiatives", image: "/csr.jpg", path: "/csr" },
     {
-      title: "K-WORLD",
-      subtitle: "Referral Programme",
-      image: "/kworld.jpg",
-      path: "/kworld",
+      title: "SNS GROUP",
+      subtitle: "",
+      image: "/img1.jpg",
+      path: "/sns-group",
     },
     {
-      title: "EVENTS",
-      subtitle: "Organised",
-      image: "/events.jpg",
-      path: "/events",
+      title: "VENDOR",
+      subtitle: "",
+      image: "/img2.jpg",
+      path: "/vendor",
+    },
+    {
+      title: "CHANNEL PARTNER",
+      subtitle: "",
+      image: "/img3.jpg",
+      path: "/channel-partner",
     },
   ];
 
@@ -44,10 +51,7 @@ function Initiatives() {
     if (index > 0) setIndex(index - 1);
   };
 
-  // 🔥 DRAG SUPPORT
-  const startX = useRef(0);
-  const isDragging = useRef(false);
-
+  // 👉 Swipe
   const handleStart = (x) => {
     startX.current = x;
     isDragging.current = true;
@@ -55,9 +59,12 @@ function Initiatives() {
 
   const handleEnd = (x) => {
     if (!isDragging.current) return;
+
     const diff = startX.current - x;
+
     if (diff > 50) nextSlide();
     if (diff < -50) prevSlide();
+
     isDragging.current = false;
   };
 
@@ -79,35 +86,35 @@ function Initiatives() {
           style={{
             display: "flex",
             gap: isMobile ? "20px" : "40px",
-            padding: isMobile ? "0 16px" : "0 40px",
+            padding: isMobile ? "0 16px" : "0 60px",
             flex: 1,
           }}
         >
-          {/* DESKTOP LEFT */}
+          {/* ✅ LEFT CONTENT (DESKTOP ONLY) */}
           {!isMobile && (
-            <div style={{ width: "220px", paddingTop: "65px" }}>
+            <div style={{ width: "260px", paddingTop: "80px" }}>
               <h2
                 style={{
-                  fontSize: "20px",
-                  fontWeight: "700",
+                  fontSize: "22px",
+                  fontWeight: "800",
                   color: "#b68d2c",
-                  lineHeight: "1.6",
+                  lineHeight: "1.5",
                 }}
               >
-                WITH A STRONG FOCUS ON INNOVATION, WE BUILD THRIVING COMMUNITIES
+                BUILDING TRUST WITH EVERY MILESTONE.
               </h2>
 
               <div
                 style={{
                   width: "40px",
                   height: "2px",
-                  background: "#b68d2c",
-                  margin: "10px 0",
+                  background: "#000",
+                  margin: "14px 0",
                 }}
               />
 
-              <p style={{ fontSize: "13px", color: "#666" }}>
-                Have a look at all our initiatives.
+              <p style={{ fontSize: "14px", color: "#555" }}>
+                We are happy to have you associated with us.
               </p>
             </div>
           )}
@@ -116,12 +123,10 @@ function Initiatives() {
           <div
             style={{
               flex: 1,
-              display: "flex",
-              flexDirection: "column",
               position: "relative",
             }}
           >
-            {/* MOBILE OVERLAY */}
+            {/* ✅ MOBILE OVERLAY */}
             {isMobile && showOverlay && (
               <div
                 style={{
@@ -129,11 +134,12 @@ function Initiatives() {
                   top: "110px",
                   left: "50%",
                   transform: "translateX(-50%)",
-                  width: "90%",
+                  width: "92%",
                   background: "#fff",
                   borderRadius: "16px",
                   padding: "20px",
                   zIndex: 10,
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
                 }}
               >
                 <div
@@ -150,6 +156,7 @@ function Initiatives() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    fontWeight: "bold",
                     cursor: "pointer",
                   }}
                 >
@@ -157,17 +164,17 @@ function Initiatives() {
                 </div>
 
                 <h3 style={{ color: "#b68d2c", margin: 0 }}>
-                  BUILDING TODAY, SHAPING TOMORROW.
+                  BUILDING TRUST WITH EVERY MILESTONE.
                 </h3>
+
                 <p style={{ fontSize: "13px", color: "#555" }}>
-                  Have a look at all our initiatives.
+                  We are happy to have you associated with us.
                 </p>
               </div>
             )}
 
             {/* SLIDER */}
             <div
-              ref={sliderRef}
               onTouchStart={(e) => handleStart(e.touches[0].clientX)}
               onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
               onMouseDown={(e) => handleStart(e.clientX)}
@@ -175,20 +182,19 @@ function Initiatives() {
               onMouseLeave={(e) => handleEnd(e.clientX)}
               style={{
                 overflow: "hidden",
-                width: "100%",
-                height: "calc(100vh - 120px)",
+                height: "calc(100vh - 140px)",
                 cursor: "grab",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  gap: "24px",
+                  gap: "32px",
                   height: "100%",
                   transition: "transform 0.4s ease",
                   transform: `translateX(calc(-${index} * ((100% - ${
-                    isMobile ? "24px" : "48px"
-                  })/${visibleCards} + 24px)))`,
+                    isMobile ? "32px" : "64px"
+                  })/${visibleCards} + 32px)))`,
                 }}
               >
                 {cards.map((card, i) => {
@@ -202,18 +208,17 @@ function Initiatives() {
                       onClick={() => navigate(card.path)}
                       style={{
                         minWidth: `calc((100% - ${
-                          isMobile ? "24px" : "48px"
+                          isMobile ? "32px" : "64px"
                         }) / ${visibleCards})`,
-                        height: "100%",
+                        transform:
+                          !isMobile && isHovered
+                            ? "scaleX(1.05)"
+                            : "scaleX(1)",
+                        transformOrigin: "left",
+                        transition: "transform 0.35s ease",
                         display: "flex",
                         flexDirection: "column",
                         cursor: "pointer",
-                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                        transform:
-                          !isMobile && isHovered
-                            ? "translateX(10px)" // 🔥 move right ONLY
-                            : "translateX(0px)",
-                        zIndex: isHovered ? 2 : 1,
                       }}
                     >
                       {/* IMAGE */}
@@ -222,9 +227,6 @@ function Initiatives() {
                           height: "calc(100% - 110px)",
                           borderRadius: "22px",
                           overflow: "hidden",
-                          boxShadow: isHovered
-                            ? "0 10px 25px rgba(0,0,0,0.15)"
-                            : "none",
                         }}
                       >
                         <img
@@ -249,23 +251,13 @@ function Initiatives() {
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: isMobile ? "16px" : "26px",
+                            fontSize: "24px",
                             fontWeight: "800",
                             color: "#a57c1b",
                           }}
                         >
                           {card.title}
                         </h3>
-
-                        <p
-                          style={{
-                            margin: 0,
-                            fontSize: isMobile ? "12px" : "14px",
-                            color: "#555",
-                          }}
-                        >
-                          {card.subtitle}
-                        </p>
                       </div>
                     </div>
                   );
@@ -277,13 +269,12 @@ function Initiatives() {
             <div
               style={{
                 position: "absolute",
-                bottom: isMobile ? "90px" : "110px",
+                bottom: "110px",
                 left: 0,
                 right: 0,
                 display: "flex",
                 justifyContent: "space-between",
                 pointerEvents: "none",
-                padding: isMobile ? "0 10px" : "0",
               }}
             >
               <div
@@ -320,4 +311,4 @@ const navStyle = {
   fontSize: "18px",
 };
 
-export default Initiatives;
+export default Partners;

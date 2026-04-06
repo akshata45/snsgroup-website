@@ -2,15 +2,16 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-function Initiatives() {
+function BuyersGuide() {
   const navigate = useNavigate();
 
   const [index, setIndex] = useState(0);
   const [hovered, setHovered] = useState(null);
-  const [showOverlay, setShowOverlay] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [showOverlay, setShowOverlay] = useState(true);
 
-  const sliderRef = useRef(null);
+  const startX = useRef(0);
+  const isDragging = useRef(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -19,22 +20,21 @@ function Initiatives() {
   }, []);
 
   const cards = [
-    { title: "CSR", subtitle: "Initiatives", image: "/csr.jpg", path: "/csr" },
     {
-      title: "K-WORLD",
-      subtitle: "Referral Programme",
-      image: "/kworld.jpg",
-      path: "/kworld",
+      title: "HOME BUYER’S",
+      subtitle: "Hub",
+      image: "/homebuyers.jpg",
+      path: "/home-buyers",
     },
     {
-      title: "EVENTS",
-      subtitle: "Organised",
-      image: "/events.jpg",
-      path: "/events",
+      title: "NRI",
+      subtitle: "Corner",
+      image: "/nri.jpg",
+      path: "/nri",
     },
   ];
 
-  const visibleCards = isMobile ? 2 : 3;
+  const visibleCards = isMobile ? 2 : 2;
 
   const nextSlide = () => {
     if (index < cards.length - visibleCards) setIndex(index + 1);
@@ -44,10 +44,6 @@ function Initiatives() {
     if (index > 0) setIndex(index - 1);
   };
 
-  // 🔥 DRAG SUPPORT
-  const startX = useRef(0);
-  const isDragging = useRef(false);
-
   const handleStart = (x) => {
     startX.current = x;
     isDragging.current = true;
@@ -55,9 +51,12 @@ function Initiatives() {
 
   const handleEnd = (x) => {
     if (!isDragging.current) return;
+
     const diff = startX.current - x;
+
     if (diff > 50) nextSlide();
     if (diff < -50) prevSlide();
+
     isDragging.current = false;
   };
 
@@ -79,49 +78,44 @@ function Initiatives() {
           style={{
             display: "flex",
             gap: isMobile ? "20px" : "40px",
-            padding: isMobile ? "0 16px" : "0 40px",
+            padding: isMobile ? "0 16px" : "0 60px",
             flex: 1,
           }}
         >
-          {/* DESKTOP LEFT */}
           {!isMobile && (
-            <div style={{ width: "220px", paddingTop: "65px" }}>
+            <div style={{ width: "260px", paddingTop: "80px" }}>
               <h2
                 style={{
-                  fontSize: "20px",
-                  fontWeight: "700",
+                  fontSize: "22px",
+                  fontWeight: "800",
                   color: "#b68d2c",
-                  lineHeight: "1.6",
+                  lineHeight: "1.5",
                 }}
               >
-                WITH A STRONG FOCUS ON INNOVATION, WE BUILD THRIVING COMMUNITIES
+                THIS IS HOW YOUR HOUSE HUNT GOES!
               </h2>
 
               <div
                 style={{
                   width: "40px",
                   height: "2px",
-                  background: "#b68d2c",
-                  margin: "10px 0",
+                  background: "#000",
+                  margin: "14px 0",
                 }}
               />
 
-              <p style={{ fontSize: "13px", color: "#666" }}>
-                Have a look at all our initiatives.
+              <p style={{ fontSize: "14px", color: "#555" }}>
+                We help you clear your ifs and buts of home buying.
               </p>
             </div>
           )}
 
-          {/* RIGHT */}
           <div
             style={{
               flex: 1,
-              display: "flex",
-              flexDirection: "column",
               position: "relative",
             }}
           >
-            {/* MOBILE OVERLAY */}
             {isMobile && showOverlay && (
               <div
                 style={{
@@ -129,11 +123,12 @@ function Initiatives() {
                   top: "110px",
                   left: "50%",
                   transform: "translateX(-50%)",
-                  width: "90%",
+                  width: "92%",
                   background: "#fff",
                   borderRadius: "16px",
                   padding: "20px",
                   zIndex: 10,
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
                 }}
               >
                 <div
@@ -150,6 +145,7 @@ function Initiatives() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    fontWeight: "bold",
                     cursor: "pointer",
                   }}
                 >
@@ -157,17 +153,16 @@ function Initiatives() {
                 </div>
 
                 <h3 style={{ color: "#b68d2c", margin: 0 }}>
-                  BUILDING TODAY, SHAPING TOMORROW.
+                  THIS IS HOW YOUR HOUSE HUNT GOES!
                 </h3>
+
                 <p style={{ fontSize: "13px", color: "#555" }}>
-                  Have a look at all our initiatives.
+                  We help you clear your ifs and buts of home buying.
                 </p>
               </div>
             )}
 
-            {/* SLIDER */}
             <div
-              ref={sliderRef}
               onTouchStart={(e) => handleStart(e.touches[0].clientX)}
               onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
               onMouseDown={(e) => handleStart(e.clientX)}
@@ -175,20 +170,17 @@ function Initiatives() {
               onMouseLeave={(e) => handleEnd(e.clientX)}
               style={{
                 overflow: "hidden",
-                width: "100%",
-                height: "calc(100vh - 120px)",
+                height: "calc(100vh - 140px)",
                 cursor: "grab",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  gap: "24px",
+                  gap: "28px",
                   height: "100%",
                   transition: "transform 0.4s ease",
-                  transform: `translateX(calc(-${index} * ((100% - ${
-                    isMobile ? "24px" : "48px"
-                  })/${visibleCards} + 24px)))`,
+                  transform: `translateX(calc(-${index} * ((100% - 28px)/${visibleCards} + 28px)))`,
                 }}
               >
                 {cards.map((card, i) => {
@@ -201,30 +193,27 @@ function Initiatives() {
                       onMouseLeave={() => setHovered(null)}
                       onClick={() => navigate(card.path)}
                       style={{
-                        minWidth: `calc((100% - ${
-                          isMobile ? "24px" : "48px"
-                        }) / ${visibleCards})`,
-                        height: "100%",
+                        // ✅ ONLY CHANGE HERE (reduced width on desktop)
+                        minWidth: isMobile
+                          ? `calc((100% - 28px) / ${visibleCards})`
+                          : "32%",
+
+                        transform:
+                          !isMobile && isHovered
+                            ? "scaleX(1.05)"
+                            : "scaleX(1)",
+                        transformOrigin: "left",
+                        transition: "transform 0.35s ease",
                         display: "flex",
                         flexDirection: "column",
                         cursor: "pointer",
-                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                        transform:
-                          !isMobile && isHovered
-                            ? "translateX(10px)" // 🔥 move right ONLY
-                            : "translateX(0px)",
-                        zIndex: isHovered ? 2 : 1,
                       }}
                     >
-                      {/* IMAGE */}
                       <div
                         style={{
                           height: "calc(100% - 110px)",
                           borderRadius: "22px",
                           overflow: "hidden",
-                          boxShadow: isHovered
-                            ? "0 10px 25px rgba(0,0,0,0.15)"
-                            : "none",
                         }}
                       >
                         <img
@@ -238,7 +227,6 @@ function Initiatives() {
                         />
                       </div>
 
-                      {/* LABEL */}
                       <div
                         style={{
                           marginTop: "18px",
@@ -249,7 +237,7 @@ function Initiatives() {
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: isMobile ? "16px" : "26px",
+                            fontSize: "24px",
                             fontWeight: "800",
                             color: "#a57c1b",
                           }}
@@ -260,8 +248,8 @@ function Initiatives() {
                         <p
                           style={{
                             margin: 0,
-                            fontSize: isMobile ? "12px" : "14px",
-                            color: "#555",
+                            fontSize: "14px",
+                            color: "#444",
                           }}
                         >
                           {card.subtitle}
@@ -273,17 +261,15 @@ function Initiatives() {
               </div>
             </div>
 
-            {/* ARROWS */}
             <div
               style={{
                 position: "absolute",
-                bottom: isMobile ? "90px" : "110px",
+                bottom: "110px",
                 left: 0,
                 right: 0,
                 display: "flex",
                 justifyContent: "space-between",
                 pointerEvents: "none",
-                padding: isMobile ? "0 10px" : "0",
               }}
             >
               <div
@@ -320,4 +306,4 @@ const navStyle = {
   fontSize: "18px",
 };
 
-export default Initiatives;
+export default BuyersGuide;

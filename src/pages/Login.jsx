@@ -56,7 +56,7 @@ function Login() {
     width: "100%",
     padding: "14px 12px",
     borderRadius: "8px",
-    border: focused === name ? "1px solid #f26522" : "1px solid #f5f1e8",
+    border: focused === name ? "1px solid rgb(182, 141, 44)" : "1px solid #f5f1e8",
     background: "#f5f1e8",
     color: "#09332c",
     outline: "none",
@@ -71,7 +71,7 @@ function Login() {
     left: "12px",
     top: active ? "-8px" : "14px",
     fontSize: active ? "11px" : "14px",
-    color: active ? "#f26522" : "#5b6062",
+    color: active ? "#rgb(182, 141, 44)" : "#5b6062",
     background: "#f5f1e8",
     padding: "0 4px",
     transition: "0.3s",
@@ -149,7 +149,7 @@ function Login() {
             padding: "12px",
             borderRadius: "8px",
             border: "none",
-            background: "#f26522",
+            background: "rgb(182, 141, 44)",
             color: "#fff",
             fontWeight: "bold",
             cursor: "pointer",
@@ -165,7 +165,7 @@ function Login() {
           <span
             onClick={() => navigate("/signup")}
             style={{
-              color: "#f26522",
+              color: "rgb(182, 141, 44)",
               cursor: "pointer",
               fontWeight: "bold",
             }}

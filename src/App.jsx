@@ -5,6 +5,8 @@ import Leadership from "./pages/Leadership";
 import Journey from "./pages/Journey";
 import Initiatives from "./pages/Initiatives";
 import Login from "./pages/Login";
+import BuyersGuide from "./pages/BuyersGuide";
+import CreativeShowcase from "./pages/CreativeShowcase";
 function App() {
   return (
     <Routes>
@@ -14,6 +16,8 @@ function App() {
       <Route path="/journey" element={<Journey />} />
       <Route path="/initiatives" element={<Initiatives />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/BuyersGuide" element={<BuyersGuide />} />
+      <Route path="/CreativeShowcase" element={<CreativeShowcase />} />
     </Routes>
   );
 }
