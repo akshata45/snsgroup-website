@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import BuyersGuide from "./pages/BuyersGuide";
 import CreativeShowcase from "./pages/CreativeShowcase";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Disclaimer from "./pages/Disclaimer";
 function App() {
   return (
     <Routes>
@@ -20,6 +21,7 @@ function App() {
       <Route path="/BuyersGuide" element={<BuyersGuide />} />
       <Route path="/CreativeShowcase" element={<CreativeShowcase />} />
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/disclaimer" element={<Disclaimer />} />
     </Routes>
   );
 }

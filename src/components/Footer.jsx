@@ -183,18 +183,27 @@ function Footer() {
         }}
       >
         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-            <Link
-    to="/privacy-policy"
-    style={{
-      cursor: "pointer",
-      textDecoration: "none",
-      color: "#7a7a7a",
-    }}
-  >
-    Privacy Policy
-  </Link>
+          <Link
+            to="/privacy-policy"
+            style={{
+              cursor: "pointer",
+              textDecoration: "none",
+              color: "#7a7a7a",
+            }}
+          >
+            Privacy Policy
+          </Link>
           <span>|</span>
-          <span style={{ cursor: "pointer" }}>Disclaimer</span>
+                    <Link
+            to="/disclaimer"
+            style={{
+              cursor: "pointer",
+              textDecoration: "none",
+              color: "#7a7a7a",
+            }}
+          >
+            Disclaimer
+          </Link>
         </div>
 
         <span style={{ opacity: 0.8 }}>
