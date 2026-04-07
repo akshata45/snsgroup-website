@@ -262,12 +262,26 @@ function Journey() {
                     justifyContent: "center",
                   }}
                 >
-                  <h3 style={{ margin: 0, color: "#b08a3e", fontSize: "26px" , fontWeight: "800"}}>
-                    {item.name}
-                  </h3>
-                  <p style={{ margin: 0, color: "#444", fontSize: "13px" }}>
-                    @{item.loc}
-                  </p>
+<h3
+  style={{
+    margin: 0,
+    color: "#b08a3e",
+    fontSize: "clamp(18px, 4vw, 26px)", // 👈 responsive
+    fontWeight: "800",
+  }}
+>
+  {item.name}
+</h3>
+
+<p
+  style={{
+    margin: 0,
+    color: "#444",
+    fontSize: "clamp(11px, 3vw, 13px)", // 👈 responsive
+  }}
+>
+  @{item.loc}
+</p>
                 </div>
               </div>
             ))}

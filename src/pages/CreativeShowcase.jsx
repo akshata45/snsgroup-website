@@ -211,9 +211,7 @@ function Partners() {
                           isMobile ? "32px" : "64px"
                         }) / ${visibleCards})`,
                         transform:
-                          !isMobile && isHovered
-                            ? "scaleX(1.05)"
-                            : "scaleX(1)",
+                          !isMobile && isHovered ? "scaleX(1.05)" : "scaleX(1)",
                         transformOrigin: "left",
                         transition: "transform 0.35s ease",
                         display: "flex",
@@ -251,9 +249,10 @@ function Partners() {
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: "24px",
+                            fontSize: "clamp(18px, 4vw, 24px)", // 👈 responsive
                             fontWeight: "800",
                             color: "#a57c1b",
+                            lineHeight: "1.2",
                           }}
                         >
                           {card.title}

@@ -39,9 +39,9 @@ function AboutSlider() {
   const cards = [
     { title: "STORY", image: "/story1.jpg", path: "/story" },
     { title: "PROJECTS", image: "/journey4.jpg", path: "/journey" },
-    { title: "STRENGTHS", image: "/strength.jpg", path: "/strength" },
-    { title: "LEADERSHIP", image: "/leadership.jpg", path: "/leadership" },
-    { title: "GROUP VENTURES", image: "/group.jpg", path: "/group" },
+    { title: "STRENGTHS", image: "/strength.jpg", path: "/story#strength" },
+    { title: "LEADERSHIP", image: "/leadership.jpg", path: "/story#leadership" },
+    { title: "GROUP VENTURES", image: "/group.jpg", path: "/story#ventures" },
   ];
 
   const gap = isMobile ? 10 : 16;

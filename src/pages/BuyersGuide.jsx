@@ -234,26 +234,28 @@ function BuyersGuide() {
                           padding: "14px 18px",
                         }}
                       >
-                        <h3
-                          style={{
-                            margin: 0,
-                            fontSize: "24px",
-                            fontWeight: "800",
-                            color: "#a57c1b",
-                          }}
-                        >
-                          {card.title}
-                        </h3>
+<h3
+  style={{
+    margin: 0,
+    fontSize: "clamp(18px, 3.5vw, 24px)", // 👈 responsive
+    fontWeight: "800",
+    color: "#a57c1b",
+    lineHeight: "1.2",
+  }}
+>
+  {card.title}
+</h3>
 
-                        <p
-                          style={{
-                            margin: 0,
-                            fontSize: "14px",
-                            color: "#444",
-                          }}
-                        >
-                          {card.subtitle}
-                        </p>
+<p
+  style={{
+    margin: 0,
+    fontSize: "clamp(11px, 2.8vw, 14px)", // 👈 responsive
+    color: "#444",
+    lineHeight: "1.4",
+  }}
+>
+  {card.subtitle}
+</p>
                       </div>
                     </div>
                   );
