@@ -7,6 +7,7 @@ import Initiatives from "./pages/Initiatives";
 import Login from "./pages/Login";
 import BuyersGuide from "./pages/BuyersGuide";
 import CreativeShowcase from "./pages/CreativeShowcase";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 function App() {
   return (
     <Routes>
@@ -18,6 +19,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/BuyersGuide" element={<BuyersGuide />} />
       <Route path="/CreativeShowcase" element={<CreativeShowcase />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
     </Routes>
   );
 }

@@ -5,6 +5,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -182,7 +183,16 @@ function Footer() {
         }}
       >
         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-          <span style={{ cursor: "pointer" }}>Privacy Policy</span>
+            <Link
+    to="/privacy-policy"
+    style={{
+      cursor: "pointer",
+      textDecoration: "none",
+      color: "#7a7a7a",
+    }}
+  >
+    Privacy Policy
+  </Link>
           <span>|</span>
           <span style={{ cursor: "pointer" }}>Disclaimer</span>
         </div>
