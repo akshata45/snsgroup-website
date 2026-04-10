@@ -8,6 +8,24 @@ import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 function Footer() {
+  // ✅ Link Mapping
+  const links = {
+    "Accolades": "/accolades",
+    "About Us": "/story",
+    "Blogs": "/blogs",
+    "NRI Corner": "/nri",
+
+    "Get In Touch": "/contactus",
+    "Careers": "/careers",
+    "Residential Projects": "/journey",
+    "Commercial Projects": "/journey",
+
+    "Channel Partner": "/channel-partner",
+    "Currency Calculator": "/currency-calculator",
+    "EMI Calculator": "/emi-calculator",
+    "Vendor Registration": "/vendor-registration",
+  };
+
   return (
     <footer
       style={{
@@ -32,7 +50,7 @@ function Footer() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)", // desktop fixed
+          gridTemplateColumns: "repeat(3, 1fr)",
           gap: "50px",
           marginBottom: "70px",
         }}
@@ -61,9 +79,9 @@ function Footer() {
             }}
           >
             {col.map((item, idx) => (
-              <a
+              <Link
                 key={idx}
-                href="#"
+                to={links[item] || "#"}
                 style={{
                   textDecoration: "none",
                   color: "#6d6d6d",
@@ -82,7 +100,7 @@ function Footer() {
                 }}
               >
                 {item}
-              </a>
+              </Link>
             ))}
           </div>
         ))}
@@ -194,7 +212,7 @@ function Footer() {
             Privacy Policy
           </Link>
           <span>|</span>
-                    <Link
+          <Link
             to="/disclaimer"
             style={{
               cursor: "pointer",
@@ -211,7 +229,7 @@ function Footer() {
         </span>
       </div>
 
-      {/* ✅ MOBILE RESPONSIVE (2 COLUMN FORCE) */}
+      {/* MOBILE RESPONSIVE */}
       <style>{`
         @media (max-width: 992px) {
           footer div[style*="grid"] {

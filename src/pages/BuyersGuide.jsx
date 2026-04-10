@@ -24,7 +24,7 @@ function BuyersGuide() {
       title: "HOME BUYER’S",
       subtitle: "Hub",
       image: "/homebuyers.jpg",
-      path: "/home-buyers",
+      path: "/currency-calculator",
     },
     {
       title: "NRI",

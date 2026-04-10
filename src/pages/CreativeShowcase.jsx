@@ -25,13 +25,13 @@ function Partners() {
       title: "SNS GROUP",
       subtitle: "",
       image: "/img1.jpg",
-      path: "/sns-group",
+      path: "/blogs",
     },
     {
       title: "VENDOR",
       subtitle: "",
       image: "/img2.jpg",
-      path: "/vendor",
+      path: "/vendor-registration",
     },
     {
       title: "CHANNEL PARTNER",

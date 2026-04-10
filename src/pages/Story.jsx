@@ -247,7 +247,7 @@ function Story() {
             }}
           >
             <img
-              src="/journey2.jpg"
+              src="/journey4.jpg"
               alt=""
               style={{
                 width: "100%",
@@ -685,8 +685,8 @@ function Story() {
               >
                 <h3
                   style={{
-                    fontSize: "15px",
-                    fontWeight: "600",
+                    fontSize: "20px",
+                    fontWeight: "700",
                     color: "#111",
                     marginBottom: "4px",
                     letterSpacing: "0.3px",
@@ -698,9 +698,10 @@ function Story() {
                 <p
                   style={{
                     color: "#c6a75e",
-                    fontSize: "11px",
+                    fontSize: "12px",
                     marginBottom: "8px",
                     letterSpacing: "1px",
+                    fontWeight: "500",
                   }}
                 >
                   {l.role}
@@ -710,7 +711,7 @@ function Story() {
                   style={{
                     color: "#444",
                     lineHeight: "1.7",
-                    fontSize: "14px",
+                    fontSize: "15px",
                   }}
                 >
                   {l.desc}

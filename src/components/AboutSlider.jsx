@@ -62,7 +62,7 @@ function AboutSlider() {
     const container = containerRef.current;
 
     const animate = () => {
-      velocityRef.current *= 0.92;
+      velocityRef.current *= 0.96;
 
       if (Math.abs(velocityRef.current) < 0.1) {
         cancelAnimationFrame(rafRef.current);
@@ -78,7 +78,8 @@ function AboutSlider() {
       if (isMobile) return;
 
       e.preventDefault();
-      velocityRef.current += e.deltaY * 0.4;
+      velocityRef.current += e.deltaY * 0.15;
+
 
       if (!rafRef.current) {
         rafRef.current = requestAnimationFrame(animate);
@@ -110,7 +111,7 @@ function AboutSlider() {
       if (!isDragging.current) return;
       e.preventDefault();
       const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX.current) * 1.4;
+      const walk = (x - startX.current) * 0.8;
       container.scrollLeft = scrollLeft.current - walk;
     };
 
@@ -232,15 +233,15 @@ function AboutSlider() {
                     justifyContent: "flex-end",
                     cursor: "pointer",
                     scrollSnapAlign: "start",
-                    transition: "transform 0.5s cubic-bezier(0.22,1,0.36,1)",
+                    transition: "transform 0.7s cubic-bezier(0.25, 1, 0.3, 1)",
                   }}
                   onMouseEnter={(e) => {
                     if (!isMobile) {
                       const el = e.currentTarget;
                       const inner = el.querySelector(".card-inner");
 
-                      const scale = 1.12;
-                      const shift = 90;
+                      const scale = 1.05;
+                      const shift = 40;
 
                       inner.style.transform = `scaleX(${scale})`;
 
@@ -274,7 +275,7 @@ function AboutSlider() {
                       borderRadius: "18px",
                       overflow: "hidden",
                       transformOrigin: "left center",
-                      transition: "transform 0.5s cubic-bezier(0.22,1,0.36,1)",
+                      transition: "transform 0.7s cubic-bezier(0.25, 1, 0.3, 1)",
                       boxShadow: `0 10px 30px rgba(0,0,0,${
                         0.15 + Math.abs(offset) * 0.0002
                       })`,
