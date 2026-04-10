@@ -156,6 +156,7 @@ const NRICorner = () => {
                     opacity: visible ? 1 : 0,
                     transform: visible ? "translateY(0)" : "translateY(20px)",
                     transition: "all 0.7s ease 0.4s",
+                    textAlign: "justify", // ✅ FIX
                   }}
                 >
                   SNS Group is a fast-growing Real Estate developer that has

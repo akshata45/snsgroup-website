@@ -229,6 +229,7 @@ function Story() {
         style={{
           padding: isMobile ? "0 0 60px" : "100px 8%",
           background: "#f5f1e8",
+
         }}
       >
         <div
@@ -317,6 +318,7 @@ function Story() {
             style={{
               order: isMobile ? 2 : 1, // 🔥 CONTENT BELOW IMAGE ON MOBILE
               padding: isMobile ? "0 6%" : "0",
+              textAlign: "justify", // ✅ FIX
             }}
           >
             {/* VALUES */}

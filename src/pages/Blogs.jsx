@@ -93,6 +93,7 @@ const Blogs = () => {
         .content {
           color: #000;
           max-width: 500px;
+          
         }
 
         .content h2 {

@@ -14,6 +14,7 @@ function Disclaimer() {
         padding: "60px 6%",
         display: "flex",
         justifyContent: "center",
+        textAlign: "justify", // ✅ FIX
       }}
     >
       <div

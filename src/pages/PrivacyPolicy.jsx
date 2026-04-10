@@ -42,6 +42,7 @@ function PrivacyPolicy() {
             color: "#444",
             lineHeight: "1.9",
             fontSize: "15px",
+            textAlign: "justify", // ✅ FIX
           }}
         >
           <p>
