@@ -690,7 +690,7 @@ function Story() {
           {[
             {
               img: "Ranjeet.jpg",
-              name: "MR. RANJEET MAHATRE",
+              name: "MR.RANJEET MAHATRE",
               role: "ARCHITECT",
               desc: "Mr. Ranjeet Mahatre began his career as a Real Estate Consultant and Architect, developing a strong eye for structural precision and execution. His leadership transformed SNS Group into a trusted name known for quality and timely delivery.",
             },
