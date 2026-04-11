@@ -219,6 +219,7 @@ const CurrencyCalculator = () => {
           font-size: 14px;
           line-height: 1.6;
           margin-bottom: 10px; /* 🔥 balanced spacing */
+          text-align: justify; /* ✅ FIXED */
         }
 
         .left p:last-child {

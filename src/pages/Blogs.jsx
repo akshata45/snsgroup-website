@@ -56,6 +56,7 @@ const Blogs = () => {
           background: #f5f1e8;
           display: flex;
           justify-content: center;
+          textAlign: "justify", // ✅ FIX
         }
 
         .wrapper {

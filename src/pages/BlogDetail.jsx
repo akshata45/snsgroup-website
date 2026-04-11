@@ -96,18 +96,21 @@ const BlogDetail = () => {
           font-size: 16px;
           line-height: 1.8;
           white-space: pre-line;
+          textAlign: "justify", // ✅ FIX
         }
 
         @media (max-width: 768px) {
           h1 {
             font-size: 24px;
+            textAlign: "justify", // ✅ FIX
           }
 
           .container {
             padding: 40px 15px 60px;
           }
         }
-      `}</style>
+      `}
+      </style>
     </>
   );
 };

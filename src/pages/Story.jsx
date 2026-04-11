@@ -606,6 +606,7 @@ function Story() {
             gap: isMobile ? "28px" : "30px",
             maxWidth: "950px",
             margin: "0 auto",
+            textAlign: "justify", // ✅ FIXED
           }}
         >
           {[

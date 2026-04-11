@@ -19,6 +19,7 @@ import CurrencyCalculator from "./pages/CurrencyCalculator";
 import EmiCalculator from "./pages/EmiCalculator";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
+import Careers from "./pages/Careers";
 function App() {
   return (
     <>
@@ -42,6 +43,7 @@ function App() {
       <Route path="/emi-calculator" element={<EmiCalculator />} />
       <Route path="/blogs" element={<Blogs />} />
       <Route path="/blog/:id" element={<BlogDetail />} />
+      <Route path="/careers" element={<Careers />} />
     </Routes>
     </>
   );
