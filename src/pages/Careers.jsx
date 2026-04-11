@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Helmet } from "react-helmet-async";
+
 
 const Careers = () => {
   const [success, setSuccess] = useState(false);
@@ -35,36 +35,6 @@ const Careers = () => {
 
   return (
     <>
-    <Helmet>
-  <title>Careers at SNS Group | Jobs in Mumbai Real Estate</title>
-
-  <meta
-    name="description"
-    content="Explore careers at SNS Group – one of Mumbai’s fastest-growing real estate companies. Apply for sales, CRM, engineering & marketing jobs."
-  />
-
-  <meta
-    name="keywords"
-    content="SNS Group careers, real estate jobs Mumbai, jobs in Mumbai real estate, site engineer jobs, CRM manager jobs Mumbai"
-  />
-
-  <meta name="author" content="SNS Group" />
-
-  {/* Open Graph (for sharing) */}
-  <meta property="og:title" content="Careers at SNS Group" />
-  <meta
-    property="og:description"
-    content="Join SNS Group and build your future in real estate. Explore open job opportunities in Mumbai."
-  />
-  <meta property="og:image" content="/career-bg.jpg" />
-  <meta property="og:type" content="website" />
-
-  {/* Mobile SEO */}
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  {/* Canonical */}
-  <link rel="canonical" href="https://yourdomain.com/careers" />
-</Helmet>
 
       <Navbar />
 

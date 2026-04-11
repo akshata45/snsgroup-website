@@ -320,31 +320,48 @@ const LeftContent = ({ selectedType, setSelectedType, setIndex, isMobile }) => (
       <button style={btnBlack}>Commercial</button>
     </div>
 
-<select
-  value={selectedType}
-  onChange={(e) => {
-    setSelectedType(e.target.value);
-    setIndex(0);
-  }}
-  style={{
-    marginTop: "15px",
-    padding: "10px",
-    width: "100%",
-    background: "#e7dfcc",   // ✅ light beige instead of black
-    color: "#1a1a1a",
-    border: "1px solid #b08a3e",
-    outline: "none",
-    appearance: "none",      // ✅ removes default styling
-    WebkitAppearance: "none",
-    MozAppearance: "none",
-    cursor: "pointer",
-    fontSize: "16px",
-  }}
->
-  <option value="Completed">Completed</option>
-  <option value="Ongoing">Ongoing</option>
-  <option value="Upcoming">Upcoming</option>
-</select>
+<div style={{ position: "relative", width: "100%", marginTop: "15px" }}>
+  <select
+    value={selectedType}
+    onChange={(e) => {
+      setSelectedType(e.target.value);
+      setIndex(0);
+    }}
+    style={{
+      padding: "10px",
+      width: "100%",
+      background: "#e7dfcc",
+      color: "#1a1a1a",
+      border: "1px solid #b08a3e",
+      outline: "none",
+      appearance: "none",
+      WebkitAppearance: "none",
+      MozAppearance: "none",
+      cursor: "pointer",
+      fontSize: "16px",
+    }}
+  >
+    <option value="Completed">Completed</option>
+    <option value="Ongoing">Ongoing</option>
+    <option value="Upcoming">Upcoming</option>
+  </select>
+
+  {/* Custom Arrow */}
+  <div
+    style={{
+      position: "absolute",
+      right: "10px",
+      top: "50%",
+      transform: "translateY(-50%)",
+      pointerEvents: "none", // so clicks pass through
+      fontSize: "14px",
+      color: "#1a1a1a",
+    }}
+  >
+    ▼
+  </div>
+</div>
+
 
   </>
 );
