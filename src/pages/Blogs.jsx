@@ -92,7 +92,7 @@ const Blogs = () => {
         }
 
         .content {
-          color: #000;
+          color: #201d1d;
           max-width: 500px;
           
         }
@@ -104,10 +104,11 @@ const Blogs = () => {
         }
 
         .content p {
-          font-size: 15px;
+          font-size: 17.5px;
           line-height: 1.6;
           margin-bottom: 18px;
           color: #333;
+          text-align: justify; /* ✅ FIX */
         }
 
         .content button {

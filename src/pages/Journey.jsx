@@ -277,7 +277,7 @@ function Journey() {
   style={{
     margin: 0,
     color: "#444",
-    fontSize: "clamp(11px, 3vw, 13px)", // 👈 responsive
+    fontSize: "clamp(14px, 3vw, 18.5px)", // 👈 responsive
   }}
 >
   @{item.loc}
@@ -301,7 +301,7 @@ const LeftContent = ({ selectedType, setSelectedType, setIndex, isMobile }) => (
     <h1
       style={{
         color: "#b08a3e",
-        fontSize: isMobile ? "22px" : "32px",
+        fontSize: isMobile ? "22px" : "38px",
         margin: 0,
         fontWeight: "700",
       }}
@@ -311,11 +311,11 @@ const LeftContent = ({ selectedType, setSelectedType, setIndex, isMobile }) => (
 
     <div style={{ width: "50px", height: "2px", background: "#000", margin: "14px 0" }} />
 
-    <p style={{ color: "#444", fontSize: "13px" }}>
+    <p style={{ color: "#444", fontSize: "16.5px" }}>
       Have a look through our luxury residences and prestigious commercial spaces
     </p>
 
-    <div style={{ marginTop: "18px", display: "flex", gap: "10px" }}>
+    <div style={{ marginTop: "18px", display: "flex", gap: "10px", fontSize: "16px" }}>
       <button style={btnActive}>Residential</button>
       <button style={btnBlack}>Commercial</button>
     </div>
@@ -338,6 +338,7 @@ const LeftContent = ({ selectedType, setSelectedType, setIndex, isMobile }) => (
     WebkitAppearance: "none",
     MozAppearance: "none",
     cursor: "pointer",
+    fontSize: "16px",
   }}
 >
   <option value="Completed">Completed</option>

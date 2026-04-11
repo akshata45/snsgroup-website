@@ -26,14 +26,14 @@ function PrivacyPolicy() {
         {/* TITLE */}
         <h1
           style={{
-            fontSize: "clamp(28px,4vw,48px)",
+            fontSize: "clamp(28px,4vw,37px)",
             fontWeight: "600",
             color: gold,
             marginBottom: "30px",
             letterSpacing: "1px",
           }}
         >
-          PRIVACY <span style={{ fontWeight: "400" }}>STATEMENT</span>
+          PRIVACY <span style={{ fontWeight: "600" }}>STATEMENT</span>
         </h1>
 
         {/* CONTENT */}
@@ -41,7 +41,7 @@ function PrivacyPolicy() {
           style={{
             color: "#444",
             lineHeight: "1.9",
-            fontSize: "15px",
+            fontSize: "17.5px",
             textAlign: "justify", // ✅ FIX
           }}
         >

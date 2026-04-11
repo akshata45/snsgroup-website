@@ -90,10 +90,12 @@ const BlogDetail = () => {
           width: 100%;
           border-radius: 12px;
           margin-bottom: 25px;
+          img-rendering: optimizeQuality;
+          textAlign: "justify", // ✅ FIX
         }
 
         p {
-          font-size: 16px;
+          font-size: 18px;
           line-height: 1.8;
           white-space: pre-line;
           textAlign: "justify", // ✅ FIX

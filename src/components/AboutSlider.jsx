@@ -174,10 +174,10 @@ function AboutSlider() {
       >
         {cardsPerView >= 3 && !isMobile && (
           <div style={{ width: "15%", paddingTop: "50px" }}>
-            <h2 style={{ color: "#b08a3e" }}>
+            <h2 style={{ color: "#b08a3e" , fontSize: "27px", marginBottom: "8px", fontWeight: "800"}}>
               WE HAVE A LEGACY OF OVER 40 YEARS
             </h2>
-            <p style={{ fontSize: "16px", color: "#555", margin: 0 }}>
+            <p style={{ fontSize: "18px", color: "#555", margin: 0 }}>
               “We don’t just build walls, we build a lifestyle”
             </p>
           </div>

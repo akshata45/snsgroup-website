@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Helmet } from "react-helmet";
 
 const Careers = () => {
   const [success, setSuccess] = useState(false);
@@ -34,12 +35,43 @@ const Careers = () => {
 
   return (
     <>
+    <Helmet>
+  <title>Careers at SNS Group | Jobs in Mumbai Real Estate</title>
+
+  <meta
+    name="description"
+    content="Explore careers at SNS Group – one of Mumbai’s fastest-growing real estate companies. Apply for sales, CRM, engineering & marketing jobs."
+  />
+
+  <meta
+    name="keywords"
+    content="SNS Group careers, real estate jobs Mumbai, jobs in Mumbai real estate, site engineer jobs, CRM manager jobs Mumbai"
+  />
+
+  <meta name="author" content="SNS Group" />
+
+  {/* Open Graph (for sharing) */}
+  <meta property="og:title" content="Careers at SNS Group" />
+  <meta
+    property="og:description"
+    content="Join SNS Group and build your future in real estate. Explore open job opportunities in Mumbai."
+  />
+  <meta property="og:image" content="/career-bg.jpg" />
+  <meta property="og:type" content="website" />
+
+  {/* Mobile SEO */}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  {/* Canonical */}
+  <link rel="canonical" href="https://yourdomain.com/careers" />
+</Helmet>
+
       <Navbar />
 
       {/* HERO */}
       <section className="hero">
         <div className="container">
-          <h2 className="title">CAREERS AT SNS GROUP</h2>
+          <h1 className="title">CAREERS AT SNS GROUP</h1>
           <div className="line" />
 
           <div className="hero-box">
@@ -64,7 +96,7 @@ const Careers = () => {
             </div>
 
             <div className="hero-right">
-              <img src="/career-bg.jpg" alt="career" />
+              <img src="/career-bg.jpg" alt="SNS Group careers Mumbai office team working" />
             </div>
           </div>
         </div>
@@ -75,7 +107,7 @@ const Careers = () => {
   <div className="container leadership-wrapper">
 
     <div className="lead-img">
-      <img src="/team.jpg" alt="team" />
+      <img src="/team.jpg" alt="SNS Group leadership team collaboration" />
     </div>
 
     <div className="lead-content">
@@ -93,7 +125,7 @@ const Careers = () => {
         stakeholders, and believe that business success will follow.
       </p>
 
-      <button className="outline-btn">MEET THE TEAM</button>
+      <button className="outline-btn">EXPLORE</button>
     </div>
 
     {/* STATS */}
@@ -320,7 +352,7 @@ section {
 
 /* TITLE */
 .title {
-  font-size: 18px;
+  font-size: 24px;
   color: #111;
   letter-spacing: 2px;
 }
@@ -362,7 +394,7 @@ section {
 }
 
 .hero-subtext {
-  font-size: 14px;
+  font-size: 17px;
   color: #555;
   line-height: 1.7;
 }
@@ -385,7 +417,7 @@ section {
 }
 
 .lead-content h3 {
-  font-size: 22px;
+  font-size: 24px;
   color: #111;
 }
 
@@ -397,7 +429,7 @@ section {
 }
 
 .lead-subtext {
-  font-size: 14px;
+  font-size: 17px;
   color: #666;
 }
 
@@ -412,7 +444,7 @@ section {
 
 .stats {
   position: absolute;
-  bottom: -90px;
+  bottom: -80px;
   right: 0;
   display: flex;
   background: #1a1f24;
@@ -429,7 +461,7 @@ section {
 
 .stats span {
   color: #fff;
-  font-size: 12px;
+  font-size: 17px;
 }
 
 /* ATS */
@@ -459,10 +491,11 @@ section {
 .job-info h4 {
   margin: 0;
   color: #111;
+  font-size: 18px;
 }
 
 .job-info span {
-  font-size: 12px;
+  font-size: 17px;
   color: #777;
 }
 
@@ -487,7 +520,7 @@ section {
 }
 
 .field label {
-  font-size: 12px;
+  font-size: 17px;
   color: #444;
 }
 
@@ -530,7 +563,7 @@ textarea {
 }
 
 .upload-inner span {
-  font-size: 12px;
+  font-size: 17px;
   color: #777;
 }
 

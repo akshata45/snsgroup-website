@@ -88,7 +88,7 @@ function Initiatives() {
             <div style={{ width: "220px", paddingTop: "65px" }}>
               <h2
                 style={{
-                  fontSize: "20px",
+                  fontSize: "32px",
                   fontWeight: "700",
                   color: "#b68d2c",
                   lineHeight: "1.6",
@@ -106,7 +106,7 @@ function Initiatives() {
                 }}
               />
 
-              <p style={{ fontSize: "13px", color: "#666" }}>
+              <p style={{ fontSize: "17.5px", color: "#666" }}>
                 Have a look at all our initiatives.
               </p>
             </div>
@@ -159,7 +159,7 @@ function Initiatives() {
                 <h3 style={{ color: "#b68d2c", margin: 0 }}>
                   BUILDING TODAY, SHAPING TOMORROW.
                 </h3>
-                <p style={{ fontSize: "13px", color: "#555" }}>
+                <p style={{ fontSize: "14px", color: "#555" }}>
                   Have a look at all our initiatives.
                 </p>
               </div>
@@ -249,7 +249,7 @@ function Initiatives() {
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: isMobile ? "16px" : "26px",
+                            fontSize: isMobile ? "20px" : "32px",
                             fontWeight: "800",
                             color: "#a57c1b",
                           }}
@@ -260,7 +260,7 @@ function Initiatives() {
                         <p
                           style={{
                             margin: 0,
-                            fontSize: isMobile ? "12px" : "14px",
+                            fontSize: isMobile ? "14px" : "17.5px",
                             color: "#555",
                           }}
                         >

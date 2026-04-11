@@ -148,7 +148,7 @@ const NRICorner = () => {
 
                 <p
                   style={{
-                    fontSize: "15px",
+                    fontSize: "17px",
                     color: "#555",
                     lineHeight: "1.8",
                     marginBottom: "15px",
@@ -168,7 +168,7 @@ const NRICorner = () => {
 
                 <p
                   style={{
-                    fontSize: "15px",
+                    fontSize: "17px",
                     color: "#555",
                     lineHeight: "1.8",
                     maxWidth: "550px",
@@ -284,7 +284,7 @@ const NRICorner = () => {
 
               <p
                 style={{
-                  fontSize: "14px",
+                  fontSize: "17px",
                   color: "#555",
                   lineHeight: "1.8",
                   maxWidth: "420px",
@@ -303,7 +303,7 @@ const NRICorner = () => {
             style={{
               display: "flex",
               flexDirection: window.innerWidth < 768 ? "column" : "row",
-              marginTop: window.innerWidth < 768 ? "20px" : "-60px",
+              marginTop: window.innerWidth < 768 ? "20px" : "-40px",
               marginLeft: window.innerWidth < 768 ? "0" : "200px",
               gap: "2px", // subtle separation
             }}
@@ -318,8 +318,8 @@ const NRICorner = () => {
                 boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
               }}
             >
-              <h4 style={{ color: "#d4af37", fontSize: "18px" }}>1 TRILLION</h4>
-              <p style={{ fontSize: "12px" }}>
+              <h4 style={{ color: "#d4af37", fontSize: "20px" }}>1 TRILLION</h4>
+              <p style={{ fontSize: "17px" }}>
                 USD MARKET <br /> SIZE BY 2030
               </p>
             </div>
@@ -334,8 +334,8 @@ const NRICorner = () => {
                 boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
               }}
             >
-              <h4 style={{ color: "#d4af37", fontSize: "18px" }}>13%</h4>
-              <p style={{ fontSize: "12px" }}>
+              <h4 style={{ color: "#d4af37", fontSize: "20px" }}>13%</h4>
+              <p style={{ fontSize: "17px" }}>
                 OF TOTAL GDP <br /> EXPECTED BY 2025
               </p>
             </div>
@@ -350,8 +350,8 @@ const NRICorner = () => {
                 boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
               }}
             >
-              <h4 style={{ color: "#d4af37", fontSize: "18px" }}>URBAN</h4>
-              <p style={{ fontSize: "12px" }}>
+              <h4 style={{ color: "#d4af37", fontSize: "20px" }}>URBAN</h4>
+              <p style={{ fontSize: "17px" }}>
                 CITIES OFFER <br /> OPPORTUNITIES FOR REAL ESTATE
               </p>
             </div>
@@ -375,10 +375,10 @@ const NRICorner = () => {
           <div style={{ marginBottom: "40px" }}>
             <h2
               style={{
-                fontSize: "20px",
+                fontSize: "24px",
                 letterSpacing: "2px",
                 color: "#2f2f2f",
-                fontWeight: "500",
+                fontWeight: "700",
               }}
             >
               WHAT WE PROMISE
@@ -430,7 +430,7 @@ const NRICorner = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "18px",
+                    fontSize: "20px",
                     color: "#b88a2a",
                     boxShadow: "0 5px 15px rgba(0,0,0,0.08)",
                     transition: "all 0.3s ease",
@@ -442,7 +442,7 @@ const NRICorner = () => {
                 {/* TEXT */}
                 <p
                   style={{
-                    fontSize: "14px",
+                    fontSize: "16px",
                     color: "#666",
                     lineHeight: "1.5",
                     margin: 0,
@@ -491,7 +491,7 @@ const NRICorner = () => {
             {/* HEADING */}
             <h3
               style={{
-                fontSize: window.innerWidth < 768 ? "22px" : "28px",
+                fontSize: window.innerWidth < 768 ? "24px" : "32px",
                 fontWeight: "600",
                 marginBottom: "10px",
               }}
@@ -511,7 +511,7 @@ const NRICorner = () => {
             {/* TEXT */}
             <p
               style={{
-                fontSize: "14px",
+                fontSize: "17px",
                 color: "#dcdcdc",
                 lineHeight: "1.8",
                 marginBottom: "25px",
@@ -536,7 +536,7 @@ const NRICorner = () => {
                 <span
                   key={i}
                   style={{
-                    fontSize: "14px",
+                    fontSize: "17px",
                     color: i === 0 ? "#d4af37" : "#ffffff",
                     cursor: "pointer",
                     transition: "all 0.3s ease",

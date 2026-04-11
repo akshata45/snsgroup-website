@@ -163,7 +163,7 @@ const styles = {
   },
 
   text: {
-    fontSize: "14px",
+    fontSize: "17px",
     lineHeight: "1.6",
     color: "#222",
   },
@@ -199,7 +199,7 @@ const styles = {
     outline: "none",
     background: "transparent",
     color: "#000",
-    fontSize: "15px",
+    fontSize: "17px",
   },
 
   resultBox: {
@@ -213,7 +213,7 @@ const styles = {
 
   breakdown: {
     marginTop: "15px",
-    fontSize: "13px",
+    fontSize: "17px",
     color: "#333",
     textAlign: "center",
   },

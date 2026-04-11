@@ -86,7 +86,7 @@ function BuyersGuide() {
             <div style={{ width: "260px", paddingTop: "80px" }}>
               <h2
                 style={{
-                  fontSize: "22px",
+                  fontSize: "32px",
                   fontWeight: "800",
                   color: "#b68d2c",
                   lineHeight: "1.5",
@@ -104,7 +104,7 @@ function BuyersGuide() {
                 }}
               />
 
-              <p style={{ fontSize: "14px", color: "#555" }}>
+              <p style={{ fontSize: "17.5px", color: "#555" }}>
                 We help you clear your ifs and buts of home buying.
               </p>
             </div>
@@ -237,7 +237,7 @@ function BuyersGuide() {
 <h3
   style={{
     margin: 0,
-    fontSize: "clamp(18px, 3.5vw, 24px)", // 👈 responsive
+    fontSize: "clamp(18px, 3.5vw, 30px)", // 👈 responsive
     fontWeight: "800",
     color: "#a57c1b",
     lineHeight: "1.2",
@@ -249,7 +249,7 @@ function BuyersGuide() {
 <p
   style={{
     margin: 0,
-    fontSize: "clamp(11px, 2.8vw, 14px)", // 👈 responsive
+    fontSize: "clamp(14px, 2.8vw, 17.5px)", // 👈 responsive
     color: "#444",
     lineHeight: "1.4",
   }}

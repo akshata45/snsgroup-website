@@ -58,8 +58,9 @@ Message: ${form.message}`;
     borderRadius: "8px",
     background: "transparent",
     outline: "none",
-    fontSize: "14px",
+    fontSize: "17.5px",
     color: "#000",
+    fontweight: "400",
   };
 
   const labelPremium = {
@@ -68,7 +69,7 @@ Message: ${form.message}`;
     left: "12px",
     background: "#fff",
     padding: "0 5px",
-    fontSize: "12px",
+    fontSize: "17.5px",
     color: "#777",
   };
 
@@ -86,7 +87,7 @@ Message: ${form.message}`;
           {/* HEADING */}
           <h2
             style={{
-              fontSize: "20px",
+              fontSize: "22px",
               letterSpacing: "2px",
               color: "#333",
               marginBottom: "10px",
@@ -121,11 +122,11 @@ Message: ${form.message}`;
               }}
             >
               <div style={{ marginBottom: "30px" }}>
-                <h4 style={{ color: "#b88a2a", fontSize: "14px" }}>
+                <h4 style={{ color: "#b88a2a", fontSize: "17.5px" }}>
                   📍 HEAD OFFICE
                 </h4>
                 <p
-                  style={{ fontSize: "14px", color: "#555", lineHeight: "1.8" }}
+                  style={{ fontSize: "17.5px", color: "#555", lineHeight: "1.8" }}
                 >
                   Surya House, ONGC Colony, Vidya Vihar East, Vidyavihar,
                   Mumbai, Maharashtra - 400077
@@ -133,12 +134,12 @@ Message: ${form.message}`;
               </div>
 
               <div style={{ marginBottom: "30px" }}>
-                <h4 style={{ color: "#b88a2a", fontSize: "14px" }}>📞 PHONE</h4>
+                <h4 style={{ color: "#b88a2a", fontSize: "17.5px" }}>📞 PHONE</h4>
                 <a href="tel:+919999999999">+91-9999999999</a>
               </div>
 
               <div>
-                <h4 style={{ color: "#b88a2a", fontSize: "14px" }}>✉ EMAIL</h4>
+                <h4 style={{ color: "#b88a2a", fontSize: "17.5px" }}>✉ EMAIL</h4>
                 <a href="mailto:info@snsgroup.one">info@snsgroup.one</a>
               </div>
             </div>
@@ -171,9 +172,9 @@ Message: ${form.message}`;
           >
             <h3
               style={{
-                fontSize: "26px",
+                fontSize: "22px",
                 marginBottom: "30px",
-                color: "#000",
+                color: "#333",
               }}
             >
               Get In Touch

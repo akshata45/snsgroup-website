@@ -41,7 +41,7 @@ function Disclaimer() {
           style={{
             color: "#444",
             lineHeight: "1.9",
-            fontSize: "15px",
+            fontSize: "17.5px",
           }}
         >
           <p>

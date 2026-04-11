@@ -133,8 +133,27 @@ function Story() {
                 >
                   {item.icon}
                 </div>
-                <h3 style={{ color: gold }}>{item.num}</h3>
-                <p style={{ color: "#aaa", fontSize: "12px" }}>{item.label}</p>
+                <h3
+                  style={{
+                    color: gold,
+                    fontSize: isMobile ? "18px" : "26px",
+                    fontWeight: "600",
+                    marginBottom: "4px",
+                  }}
+                >
+                  {item.num}
+                </h3>
+
+                <p
+                  style={{
+                    color: "#bbb",
+                    fontSize: isMobile ? "14px" : "16px",
+                    letterSpacing: "1px",
+                    fontWeight: "500",
+                  }}
+                >
+                  {item.label}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -155,7 +174,9 @@ function Story() {
           <div style={{ maxWidth: "820px" }}>
             <h2
               style={{
-                fontSize: isMobile ? "24px" : "40px",
+                fontSize: isMobile ? "26px" : "32px",
+                fontWeight: "600",
+                letterSpacing: "0.5px",
                 color: gold,
                 marginBottom: "12px",
                 lineHeight: "1.3",
@@ -177,7 +198,10 @@ function Story() {
               style={{
                 color: "#222",
                 lineHeight: "1.9",
-                fontSize: "14.5px",
+                fontSize: isMobile ? "14px" : "16.5px",
+                lineHeight: "2",
+                letterSpacing: "0.3px",
+
                 marginBottom: "14px",
                 textAlign: "justify",
               }}
@@ -196,7 +220,10 @@ function Story() {
               style={{
                 color: "#333",
                 lineHeight: "1.9",
-                fontSize: "14.5px",
+                fontSize: isMobile ? "14px" : "16.5px",
+                lineHeight: "2",
+                letterSpacing: "0.3px",
+
                 marginBottom: "14px",
                 textAlign: "justify",
               }}
@@ -212,7 +239,9 @@ function Story() {
               style={{
                 color: "#333",
                 lineHeight: "1.9",
-                fontSize: "14.5px",
+                fontSize: isMobile ? "14px" : "16.5px",
+                lineHeight: "2",
+                letterSpacing: "0.3px",
                 textAlign: "justify",
               }}
             >
@@ -225,161 +254,209 @@ function Story() {
       </section>
 
       {/* VALUES / MISSION / VISION - PREMIUM */}
-      <section
+<section
+  style={{
+    padding: isMobile ? "0 0 60px" : "100px 8%",
+    background: "#f5f1e8",
+  }}
+>
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+      gap: isMobile ? "40px" : "90px",
+      alignItems: "start",
+    }}
+  >
+    {/* IMAGE */}
+    <div
+      style={{
+        position: "relative",
+        order: isMobile ? 1 : 2,
+      }}
+    >
+      <img
+        src="/journey4.jpg"
+        alt=""
         style={{
-          padding: isMobile ? "0 0 60px" : "100px 8%",
-          background: "#f5f1e8",
-
+          width: "100%",
+          height: isMobile ? "260px" : "420px",
+          objectFit: "cover",
+          borderRadius: isMobile ? "0px" : "18px",
+          boxShadow: isMobile ? "none" : "0 30px 70px rgba(0,0,0,0.2)",
         }}
-      >
+      />
+
+      {!isMobile && (
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-            gap: isMobile ? "40px" : "90px",
-            alignItems: "start",
+            position: "absolute",
+            top: "-30px",
+            right: "-30px",
+            background: "#fff",
+            padding: "20px 26px",
+            borderRadius: "12px",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
           }}
         >
-          {/* ================= IMAGE (NOW FIRST ON MOBILE) ================= */}
-          <div
-            style={{
-              position: "relative",
-              order: isMobile ? 1 : 2, // 🔥 KEY CHANGE
-            }}
-          >
-            <img
-              src="/journey4.jpg"
-              alt=""
-              style={{
-                width: "100%",
-                height: isMobile ? "260px" : "420px",
-                objectFit: "cover",
-                borderRadius: isMobile ? "0px" : "18px", // 🔥 REMOVE CURVE ON MOBILE
-                boxShadow: isMobile ? "none" : "0 30px 70px rgba(0,0,0,0.2)",
-              }}
-            />
-
-            {/* FLOATING BOX (ONLY DESKTOP) */}
-            {!isMobile && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "-30px",
-                  right: "-30px",
-                  background: "#fff",
-                  padding: "18px 22px",
-                  borderRadius: "12px",
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
-                }}
-              >
-                <h4 style={{ margin: 0, color: gold }}>Since 2019</h4>
-                <p style={{ margin: 0, fontSize: "12px", color: "#666" }}>
-                  Building Trust & Value
-                </p>
-              </div>
-            )}
-
-            {/* BACKGROUND GLOW */}
-            {!isMobile && (
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "-30px",
-                  left: "-30px",
-                  width: "120px",
-                  height: "120px",
-                  background: gold,
-                  opacity: 0.1,
-                  borderRadius: "50%",
-                  filter: "blur(20px)",
-                }}
-              />
-            )}
-
-            {/* FADED TEXT */}
-            <h1
-              style={{
-                position: "absolute",
-                bottom: "10%",
-                left: "5%",
-                fontSize: isMobile ? "50px" : "110px",
-                fontWeight: "700",
-                color: gold,
-                opacity: 0.06,
-                pointerEvents: "none",
-              }}
-            >
-              SNS
-            </h1>
-          </div>
-
-          {/* ================= CONTENT ================= */}
-          <div
-            style={{
-              order: isMobile ? 2 : 1, // 🔥 CONTENT BELOW IMAGE ON MOBILE
-              padding: isMobile ? "0 6%" : "0",
-              textAlign: "justify", // ✅ FIX
-            }}
-          >
-            {/* VALUES */}
-            <div style={{ marginBottom: "35px" }}>
-              <h3
-                style={{
-                  color: gold,
-                  marginBottom: "10px",
-                  letterSpacing: "1px",
-                }}
-              >
-                VALUES
-              </h3>
-              <p style={{ color: "#444", lineHeight: "1.9", fontSize: "15px" }}>
-                SNS GROUP today is not just a company, but a{" "}
-                <span style={{ color: gold, fontWeight: 500 }}>
-                  movement towards a better future.
-                </span>{" "}
-                We believe in a higher level of detailing whether in our
-                projects or in the way we conduct business. This approach builds
-                transparency, trust, and accountability in every relationship we
-                create.
-              </p>
-            </div>
-
-            {/* MISSION */}
-            <div style={{ marginBottom: "35px" }}>
-              <h3 style={{ color: gold, marginBottom: "10px" }}>MISSION</h3>
-              <p style={{ color: "#444", lineHeight: "1.9", fontSize: "15px" }}>
-                Innovation through strategic associations is at the core of our
-                approach. We partner with like-minded individuals and
-                organizations to ensure that every project we deliver stands as
-                a landmark.
-              </p>
-            </div>
-
-            {/* PHILOSOPHY */}
-            <div style={{ marginBottom: "35px" }}>
-              <h3 style={{ color: gold, marginBottom: "10px" }}>PHILOSOPHY</h3>
-              <p style={{ color: "#444", lineHeight: "1.9", fontSize: "15px" }}>
-                We strive for qualitative and sustained growth, aiming to
-                achieve larger milestones while keeping our integrity and core
-                philosophies uncompromised.
-              </p>
-            </div>
-
-            {/* VISION */}
-            <div>
-              <h3 style={{ color: gold, marginBottom: "10px" }}>VISION</h3>
-              <p style={{ color: "#444", lineHeight: "1.9", fontSize: "15px" }}>
-                We aim to be innovators rather than followers of new-age
-                ideologies. Building on our strong foundation, every opportunity
-                is embraced with enthusiasm to grow further. We take pride in
-                our work and brand equity over individual recognition. The
-                success we have achieved fuels our journey forward as we
-                continue building a better future.
-              </p>
-            </div>
-          </div>
+          <h4 style={{ margin: 0, color: gold, fontSize: "18px" }}>
+            Since 2019
+          </h4>
+          <p style={{ margin: 0, fontSize: "13px", color: "#666" }}>
+            Building Trust & Value
+          </p>
         </div>
-      </section>
+      )}
+
+      {!isMobile && (
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-30px",
+            left: "-30px",
+            width: "120px",
+            height: "120px",
+            background: gold,
+            opacity: 0.1,
+            borderRadius: "50%",
+            filter: "blur(20px)",
+          }}
+        />
+      )}
+
+      <h1
+        style={{
+          position: "absolute",
+          bottom: "10%",
+          left: "5%",
+          fontSize: isMobile ? "70px" : "140px", // 🔥 BIGGER
+          fontWeight: "700",
+          color: gold,
+          opacity: 0.06,
+          pointerEvents: "none",
+        }}
+      >
+        SNS
+      </h1>
+    </div>
+
+    {/* CONTENT */}
+    <div
+      style={{
+        order: isMobile ? 2 : 1,
+        padding: isMobile ? "0 6%" : "0",
+        textAlign: "justify",
+      }}
+    >
+      {/* VALUES */}
+      <div style={{ marginBottom: "40px" }}>
+        <h3
+          style={{
+            color: gold,
+            marginBottom: "12px",
+            letterSpacing: "1px",
+            fontSize: isMobile ? "20px" : "26px", // 🔥 INCREASED
+          }}
+        >
+          VALUES
+        </h3>
+
+        <p
+          style={{
+            color: "#444",
+            lineHeight: "2",
+            fontSize: isMobile ? "16px" : "16.5px", // 🔥 INCREASED
+          }}
+        >
+          SNS GROUP today is not just a company, but a{" "}
+          <span style={{ color: gold, fontWeight: 600 }}>
+            movement towards a better future.
+          </span>{" "}
+          We believe in a higher level of detailing whether in our projects or
+          in the way we conduct business. This approach builds transparency,
+          trust, and accountability in every relationship we create.
+        </p>
+      </div>
+
+      {/* MISSION */}
+      <div style={{ marginBottom: "40px" }}>
+        <h3
+          style={{
+            color: gold,
+            marginBottom: "12px",
+            fontSize: isMobile ? "20px" : "26px",
+          }}
+        >
+          MISSION
+        </h3>
+
+        <p
+          style={{
+            color: "#444",
+            lineHeight: "2",
+            fontSize: isMobile ? "16px" : "16.5px",
+          }}
+        >
+          Innovation through strategic associations is at the core of our
+          approach. We partner with like-minded individuals and organizations to
+          ensure that every project we deliver stands as a landmark.
+        </p>
+      </div>
+
+      {/* PHILOSOPHY */}
+      <div style={{ marginBottom: "40px" }}>
+        <h3
+          style={{
+            color: gold,
+            marginBottom: "12px",
+            fontSize: isMobile ? "20px" : "26px",
+          }}
+        >
+          PHILOSOPHY
+        </h3>
+
+        <p
+          style={{
+            color: "#444",
+            lineHeight: "2",
+            fontSize: isMobile ? "16px" : "16.5px",
+          }}
+        >
+          We strive for qualitative and sustained growth, aiming to achieve
+          larger milestones while keeping our integrity and core philosophies
+          uncompromised.
+        </p>
+      </div>
+
+      {/* VISION */}
+      <div>
+        <h3
+          style={{
+            color: gold,
+            marginBottom: "12px",
+            fontSize: isMobile ? "20px" : "26px",
+          }}
+        >
+          VISION
+        </h3>
+
+        <p
+          style={{
+            color: "#444",
+            lineHeight: "2",
+            fontSize: isMobile ? "16px" : "16.5px",
+          }}
+        >
+          We aim to be innovators rather than followers of new-age ideologies.
+          Building on our strong foundation, every opportunity is embraced with
+          enthusiasm to grow further. We take pride in our work and brand equity
+          over individual recognition.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* ================= $50K AGENCY STRENGTHS ================= */}
       <section
@@ -413,9 +490,10 @@ function Story() {
             style={{
               color: "#353534",
               letterSpacing: "3px",
-              fontSize: "12px",
+              fontSize: "14px",
               marginBottom: "18px",
               marginTop: 0,
+              fontWeight: "500",
             }}
           >
             CORE STRENGTH
@@ -548,7 +626,7 @@ function Story() {
                   {/* TITLE */}
                   <h3
                     style={{
-                      fontSize: "17px",
+                      fontSize: "18px",
                       fontWeight: "600",
                       color: "#111",
                       marginBottom: "8px",
@@ -562,7 +640,7 @@ function Story() {
                   <p
                     style={{
                       color: "#555",
-                      fontSize: "14.5px",
+                      fontSize: "16.5px",
                       lineHeight: "1.8",
                       transform: "translateZ(10px)",
                     }}
@@ -588,7 +666,7 @@ function Story() {
         <h2
           style={{
             textAlign: "center",
-            fontSize: "clamp(24px,3vw,38px)",
+            fontSize: "clamp(28px,3.5vw,40px)",
             color: "#c6a75e",
             marginBottom: isMobile ? "40px" : "50px",
             letterSpacing: "1px",
@@ -611,10 +689,10 @@ function Story() {
         >
           {[
             {
-              img: "Nishant.jpg",
-              name: "MR. NISHANT SANGHAVI",
-              role: "CIVIL ENGINEER (CENG)",
-              desc: "Nishant Sanghavi leads execution, acquisitions, and operations with engineering precision, contributing significantly to the company’s rapid expansion.",
+              img: "Ranjeet.jpg",
+              name: "MR. RANJEET MAHATRE",
+              role: "ARCHITECT",
+              desc: "Mr. Ranjeet Mahatre began his career as a Real Estate Consultant and Architect, developing a strong eye for structural precision and execution. His leadership transformed SNS Group into a trusted name known for quality and timely delivery.",
             },
             {
               img: "Amit.jpg",
@@ -623,16 +701,16 @@ function Story() {
               desc: "Amit Shah drives financial strategy, operational excellence, and long-term value creation. He bridges day-to-day financial control with scalable business growth.",
             },
             {
+              img: "Nishant.jpg",
+              name: "MR. NISHANT SANGHAVI",
+              role: "CIVIL ENGINEER (CENG)",
+              desc: "Nishant Sanghavi leads execution, acquisitions, and operations with engineering precision, contributing significantly to the company’s rapid expansion.",
+            },
+            {
               img: "Suketu.jpg",
               name: "MR. SUKETU JOSHI",
               role: "CHIEF BUSINESS HEAD (CBO)",
               desc: "Suketu Joshi drives acquisitions and investor relations, ensuring growth through strategic expansion and strong compliance frameworks.",
-            },
-            {
-              img: "Ranjeet.jpg",
-              name: "MR. RANJEET MAHATRE",
-              role: "ARCHITECT",
-              desc: "Mr. Ranjeet Mahatre began his career as a Real Estate Consultant and Architect, developing a strong eye for structural precision and execution. His leadership transformed SNS Group into a trusted name known for quality and timely delivery.",
             },
             {
               img: "Aayush.jpg",
@@ -688,7 +766,8 @@ function Story() {
               >
                 <h3
                   style={{
-                    fontSize: "20px",
+                    fontSize: isMobile ? "22px" : "24px",
+letterSpacing: "0.4px",
                     fontWeight: "700",
                     color: "#111",
                     marginBottom: "4px",
@@ -701,7 +780,7 @@ function Story() {
                 <p
                   style={{
                     color: "#c6a75e",
-                    fontSize: "12px",
+                    fontSize: isMobile ? "14px" : "16px",
                     marginBottom: "8px",
                     letterSpacing: "1px",
                     fontWeight: "500",
@@ -714,7 +793,7 @@ function Story() {
                   style={{
                     color: "#444",
                     lineHeight: "1.7",
-                    fontSize: "15px",
+                    fontSize: isMobile ? "16px" : "16.5px",
                   }}
                 >
                   {l.desc}
@@ -726,142 +805,143 @@ function Story() {
       </section>
 
       {/* VENTURES */}
-      <section
-        id="ventures"
+<section
+  id="ventures"
+  style={{
+    padding: isMobile ? "60px 5%" : "80px 6%",
+    background: softBg,
+  }}
+>
+  <h2
+    style={{
+      textAlign: "center",
+      fontSize: isMobile ? "30px" : "40px", // 🔥 INCREASED
+      color: gold,
+      marginBottom: isMobile ? "40px" : "55px",
+      letterSpacing: "1px",
+      fontWeight: "800",
+    }}
+  >
+    OTHER GROUP VENTURES
+  </h2>
+
+  <div
+    style={{
+      position: "relative",
+      maxWidth: "820px",
+      margin: "0 auto",
+      paddingLeft: isMobile ? "30px" : "35px",
+    }}
+  >
+    {/* Vertical Line */}
+    <div
+      style={{
+        position: "absolute",
+        left: "10px",
+        top: 0,
+        bottom: 0,
+        width: "1.5px",
+        background: gold,
+        opacity: 0.2,
+      }}
+    />
+
+    {ventures.map((v, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.5,
+          delay: i * 0.1,
+        }}
+        viewport={{ once: true }}
         style={{
-          padding: isMobile ? "60px 5%" : "80px 6%", // 🔥 REDUCED TOP SPACE
-          background: softBg,
+          position: "relative",
+          marginBottom: isMobile ? "30px" : "36px",
+          paddingLeft: "18px",
         }}
       >
-        <h2
-          style={{
-            textAlign: "center",
-            fontSize: isMobile ? "26px" : "34px", // 🔥 SLIGHTLY TIGHTER
-            color: gold,
-            marginBottom: isMobile ? "40px" : "55px", // 🔥 LESS GAP
-            letterSpacing: "1px",
-            fontWeight: "800",
-          }}
-        >
-          OTHER GROUP VENTURES
-        </h2>
-
+        {/* Dot */}
         <div
           style={{
-            position: "relative",
-            maxWidth: "820px", // 🔥 TIGHTER CONTAINER
-            margin: "0 auto",
-            paddingLeft: isMobile ? "30px" : "35px",
+            position: "absolute",
+            left: "-20px",
+            top: "6px",
+            width: "12px",
+            height: "12px",
+            borderRadius: "50%",
+            background: gold,
+            boxShadow: "0 0 0 4px rgba(212,175,55,0.12)",
+          }}
+        />
+
+        {/* Card */}
+        <div
+          style={{
+            display: "flex",
+            gap: "14px",
+            background: "#fff",
+            padding: isMobile ? "16px 18px" : "18px 20px",
+            borderRadius: "10px",
+            boxShadow: "0 6px 18px rgba(0,0,0,0.05)",
+            alignItems: "flex-start",
+            transition: "all 0.3s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "translateY(-3px)";
+            e.currentTarget.style.boxShadow =
+              "0 12px 30px rgba(0,0,0,0.08)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow =
+              "0 6px 18px rgba(0,0,0,0.05)";
           }}
         >
-          {/* Vertical Line */}
+          {/* Icon */}
           <div
             style={{
-              position: "absolute",
-              left: "10px",
-              top: 0,
-              bottom: 0,
-              width: "1.5px", // 🔥 thinner premium line
-              background: gold,
-              opacity: 0.2,
+              fontSize: "22px", // 🔥 INCREASED
+              color: gold,
+              marginTop: "2px",
+              minWidth: "26px",
             }}
-          />
+          >
+            {v.icon}
+          </div>
 
-          {ventures.map((v, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }} // 🔥 smoother
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.1,
-              }}
-              viewport={{ once: true }}
+          {/* Text */}
+          <div>
+            <h4
               style={{
-                position: "relative",
-                marginBottom: isMobile ? "30px" : "36px", // 🔥 LESS SPACE
-                paddingLeft: "18px",
+                margin: "0 0 6px 0",
+                fontSize: "18.5px", // 🔥 INCREASED
+                color: "#111",
+                fontWeight: "600",
+                letterSpacing: "0.3px",
               }}
             >
-              {/* Timeline Dot */}
-              <div
-                style={{
-                  position: "absolute",
-                  left: "-20px",
-                  top: "6px",
-                  width: "12px", // 🔥 smaller = premium
-                  height: "12px",
-                  borderRadius: "50%",
-                  background: gold,
-                  boxShadow: "0 0 0 4px rgba(212,175,55,0.12)", // 🔥 softer glow
-                }}
-              />
+              {v.title}
+            </h4>
 
-              {/* Card */}
-              <div
-                style={{
-                  display: "flex",
-                  gap: "14px", // 🔥 tighter spacing
-                  background: "#fff",
-                  padding: isMobile ? "16px 18px" : "18px 20px", // 🔥 reduced padding
-                  borderRadius: "10px", // 🔥 subtle premium radius
-                  boxShadow: "0 6px 18px rgba(0,0,0,0.05)", // 🔥 lighter shadow
-                  alignItems: "flex-start",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-3px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 12px 30px rgba(0,0,0,0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 6px 18px rgba(0,0,0,0.05)";
-                }}
-              >
-                {/* Icon */}
-                <div
-                  style={{
-                    fontSize: "18px",
-                    color: gold,
-                    marginTop: "2px",
-                    minWidth: "22px",
-                  }}
-                >
-                  {v.icon}
-                </div>
-
-                {/* Text */}
-                <div>
-                  <h4
-                    style={{
-                      margin: "0 0 4px 0",
-                      fontSize: "16px", // 🔥 tighter
-                      color: "#111",
-                      fontWeight: "600",
-                      letterSpacing: "0.3px",
-                    }}
-                  >
-                    {v.title}
-                  </h4>
-
-                  <p
-                    style={{
-                      margin: 0,
-                      color: "#555",
-                      lineHeight: "1.6",
-                      fontSize: isMobile ? "13.5px" : "14px", // 🔥 refined
-                    }}
-                  >
-                    {v.desc}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+            <p
+              style={{
+                margin: 0,
+                color: "#555",
+                lineHeight: "1.7",
+                fontSize: isMobile ? "15px" : "16.5px", // 🔥 MAIN TEXT INCREASED
+              }}
+            >
+              {v.desc}
+            </p>
+          </div>
         </div>
-      </section>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
 
       <Footer />
     </>

@@ -95,7 +95,7 @@ function Partners() {
             <div style={{ width: "260px", paddingTop: "80px" }}>
               <h2
                 style={{
-                  fontSize: "22px",
+                  fontSize: "32px",
                   fontWeight: "800",
                   color: "#b68d2c",
                   lineHeight: "1.5",
@@ -113,7 +113,7 @@ function Partners() {
                 }}
               />
 
-              <p style={{ fontSize: "14px", color: "#555" }}>
+              <p style={{ fontSize: "17.5px", color: "#555" }}>
                 We are happy to have you associated with us.
               </p>
             </div>
@@ -249,7 +249,7 @@ function Partners() {
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: "clamp(18px, 4vw, 24px)", // 👈 responsive
+                            fontSize: "clamp(18px, 4vw, 32px)", // 👈 responsive
                             fontWeight: "800",
                             color: "#a57c1b",
                             lineHeight: "1.2",

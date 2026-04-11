@@ -216,7 +216,7 @@ const CurrencyCalculator = () => {
         }
 
         .left p {
-          font-size: 14px;
+          font-size: 17px;
           line-height: 1.6;
           margin-bottom: 10px; /* 🔥 balanced spacing */
           text-align: justify; /* ✅ FIXED */
@@ -227,7 +227,7 @@ const CurrencyCalculator = () => {
         }
 
         .source {
-          font-size: 12px;
+          font-size: 17px;
           margin-top: 10px;
         }
 
@@ -264,7 +264,7 @@ const CurrencyCalculator = () => {
           padding: 10px;
           outline: none;
           color: #000;
-          font-size: 14px;
+          font-size: 17px;
         }
 
         input {
@@ -290,7 +290,7 @@ const CurrencyCalculator = () => {
           padding: 12px;
           border: 1px solid #b88a2a;
           border-radius: 30px;
-          font-size: 14px;
+          font-size: 17px;
         }
 
         .chart {
@@ -301,7 +301,7 @@ const CurrencyCalculator = () => {
 
         .rate {
           text-align: center;
-          font-size: 13px;
+          font-size: 17px;
           margin-top: 10px;
         }
 

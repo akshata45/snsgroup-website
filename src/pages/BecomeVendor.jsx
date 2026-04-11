@@ -32,7 +32,7 @@ const BecomeVendor = () => {
     padding: "10px 5px",
     background: "transparent",
     outline: "none",
-    fontSize: "14px",
+    fontSize: "17px",
     color: "#000", // ✅ typed text black
   };
 
@@ -58,10 +58,10 @@ const BecomeVendor = () => {
           {/* TITLE */}
           <h3
             style={{
-              fontSize: "16px",
+              fontSize: "24px",
               color: "#b88a2a",
               marginBottom: "30px",
-              fontWeight: "600",
+              fontWeight: "700",
               letterSpacing: "1px",
             }}
           >
@@ -161,7 +161,7 @@ const BecomeVendor = () => {
                   padding: "12px 50px",
                   border: "none",
                   cursor: "pointer",
-                  fontSize: "14px",
+                  fontSize: "17px",
                   fontWeight: "500",
                   transition: "all 0.3s ease",
                 }}
@@ -188,7 +188,7 @@ const BecomeVendor = () => {
 
 const labelStyle = {
   display: "block",
-  fontSize: "14px",
+  fontSize: "18px",
   color: "#333",
   marginBottom: "8px",
   fontWeight: "500",
