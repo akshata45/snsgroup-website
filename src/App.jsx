@@ -19,10 +19,12 @@ import EmiCalculator from "./pages/EmiCalculator";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
 import Careers from "./pages/Careers";
+import EmailPopup from "./components/EmailPopup";
 function App() {
   return (
     <>
     <ScrollToTop />
+    <EmailPopup />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/story" element={<Story />} />
@@ -42,6 +44,7 @@ function App() {
       <Route path="/blogs" element={<Blogs />} />
       <Route path="/blog/:id" element={<BlogDetail />} />
       <Route path="/careers" element={<Careers />} />
+      
     </Routes>
     </>
   );
