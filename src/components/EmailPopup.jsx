@@ -65,8 +65,7 @@ function EmailPopup() {
           style={{
             flex: isMobile ? "none" : 1.2,
             height: isMobile ? "200px" : "auto",
-            background:
-              "url('/realestate.jpg') center/cover no-repeat",
+            background: "url('/realestate.jpg') center/cover no-repeat",
           }}
         />
 
@@ -115,8 +114,8 @@ function EmailPopup() {
               fontSize: isMobile ? "14px" : "16px",
             }}
           >
-            Get exclusive access to premium residences, pre-launch
-            offers and curated investment opportunities.
+            Get exclusive access to premium residences, pre-launch offers and
+            curated investment opportunities.
           </p>
 
           <input
@@ -129,6 +128,8 @@ function EmailPopup() {
               outline: "none",
               borderRadius: "4px",
               fontSize: "14px",
+              background: "#f5f5f5", // ✅ light background
+              color: "#333", // ✅ dark text
             }}
           />
 
@@ -151,12 +152,19 @@ function EmailPopup() {
             style={{
               marginTop: "12px",
               fontSize: "12px",
-              color: "#555",
+              color: "#333",
+              background: "#f5f5f5", // ✅ light background
+              padding: "10px",
+              borderRadius: "4px",
             }}
           >
             <input
               type="checkbox"
+              checked={dontShow}
               onChange={(e) => setDontShow(e.target.checked)}
+              style={{
+                accentColor: dontShow ? "#f3efef" : "#ccc", // ✅ light before click, dark after
+              }}
             />{" "}
             Do not show again
           </div>
