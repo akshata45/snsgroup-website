@@ -340,7 +340,7 @@ function Initiatives() {
             <div
               style={{
                 position: "absolute",
-                bottom: isMobile ? "90px" : "110px",
+                bottom: isMobile ? "120px" : "110px",
                 left: 0,
                 right: 0,
                 display: "flex",
