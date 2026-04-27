@@ -1,3 +1,5 @@
+/* ================= NAVBAR ================= */
+
 .navbar {
   display: flex;
   align-items: center;
@@ -10,9 +12,11 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: all 0.3s ease;
 }
 
-/* LOGO */
+/* ================= LOGO ================= */
+
 .logo {
   display: flex;
   align-items: center;
@@ -24,9 +28,11 @@
   height: 120px;
   width: auto;
   object-fit: contain;
+  transition: 0.3s ease;
 }
 
-/* NAV LINKS */
+/* ================= NAV LINKS ================= */
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -41,6 +47,7 @@
   font-size: 16px;
   letter-spacing: 1px;
   position: relative;
+  transition: 0.3s ease;
 }
 
 /* underline animation */
@@ -59,24 +66,54 @@
   width: 100%;
 }
 
-/* ICONS */
+/* ================= ICONS ================= */
+
 .icons {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   margin-left: 20px;
-  font-size: 20px;
+}
+
+/* ICON CLICK AREA */
+.icon-wrap {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.25s ease;
   cursor: pointer;
+}
+
+/* ICON IMAGE */
+.nav-icon {
+  width: 25px;
+  height: 22px;
+  object-fit: contain;
+  transition: all 0.25s ease;
+}
+
+/* HOVER EFFECT */
+.icon-wrap:hover {
+  background: rgba(0, 0, 0, 0.068);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* CLICK EFFECT */
+.icon-wrap:active {
+  transform: scale(0.9);
 }
 
 /* MENU BUTTON */
 .menu-btn {
   display: none;
   z-index: 1100;
-  color: #353535;
 }
 
-/* DARK THEME */
+/* ================= DARK THEME ================= */
+
 .dark-theme {
   background: #111;
   color: #fff;
@@ -90,55 +127,82 @@
   color: #fff;
 }
 
+/* DARK MODE ICON HOVER */
+.dark-theme .icon-wrap:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ================= OVERLAY ================= */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+
+  z-index: 1000;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
 /* ================= MOBILE ================= */
 
-/* ================= MOBILE PREMIUM ================= */
-
 @media (max-width: 768px) {
+
   .navbar {
-    padding: 10px 20px;
+    padding: 10px 15px;
     height: 80px;
     z-index: 1100;
   }
 
+  /* 🔥 LOGO FIX LEFT */
+  .logo {
+    margin-right: auto;
+  }
+
   .logo img {
-    height: 85px;
+    height: 80px;
   }
 
   /* MENU BUTTON */
   .menu-btn {
-    display: block;
-    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 1200;
   }
 
-  /* 🔥 GLASS OVERLAY BACKGROUND */
-  .menu-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
-
-    z-index: 1000;
+  /* ICONS RIGHT */
+  .icons {
+    margin-left: auto;
+    gap: 10px;
   }
 
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
+  /* BIGGER TOUCH AREA */
+  .icon-wrap {
+    width: 42px;
+    height: 42px;
   }
 
-  /* 🔥 SLIDE PANEL */
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* 🔥 SLIDE MENU */
   .nav-links {
     position: fixed;
     top: 0;
     right: 0;
-  touch-action: pan-y; /* 🔥 prevents scroll conflict */
-  will-change: transform; /* smoother animation */
+
     width: 75%;
     max-width: 320px;
     height: 100vh;
@@ -160,14 +224,17 @@
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
 
     z-index: 1100;
+
+    touch-action: pan-y;
+    will-change: transform;
   }
 
-  /* OPEN */
+  /* OPEN MENU */
   .nav-links.active {
     transform: translateX(0);
   }
 
-  /* 🔥 LINKS ANIMATION */
+  /* LINKS ANIMATION */
   .nav-links a {
     margin: 15px 0;
     font-size: 18px;
@@ -175,7 +242,6 @@
     transform: translateX(20px);
   }
 
-  /* STAGGER ANIMATION */
   .nav-links.active a {
     animation: slideFade 0.5s forwards;
   }
@@ -195,7 +261,7 @@
 
   /* DARK MODE PANEL */
   .dark-theme .nav-links {
-    background: rgba(20, 20, 20, 0.8);
+    background: rgba(20, 20, 20, 0.85);
   }
 
   .dark-theme .menu-overlay {
@@ -211,5 +277,3 @@
     overflow: hidden;
   }
 }
-
-

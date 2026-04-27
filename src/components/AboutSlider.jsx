@@ -142,24 +142,31 @@ function AboutSlider() {
 
   return (
     <>
-      <style>
-        {`
-          html, body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-          }
+<style>
+{`
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* 🔥 MAIN FIX */
+  }
 
-          div::-webkit-scrollbar {
-            display: none;
-          }
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
 
-          @keyframes slideInCall {
-            from { transform: translateX(-120%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-          }
-        `}
-      </style>
+  div::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes slideInCall {
+    from { transform: translateX(-120%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+`}
+</style>
+
 
       <section
         style={{
@@ -356,7 +363,7 @@ const labelStyle = (isMobile) => ({
 
 const labelText = (isMobile) => ({
   color: "#b08a3e",
-  fontSize: isMobile ? "11px" : "26px",
+  fontSize: isMobile ? "18px" : "26px",
   fontWeight: "800",
 });
 

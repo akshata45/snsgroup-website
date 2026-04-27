@@ -9,12 +9,10 @@ function Navbar() {
   const navigate = useNavigate();
   const menuRef = useRef(null);
 
-  // swipe state
   const touchStartX = useRef(0);
   const touchCurrentX = useRef(0);
   const isSwiping = useRef(false);
 
-  // Load theme
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
@@ -23,7 +21,6 @@ function Navbar() {
     }
   }, []);
 
-  // lock scroll
   useEffect(() => {
     document.body.classList.toggle("menu-open", menuOpen);
   }, [menuOpen]);
@@ -33,10 +30,6 @@ function Navbar() {
     setDarkMode(isDark);
     localStorage.setItem("theme", isDark ? "dark" : "light");
   };
-
-  // ------------------------
-  // TOUCH HANDLERS
-  // ------------------------
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -49,24 +42,18 @@ function Navbar() {
     touchCurrentX.current = e.touches[0].clientX;
     const deltaX = touchCurrentX.current - touchStartX.current;
 
-    // only allow swipe left
     if (deltaX < 0) {
-      const translateX = Math.max(deltaX, -300); // limit swipe
+      const translateX = Math.max(deltaX, -300);
       menuRef.current.style.transform = `translateX(${translateX}px)`;
     }
   };
 
   const handleTouchEnd = () => {
     isSwiping.current = false;
-
     const deltaX = touchCurrentX.current - touchStartX.current;
 
-    // threshold to close
-    if (deltaX < -100) {
-      setMenuOpen(false);
-    }
+    if (deltaX < -100) setMenuOpen(false);
 
-    // reset position
     menuRef.current.style.transform = "";
   };
 
@@ -76,11 +63,7 @@ function Navbar() {
         {/* LOGO */}
         <div className="logo" onClick={() => navigate("/")}>
           <img
-            src={
-              document.body.classList.contains("dark-theme")
-                ? "/snslogo-light.png"
-                : "/snslogo-dark.png"
-            }
+            src={darkMode ? "/snslogo-light.png" : "/snslogo-dark.png"}
             alt="logo"
           />
         </div>
@@ -93,47 +76,64 @@ function Navbar() {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <Link to="/story" onClick={() => setMenuOpen(false)}>
-            ABOUT US
-          </Link>
-          <Link to="/journey" onClick={() => setMenuOpen(false)}>
-            OUR PROJECTS
-          </Link>
-          <Link to="/initiatives" onClick={() => setMenuOpen(false)}>
-            OUR INITIATIVES
-          </Link>
-          <Link to="/BuyersGuide" onClick={() => setMenuOpen(false)}>
-            BUYER'S GUIDE
-          </Link>
-          <Link to="/CreativeShowcase" onClick={() => setMenuOpen(false)}>
-            JOIN SNS GROUP
-          </Link>
+          <Link to="/story" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
+          <Link to="/journey" onClick={() => setMenuOpen(false)}>OUR PROJECTS</Link>
+          <Link to="/initiatives" onClick={() => setMenuOpen(false)}>OUR INITIATIVES</Link>
+          <Link to="/BuyersGuide" onClick={() => setMenuOpen(false)}>BUYER'S GUIDE</Link>
+          <Link to="/CreativeShowcase" onClick={() => setMenuOpen(false)}>JOIN SNS GROUP</Link>
         </div>
 
         {/* ICONS */}
         <div className="icons">
-          <span onClick={toggleTheme}>
-            {darkMode ? "🌙" : "☀️"}
+
+          <span onClick={toggleTheme} className="icon-wrap">
+            <img
+              src={darkMode ? "/icons/dark/moon.svg" : "/icons/light/sun.svg"}
+              className="nav-icon"
+              alt="theme"
+            />
           </span>
 
-          <a href="tel:+919999999999">📞</a>
-          <Link to="/contactus">👤</Link>
+          <a href="tel:+919999999999" className="icon-wrap">
+            <img
+              src={darkMode ? "/icons/dark/phone1.svg" : "/icons/light/phone.svg"}
+              className="nav-icon"
+              alt="phone"
+            />
+          </a>
+
+          <Link to="/contactus" className="icon-wrap">
+            <img
+              src={darkMode ? "/icons/dark/user1.svg" : "/icons/light/user.svg"}
+              className="nav-icon"
+              alt="user"
+            />
+          </Link>
 
           <span
-            className="menu-btn"
+            className="menu-btn icon-wrap"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            {menuOpen ? "✖" : "☰"}
+            <img
+              src={
+                menuOpen
+                  ? darkMode
+                    ? "/icons/dark/close1.svg"
+                    : "/icons/light/close.svg"
+                  : darkMode
+                    ? "/icons/dark/menu1.svg"
+                    : "/icons/light/menu.svg"
+              }
+              className="nav-icon"
+              alt="menu"
+            />
           </span>
+
         </div>
       </div>
 
-      {/* OVERLAY */}
       {menuOpen && (
-        <div
-          className="menu-overlay"
-          onClick={() => setMenuOpen(false)}
-        />
+        <div className="menu-overlay" onClick={() => setMenuOpen(false)} />
       )}
     </>
   );
