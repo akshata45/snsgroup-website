@@ -128,49 +128,95 @@ function Journey() {
           </div>
         )}
 
-        {isMobile && showOverlay && (
-          <div
-            style={{
-              position: "absolute",
-              top: "120px",
-              left: "20px",
-              right: "20px",
-              background: "rgba(255,255,255,0.9)",
-              backdropFilter: "blur(8px)",
-              padding: "20px",
-              borderRadius: "14px",
-              zIndex: 20,
-            }}
-          >
-            <div
-              onClick={() => setShowOverlay(false)}
-              style={{
-                position: "absolute",
-                top: "-15px",
-                left: "-15px",
-                width: "40px",
-                height: "40px",
-                background: "#b08a3e",
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fff",
-                fontSize: "18px",
-                cursor: "pointer",
-              }}
-            >
-              ✕
-            </div>
+{isMobile && (
+  <>
+    {/* 🔥 SLIDING PANEL */}
+    <div
+      style={{
+        position: "absolute",
+        top: "120px",
+        left: "20px",
+        right: "20px",
+        background: "rgba(255,255,255,0.9)",
+        backdropFilter: "blur(8px)",
+        padding: "20px",
+        borderRadius: "14px",
+        zIndex: 20,
 
-            <LeftContent
-              selectedType={selectedType}
-              setSelectedType={setSelectedType}
-              setIndex={setIndex}
-              isMobile
-            />
-          </div>
-        )}
+        /* 🔥 ANIMATION */
+        transform: showOverlay
+          ? "translateX(0)"
+          : "translateX(120%)",
+        transition: "transform 0.4s ease",
+      }}
+    >
+      {/* CLOSE BUTTON */}
+      <div
+        onClick={() => setShowOverlay(false)}
+        style={{
+          position: "absolute",
+          top: "-15px",
+          left: "-15px",
+          width: "40px",
+          height: "40px",
+          background: "#b08a3e",
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          fontSize: "18px",
+          cursor: "pointer",
+        }}
+      >
+        ✕
+      </div>
+
+      <LeftContent
+        selectedType={selectedType}
+        setSelectedType={setSelectedType}
+        setIndex={setIndex}
+        isMobile
+      />
+    </div>
+
+    {/* 🔥 RIGHT SIDE ATTACHED INFO BUTTON */}
+    {!showOverlay && (
+      <div
+        onClick={() => setShowOverlay(true)}
+        style={{
+          position: "absolute",
+
+          /* MATCH PANEL HEIGHT POSITION */
+          top: "140px",  // slightly below top for alignment
+          right: "0",
+
+          zIndex: 25,
+          background: "#b08a3e",
+          color: "#fff",
+
+          width: "40px",
+          height: "40px",
+
+          borderTopLeftRadius: "20px",
+          borderBottomLeftRadius: "20px",
+
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+
+          cursor: "pointer",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+
+          transition: "all 0.3s ease",
+        }}
+      >
+        ℹ
+      </div>
+    )}
+  </>
+)}
+
 
         <div
           ref={sliderRef}

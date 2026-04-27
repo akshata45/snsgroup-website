@@ -127,51 +127,98 @@ function Partners() {
             }}
           >
             {/* ✅ MOBILE OVERLAY */}
-            {isMobile && showOverlay && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "110px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "92%",
-                  background: "#fff",
-                  borderRadius: "16px",
-                  padding: "20px",
-                  zIndex: 10,
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-                }}
-              >
-                <div
-                  onClick={() => setShowOverlay(false)}
-                  style={{
-                    position: "absolute",
-                    top: "-15px",
-                    left: "15px",
-                    width: "35px",
-                    height: "35px",
-                    background: "#b68d2c",
-                    borderRadius: "50%",
-                    color: "#fff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                >
-                  ×
-                </div>
+{isMobile && (
+  <>
+    {/* 🔥 SLIDING PANEL */}
+    <div
+      style={{
+        position: "absolute",
+        top: "110px",
+        left: "50%",
 
-                <h3 style={{ color: "#b68d2c", margin: 0 }}>
-                  BUILDING TRUST WITH EVERY MILESTONE.
-                </h3>
+        transform: showOverlay
+          ? "translate(-50%, 0)"
+          : "translate(120%, 0)",
 
-                <p style={{ fontSize: "13px", color: "#555" }}>
-                  We are happy to have you associated with us.
-                </p>
-              </div>
-            )}
+        width: "92%",
+        background: "#fff",
+        borderRadius: "16px",
+        padding: "20px",
+        zIndex: 10,
+        boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+
+        transition: "transform 0.4s ease",
+      }}
+    >
+      {/* CLOSE BUTTON */}
+      <div
+        onClick={() => setShowOverlay(false)}
+        style={{
+          position: "absolute",
+          top: "-15px",
+          left: "15px",
+          width: "35px",
+          height: "35px",
+          background: "#b68d2c",
+          borderRadius: "50%",
+          color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontWeight: "bold",
+          cursor: "pointer",
+        }}
+      >
+        ×
+      </div>
+
+      <h3 style={{ color: "#b68d2c", margin: 0 }}>
+        BUILDING TRUST WITH EVERY MILESTONE.
+      </h3>
+
+      <p style={{ fontSize: "13px", color: "#555" }}>
+        We are happy to have you associated with us.
+      </p>
+    </div>
+
+    {/* 🔥 FIXED ℹ BUTTON (ALWAYS VISIBLE) */}
+    {!showOverlay && (
+      <div
+        onClick={() => setShowOverlay(true)}
+        style={{
+          position: "fixed",   // 🔥 changed from absolute → FIXED
+          top: "30%",
+          right: "0",
+          transform: "translateY(-50%)",
+
+          zIndex: 9999,        // 🔥 always on top
+
+          background: "#b68d2c",
+          color: "#fff",
+
+          width: "42px",
+          height: "42px",
+
+          borderTopLeftRadius: "22px",
+          borderBottomLeftRadius: "22px",
+
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+
+          cursor: "pointer",
+          boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+
+          transition: "all 0.3s ease",
+        }}
+      >
+        ℹ
+      </div>
+    )}
+  </>
+)}
+
+
 
             {/* SLIDER */}
             <div

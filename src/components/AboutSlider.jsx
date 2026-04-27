@@ -40,7 +40,11 @@ function AboutSlider() {
     { title: "STORY", image: "/story1.jpg", path: "/story" },
     { title: "PROJECTS", image: "/journey4.jpg", path: "/journey" },
     { title: "STRENGTHS", image: "/strength.jpg", path: "/story#strength" },
-    { title: "LEADERSHIP", image: "/leadership.jpg", path: "/story#leadership" },
+    {
+      title: "LEADERSHIP",
+      image: "/leadership.jpg",
+      path: "/story#leadership",
+    },
     { title: "GROUP VENTURES", image: "/group.jpg", path: "/story#ventures" },
   ];
 
@@ -79,7 +83,6 @@ function AboutSlider() {
 
       e.preventDefault();
       velocityRef.current += e.deltaY * 0.15;
-
 
       if (!rafRef.current) {
         rafRef.current = requestAnimationFrame(animate);
@@ -142,8 +145,8 @@ function AboutSlider() {
 
   return (
     <>
-<style>
-{`
+      <style>
+        {`
   html, body {
     margin: 0;
     padding: 0;
@@ -165,8 +168,7 @@ function AboutSlider() {
     to { transform: translateX(0); opacity: 1; }
   }
 `}
-</style>
-
+      </style>
 
       <section
         style={{
@@ -181,7 +183,14 @@ function AboutSlider() {
       >
         {cardsPerView >= 3 && !isMobile && (
           <div style={{ width: "15%", paddingTop: "50px" }}>
-            <h2 style={{ color: "#b08a3e" , fontSize: "27px", marginBottom: "8px", fontWeight: "800"}}>
+            <h2
+              style={{
+                color: "#b08a3e",
+                fontSize: "27px",
+                marginBottom: "8px",
+                fontWeight: "800",
+              }}
+            >
               WE HAVE A LEGACY OF OVER 40 YEARS
             </h2>
             <p style={{ fontSize: "18px", color: "#555", margin: 0 }}>
@@ -200,16 +209,62 @@ function AboutSlider() {
           }}
         >
           {/* MOBILE OVERLAY */}
-          {isMobile && showOverlay && (
-            <div style={overlayStyle}>
-              <div onClick={() => setShowOverlay(false)} style={closeBtn}>✕</div>
-              <h3 style={{ margin: 0, color: "#b08a3e", fontSize: "14px" }}>
-                WE HAVE A LEGACY OF OVER 40 YEARS
-              </h3>
-              <p style={{ marginTop: "6px", fontSize: "12px", color: "#555" }}>
-                “We don’t just build walls, we build a lifestyle”
-              </p>
-            </div>
+          {/* MOBILE SLIDE OVERLAY */}
+          {isMobile && (
+            <>
+              {/* SLIDING PANEL */}
+              <div
+                style={{
+                  ...overlayStyle,
+                  transform: showOverlay
+                    ? "translate(-50%, -50%)"
+                    : "translate(120%, -50%)",
+                  transition: "transform 0.4s ease",
+                }}
+              >
+                <div onClick={() => setShowOverlay(false)} style={closeBtn}>
+                  ✕
+                </div>
+
+                <h3 style={{ margin: 0, color: "#b08a3e", fontSize: "14px" }}>
+                  WE HAVE A LEGACY OF OVER 40 YEARS
+                </h3>
+
+                <p
+                  style={{ marginTop: "6px", fontSize: "12px", color: "#555" }}
+                >
+                  “We don’t just build walls, we build a lifestyle”
+                </p>
+              </div>
+
+              {/* 🔥 RIGHT SIDE ATTACHED INFO BUTTON */}
+              {!showOverlay && (
+                <div
+                  onClick={() => setShowOverlay(true)}
+                  style={{
+                    position: "absolute",
+                    top: "40%",
+                    right: "0",
+                    transform: "translateY(-50%)",
+                    zIndex: 25,
+                    background: "#b08a3e",
+                    color: "#fff",
+                    width: "40px",
+                    height: "40px",
+                    borderTopLeftRadius: "20px",
+                    borderBottomLeftRadius: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  ℹ
+                </div>
+              )}
+            </>
           )}
 
           {/* CARDS */}
@@ -282,7 +337,8 @@ function AboutSlider() {
                       borderRadius: "18px",
                       overflow: "hidden",
                       transformOrigin: "left center",
-                      transition: "transform 0.7s cubic-bezier(0.25, 1, 0.3, 1)",
+                      transition:
+                        "transform 0.7s cubic-bezier(0.25, 1, 0.3, 1)",
                       boxShadow: `0 10px 30px rgba(0,0,0,${
                         0.15 + Math.abs(offset) * 0.0002
                       })`,
@@ -313,8 +369,18 @@ function AboutSlider() {
             })}
           </div>
 
-          <div onClick={() => scroll("prev")} style={arrowStyle(isMobile, "left")}>←</div>
-          <div onClick={() => scroll("next")} style={arrowStyle(isMobile, "right")}>→</div>
+          <div
+            onClick={() => scroll("prev")}
+            style={arrowStyle(isMobile, "left")}
+          >
+            ←
+          </div>
+          <div
+            onClick={() => scroll("next")}
+            style={arrowStyle(isMobile, "right")}
+          >
+            →
+          </div>
         </div>
 
         {isMobile && <div style={callStyle}>📞 Call</div>}

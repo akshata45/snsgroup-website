@@ -116,51 +116,141 @@ function BuyersGuide() {
               position: "relative",
             }}
           >
-            {isMobile && showOverlay && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "110px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "92%",
-                  background: "#fff",
-                  borderRadius: "16px",
-                  padding: "20px",
-                  zIndex: 10,
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-                }}
-              >
-                <div
-                  onClick={() => setShowOverlay(false)}
-                  style={{
-                    position: "absolute",
-                    top: "-15px",
-                    left: "15px",
-                    width: "35px",
-                    height: "35px",
-                    background: "#b68d2c",
-                    borderRadius: "50%",
-                    color: "#fff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                  }}
-                >
-                  ×
-                </div>
+{/* DESKTOP (UNCHANGED) */}
+{!isMobile && (
+  <div style={{ width: "260px", paddingTop: "80px" }}>
+    <h2
+      style={{
+        fontSize: "32px",
+        fontWeight: "800",
+        color: "#b68d2c",
+        lineHeight: "1.5",
+      }}
+    >
+      THIS IS HOW YOUR HOUSE HUNT GOES!
+    </h2>
 
-                <h3 style={{ color: "#b68d2c", margin: 0 }}>
-                  THIS IS HOW YOUR HOUSE HUNT GOES!
-                </h3>
+    <div
+      style={{
+        width: "40px",
+        height: "2px",
+        background: "#000",
+        margin: "14px 0",
+      }}
+    />
 
-                <p style={{ fontSize: "13px", color: "#555" }}>
-                  We help you clear your ifs and buts of home buying.
-                </p>
-              </div>
-            )}
+    <p style={{ fontSize: "17.5px", color: "#555" }}>
+      We help you clear your ifs and buts of home buying.
+    </p>
+  </div>
+)}
+
+{/* 🔥 MOBILE VERSION WITH SLIDE */}
+{isMobile && (
+  <>
+    {/* SLIDING PANEL */}
+    <div
+      style={{
+        position: "absolute",
+        top: "110px",
+        left: "50%",
+
+        transform: showOverlay
+          ? "translate(-50%, 0)"
+          : "translate(120%, 0)",
+
+        width: "90%",
+        background: "#fff",
+        borderRadius: "16px",
+        padding: "18px",
+        zIndex: 10,
+
+        transition: "transform 0.4s ease",
+        boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+      }}
+    >
+      {/* CLOSE BUTTON */}
+      <div
+        onClick={() => setShowOverlay(false)}
+        style={{
+          position: "absolute",
+          top: "-15px",
+          left: "15px",
+          width: "35px",
+          height: "35px",
+          background: "#b68d2c",
+          borderRadius: "50%",
+          color: "#fff",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+        }}
+      >
+        ×
+      </div>
+
+      <h3
+        style={{
+          fontSize: "20px",
+          fontWeight: "800",
+          color: "#b68d2c",
+          lineHeight: "1.4",
+          margin: 0,
+        }}
+      >
+        THIS IS HOW YOUR HOUSE HUNT GOES!
+      </h3>
+
+      <div
+        style={{
+          width: "40px",
+          height: "2px",
+          background: "#000",
+          margin: "10px 0",
+        }}
+      />
+
+      <p style={{ fontSize: "14px", color: "#555" }}>
+        We help you clear your ifs and buts of home buying.
+      </p>
+    </div>
+
+    {/* 🔥 RIGHT SIDE ℹ BUTTON */}
+    {!showOverlay && (
+      <div
+        onClick={() => setShowOverlay(true)}
+        style={{
+          position: "absolute",
+          top: "130px",
+          right: "0",
+          zIndex: 20,
+
+          background: "#b68d2c",
+          color: "#fff",
+
+          width: "40px",
+          height: "40px",
+
+          borderTopLeftRadius: "20px",
+          borderBottomLeftRadius: "20px",
+
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+
+          cursor: "pointer",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+
+          transition: "all 0.3s ease",
+        }}
+      >
+        ℹ
+      </div>
+    )}
+  </>
+)}
+
 
             <div
               onTouchStart={(e) => handleStart(e.touches[0].clientX)}
