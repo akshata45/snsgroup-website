@@ -63,6 +63,38 @@ function BuyersGuide() {
   return (
     <>
       <Navbar />
+      {/* 🔥 GLOBAL FIX (NO SCROLL + PERFECT MOBILE FIT) */}
+<style>
+{`
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* 🔥 removes vertical scroll */
+  }
+
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Hide scrollbars */
+  div::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Extra safety: prevent accidental overflow */
+  body.menu-open {
+    overflow: hidden;
+  }
+`}
+</style>
+
 
       <div
         style={{

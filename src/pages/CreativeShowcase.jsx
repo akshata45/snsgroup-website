@@ -71,6 +71,51 @@ function Partners() {
   return (
     <>
       <Navbar />
+      {/* 🔥 GLOBAL MOBILE FULL-FIT FIX */}
+<style>
+  {`
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 🔥 Remove scrollbars everywhere */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    body {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* 🔥 Prevent unwanted scroll bounce on mobile */
+    html, body, #root {
+      overscroll-behavior: none;
+    }
+
+    /* 🔥 Fix viewport height issues in mobile */
+    @supports (-webkit-touch-callout: none) {
+      body {
+        height: -webkit-fill-available;
+      }
+    }
+
+    /* 🔥 Make all sections fit perfectly */
+    section, div {
+      max-width: 100%;
+    }
+  `}
+</style>
+
 
       <div
         style={{

@@ -64,6 +64,25 @@ function Initiatives() {
   return (
     <>
       <Navbar />
+            {/* 🔥 GLOBAL FIX (NO SCROLL MOBILE) */}
+      <style>
+        {`
+          html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+          }
+
+          * {
+            box-sizing: border-box;
+          }
+
+          div::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      </style>
 
       <div
         style={{

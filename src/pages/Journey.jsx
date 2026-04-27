@@ -21,7 +21,11 @@ function Journey() {
       { name: "ESTORIA HEIGHTS", loc: "Malad", img: "/estoria1.jpg" },
       { name: "DEV DARSHAN", loc: "Bhandup", img: "/dev-darshan1.jpg" },
       { name: "ARHAM ARCADE", loc: "Kharghar", img: "/arham-arcade1.jpg" },
-      { name: "CHANDAN PRIDE", loc: "Ghatkopar East", img: "/chandan-pride1.jpg" },
+      {
+        name: "CHANDAN PRIDE",
+        loc: "Ghatkopar East",
+        img: "/chandan-pride1.jpg",
+      },
       { name: "LAKE MARVEL PAWNA", loc: "Lonavala", img: "/lake-marvel1.jpg" },
       { name: "DEV ASHISH", loc: "Bhandup", img: "/dev-ashish1.jpg" },
       { name: "PREM ASHISH", loc: "Ghatkopar West", img: "/prem-ashish1.jpg" },
@@ -98,6 +102,37 @@ function Journey() {
   return (
     <>
       <Navbar />
+      <style>
+  {`
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* 🔥 removes vertical scroll */
+      height: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* 🔥 fix mobile viewport height */
+    section {
+      height: 100dvh !important;
+    }
+
+    /* 🔥 prevent unwanted scroll bounce */
+    body.menu-open {
+      overflow: hidden;
+      touch-action: none;
+    }
+
+    /* 🔥 hide scrollbar (extra safety) */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  `}
+</style>
+
 
       <section
         style={{
@@ -128,95 +163,92 @@ function Journey() {
           </div>
         )}
 
-{isMobile && (
-  <>
-    {/* 🔥 SLIDING PANEL */}
-    <div
-      style={{
-        position: "absolute",
-        top: "120px",
-        left: "20px",
-        right: "20px",
-        background: "rgba(255,255,255,0.9)",
-        backdropFilter: "blur(8px)",
-        padding: "20px",
-        borderRadius: "14px",
-        zIndex: 20,
+        {isMobile && (
+          <>
+            {/* 🔥 SLIDING PANEL */}
+            <div
+              style={{
+                position: "absolute",
+                top: "120px",
+                left: "20px",
+                right: "20px",
+                background: "rgba(255,255,255,0.9)",
+                backdropFilter: "blur(8px)",
+                padding: "20px",
+                borderRadius: "14px",
+                zIndex: 20,
 
-        /* 🔥 ANIMATION */
-        transform: showOverlay
-          ? "translateX(0)"
-          : "translateX(120%)",
-        transition: "transform 0.4s ease",
-      }}
-    >
-      {/* CLOSE BUTTON */}
-      <div
-        onClick={() => setShowOverlay(false)}
-        style={{
-          position: "absolute",
-          top: "-15px",
-          left: "-15px",
-          width: "40px",
-          height: "40px",
-          background: "#b08a3e",
-          borderRadius: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#fff",
-          fontSize: "18px",
-          cursor: "pointer",
-        }}
-      >
-        ✕
-      </div>
+                /* 🔥 ANIMATION */
+                transform: showOverlay ? "translateX(0)" : "translateX(120%)",
+                transition: "transform 0.4s ease",
+              }}
+            >
+              {/* CLOSE BUTTON */}
+              <div
+                onClick={() => setShowOverlay(false)}
+                style={{
+                  position: "absolute",
+                  top: "-15px",
+                  left: "-15px",
+                  width: "40px",
+                  height: "40px",
+                  background: "#b08a3e",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#fff",
+                  fontSize: "18px",
+                  cursor: "pointer",
+                }}
+              >
+                ✕
+              </div>
 
-      <LeftContent
-        selectedType={selectedType}
-        setSelectedType={setSelectedType}
-        setIndex={setIndex}
-        isMobile
-      />
-    </div>
+              <LeftContent
+                selectedType={selectedType}
+                setSelectedType={setSelectedType}
+                setIndex={setIndex}
+                isMobile
+              />
+            </div>
 
-    {/* 🔥 RIGHT SIDE ATTACHED INFO BUTTON */}
-    {!showOverlay && (
-      <div
-        onClick={() => setShowOverlay(true)}
-        style={{
-          position: "absolute",
+            {/* 🔥 RIGHT SIDE ATTACHED INFO BUTTON */}
+            {!showOverlay && (
+              <div
+                onClick={() => setShowOverlay(true)}
+                style={{
+                  position: "absolute",
 
-          /* MATCH PANEL HEIGHT POSITION */
-          top: "140px",  // slightly below top for alignment
-          right: "0",
+                  /* MATCH PANEL HEIGHT POSITION */
+                  top: "140px", // slightly below top for alignment
+                  right: "0",
 
-          zIndex: 25,
-          background: "#b08a3e",
-          color: "#fff",
+                  zIndex: 25,
+                  background: "#b08a3e",
+                  color: "#fff",
 
-          width: "40px",
-          height: "40px",
+                  width: "40px",
+                  height: "40px",
 
-          borderTopLeftRadius: "20px",
-          borderBottomLeftRadius: "20px",
+                  borderTopLeftRadius: "20px",
+                  borderBottomLeftRadius: "20px",
 
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
 
-          cursor: "pointer",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
 
-          transition: "all 0.3s ease",
-        }}
-      >
-        ℹ
-      </div>
-    )}
-  </>
-)}
-
+                  transition: "all 0.3s ease",
+                }}
+              >
+                ℹ
+              </div>
+            )}
+          </>
+        )}
 
         <div
           ref={sliderRef}
@@ -308,33 +340,37 @@ function Journey() {
                     justifyContent: "center",
                   }}
                 >
-<h3
-  style={{
-    margin: 0,
-    color: "#b08a3e",
-    fontSize: "clamp(18px, 4vw, 26px)", // 👈 responsive
-    fontWeight: "800",
-  }}
->
-  {item.name}
-</h3>
+                  <h3
+                    style={{
+                      margin: 0,
+                      color: "#b08a3e",
+                      fontSize: "clamp(18px, 4vw, 26px)", // 👈 responsive
+                      fontWeight: "800",
+                    }}
+                  >
+                    {item.name}
+                  </h3>
 
-<p
-  style={{
-    margin: 0,
-    color: "#444",
-    fontSize: "clamp(14px, 3vw, 18.5px)", // 👈 responsive
-  }}
->
-  @{item.loc}
-</p>
+                  <p
+                    style={{
+                      margin: 0,
+                      color: "#444",
+                      fontSize: "clamp(14px, 3vw, 18.5px)", // 👈 responsive
+                    }}
+                  >
+                    @{item.loc}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div onClick={() => scroll("prev")} style={arrowLeft}>←</div>
-          <div onClick={() => scroll("next")} style={arrowRight}>→</div>
+          <div onClick={() => scroll("prev")} style={arrowLeft}>
+            ←
+          </div>
+          <div onClick={() => scroll("next")} style={arrowRight}>
+            →
+          </div>
         </div>
       </section>
     </>
@@ -355,60 +391,73 @@ const LeftContent = ({ selectedType, setSelectedType, setIndex, isMobile }) => (
       BUILDING <br /> TODAY, <br /> SHAPING <br /> TOMORROW.
     </h1>
 
-    <div style={{ width: "50px", height: "2px", background: "#000", margin: "14px 0" }} />
+    <div
+      style={{
+        width: "50px",
+        height: "2px",
+        background: "#000",
+        margin: "14px 0",
+      }}
+    />
 
     <p style={{ color: "#444", fontSize: "16.5px" }}>
-      Have a look through our luxury residences and prestigious commercial spaces
+      Have a look through our luxury residences and prestigious commercial
+      spaces
     </p>
 
-    <div style={{ marginTop: "18px", display: "flex", gap: "10px", fontSize: "16px" }}>
+    <div
+      style={{
+        marginTop: "18px",
+        display: "flex",
+        gap: "10px",
+        fontSize: "16px",
+      }}
+    >
       <button style={btnActive}>Residential</button>
       <button style={btnBlack}>Commercial</button>
     </div>
 
-<div style={{ position: "relative", width: "100%", marginTop: "15px" }}>
-  <select
-    value={selectedType}
-    onChange={(e) => {
-      setSelectedType(e.target.value);
-      setIndex(0);
-    }}
-    style={{
-      padding: "10px",
-      width: "100%",
-      background: "#e7dfcc",
-      color: "#1a1a1a",
-      border: "1px solid #b08a3e",
-      outline: "none",
-      appearance: "none",
-      WebkitAppearance: "none",
-      MozAppearance: "none",
-      cursor: "pointer",
-      fontSize: "16px",
-    }}
-  >
-    <option value="Completed">Completed</option>
-    <option value="Ongoing">Ongoing</option>
-    <option value="Upcoming">Upcoming</option>
-  </select>
+    <div style={{ position: "relative", width: "100%", marginTop: "15px" }}>
+      <select
+        value={selectedType}
+        onChange={(e) => {
+          setSelectedType(e.target.value);
+          setIndex(0);
+        }}
+        style={{
+          padding: "10px",
+          width: "100%",
+          background: "#e7dfcc",
+          color: "#1a1a1a",
+          border: "1px solid #b08a3e",
+          outline: "none",
+          appearance: "none",
+          WebkitAppearance: "none",
+          MozAppearance: "none",
+          cursor: "pointer",
+          fontSize: "16px",
+        }}
+      >
+        <option value="Completed">Completed</option>
+        <option value="Ongoing">Ongoing</option>
+        <option value="Upcoming">Upcoming</option>
+      </select>
 
-  {/* Custom Arrow */}
-  <div
-    style={{
-      position: "absolute",
-      right: "10px",
-      top: "50%",
-      transform: "translateY(-50%)",
-      pointerEvents: "none", // so clicks pass through
-      fontSize: "14px",
-      color: "#1a1a1a",
-    }}
-  >
-    ▼
-  </div>
-</div>
-
-
+      {/* Custom Arrow */}
+      <div
+        style={{
+          position: "absolute",
+          right: "10px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          pointerEvents: "none", // so clicks pass through
+          fontSize: "14px",
+          color: "#1a1a1a",
+        }}
+      >
+        ▼
+      </div>
+    </div>
   </>
 );
 
