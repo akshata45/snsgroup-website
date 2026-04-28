@@ -103,7 +103,7 @@ function Initiatives() {
       <div
         style={{
           background: "#f5f2ec",
-          height: "100vh",
+          height: "100dvh",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
@@ -279,7 +279,7 @@ function Initiatives() {
                 overflow: "hidden",
                 width: "100%",
                 height: isMobile
-                  ? "calc(100vh - 150px)"
+                  ? "calc(100dvh - 150px)"
                   : "calc(100vh - 120px)",
 
                 cursor: "grab",
@@ -310,9 +310,7 @@ function Initiatives() {
                       onMouseLeave={() => setHovered(null)}
                       onClick={() => navigate(card.path)}
                       style={{
-                        minWidth: isMobile
-                          ? "78vw"
-                          : `calc((100% - 48px) / 3)`,
+                        minWidth: isMobile ? "78vw" : `calc((100% - 48px) / 3)`,
 
                         height: "100%",
 
@@ -321,8 +319,7 @@ function Initiatives() {
 
                         cursor: "pointer",
 
-                        transition:
-                          "transform 0.3s ease, box-shadow 0.3s ease",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
 
                         transform:
                           !isMobile && isHovered
@@ -365,9 +362,7 @@ function Initiatives() {
 
                           background: "#e6dfd2",
 
-                          padding: isMobile
-                            ? "10px 14px"
-                            : "14px 18px",
+                          padding: isMobile ? "10px 14px" : "14px 18px",
 
                           borderRadius: isMobile ? "16px" : "0",
                         }}
@@ -411,65 +406,65 @@ function Initiatives() {
             {/* ✅ MOBILE FIXED ARROWS */}
             {isMobile ? (
               <>
-{/* LEFT */}
-<div
-  onClick={prevSlide}
-  style={{
-    position: "absolute",
-    bottom: "110px",
-    left: "8px",
+                {/* LEFT */}
+                <div
+                  onClick={prevSlide}
+                  style={{
+                    position: "absolute",
+                    bottom: "110px",
+                    left: "8px",
 
-    zIndex: 9999,
+                    zIndex: 9999,
 
-    width: "38px",
-    height: "38px",
+                    width: "38px",
+                    height: "38px",
 
-    background: "#000",
-    color: "#fff",
+                    background: "#000",
+                    color: "#fff",
 
-    borderRadius: "50%",
+                    borderRadius: "50%",
 
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
 
-    fontSize: "16px",
+                    fontSize: "16px",
 
-    cursor: "pointer",
-  }}
->
-  ←
-</div>
+                    cursor: "pointer",
+                  }}
+                >
+                  ←
+                </div>
 
-{/* RIGHT */}
-<div
-  onClick={nextSlide}
-  style={{
-    position: "absolute",
-    bottom: "110px",
-    right: "8px",
+                {/* RIGHT */}
+                <div
+                  onClick={nextSlide}
+                  style={{
+                    position: "absolute",
+                    bottom: "110px",
+                    right: "8px",
 
-    zIndex: 9999,
+                    zIndex: 9999,
 
-    width: "38px",
-    height: "38px",
+                    width: "38px",
+                    height: "38px",
 
-    background: "#000",
-    color: "#fff",
+                    background: "#000",
+                    color: "#fff",
 
-    borderRadius: "50%",
+                    borderRadius: "50%",
 
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
 
-    fontSize: "16px",
+                    fontSize: "16px",
 
-    cursor: "pointer",
-  }}
->
-  →
-</div>
+                    cursor: "pointer",
+                  }}
+                >
+                  →
+                </div>
               </>
             ) : (
               /* DESKTOP ARROWS */

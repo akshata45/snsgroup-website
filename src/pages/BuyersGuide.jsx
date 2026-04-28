@@ -98,7 +98,7 @@ function BuyersGuide() {
       <div
         style={{
           background: "#f5f2ec",
-          height: "100vh",
+          height: "100dvh",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
