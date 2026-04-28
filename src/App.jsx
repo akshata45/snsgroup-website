@@ -23,29 +23,28 @@ import EmailPopup from "./components/EmailPopup";
 function App() {
   return (
     <>
-    <ScrollToTop />
-    <EmailPopup />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/story" element={<Story />} />
-      <Route path="/journey" element={<Journey />} />
-      <Route path="/initiatives" element={<Initiatives />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/BuyersGuide" element={<BuyersGuide />} />
-      <Route path="/CreativeShowcase" element={<CreativeShowcase />} />
-      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/disclaimer" element={<Disclaimer />} />
-      <Route path="/nri" element={<NRICorner />} />
-      <Route path="/contactus" element={<ContactUs />} />
-      <Route path="/channel-partner" element={<ChannelPartner />} />
-      <Route path="/vendor-registration" element={<BecomeVendor />} />
-      <Route path="/currency-calculator" element={<CurrencyCalculator />} />
-      <Route path="/emi-calculator" element={<EmiCalculator />} />
-      <Route path="/blogs" element={<Blogs />} />
-      <Route path="/blog/:id" element={<BlogDetail />} />
-      <Route path="/careers" element={<Careers />} />
-      
-    </Routes>
+      <ScrollToTop />
+      <EmailPopup />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/story" element={<Story />} />
+        <Route path="/journey" element={<Journey />} />
+        <Route path="/initiatives" element={<Initiatives />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/BuyersGuide" element={<BuyersGuide />} />
+        <Route path="/CreativeShowcase" element={<CreativeShowcase />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="/nri" element={<NRICorner />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/channel-partner" element={<ChannelPartner />} />
+        <Route path="/vendor-registration" element={<BecomeVendor />} />
+        <Route path="/currency-calculator" element={<CurrencyCalculator />} />
+        <Route path="/emi-calculator" element={<EmiCalculator />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blog/:id" element={<BlogDetail />} />
+        <Route path="/careers" element={<Careers />} />
+      </Routes>
     </>
   );
 }

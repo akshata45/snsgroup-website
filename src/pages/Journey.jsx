@@ -103,7 +103,7 @@ function Journey() {
     <>
       <Navbar />
       <style>
-  {`
+        {`
     html, body {
       margin: 0;
       padding: 0;
@@ -131,8 +131,7 @@ function Journey() {
       display: none;
     }
   `}
-</style>
-
+      </style>
 
       <section
         style={{

@@ -76,16 +76,25 @@ function Navbar() {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <Link to="/story" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
-          <Link to="/journey" onClick={() => setMenuOpen(false)}>OUR PROJECTS</Link>
-          <Link to="/initiatives" onClick={() => setMenuOpen(false)}>OUR INITIATIVES</Link>
-          <Link to="/BuyersGuide" onClick={() => setMenuOpen(false)}>BUYER'S GUIDE</Link>
-          <Link to="/CreativeShowcase" onClick={() => setMenuOpen(false)}>JOIN SNS GROUP</Link>
+          <Link to="/story" onClick={() => setMenuOpen(false)}>
+            ABOUT US
+          </Link>
+          <Link to="/journey" onClick={() => setMenuOpen(false)}>
+            OUR PROJECTS
+          </Link>
+          <Link to="/initiatives" onClick={() => setMenuOpen(false)}>
+            OUR INITIATIVES
+          </Link>
+          <Link to="/BuyersGuide" onClick={() => setMenuOpen(false)}>
+            BUYER'S GUIDE
+          </Link>
+          <Link to="/CreativeShowcase" onClick={() => setMenuOpen(false)}>
+            JOIN SNS GROUP
+          </Link>
         </div>
 
         {/* ICONS */}
         <div className="icons">
-
           <span onClick={toggleTheme} className="icon-wrap">
             <img
               src={darkMode ? "/icons/dark/moon.svg" : "/icons/light/sun.svg"}
@@ -96,7 +105,9 @@ function Navbar() {
 
           <a href="tel:+919999999999" className="icon-wrap">
             <img
-              src={darkMode ? "/icons/dark/phone1.svg" : "/icons/light/phone.svg"}
+              src={
+                darkMode ? "/icons/dark/phone1.svg" : "/icons/light/phone.svg"
+              }
               className="nav-icon"
               alt="phone"
             />
@@ -128,7 +139,6 @@ function Navbar() {
               alt="menu"
             />
           </span>
-
         </div>
       </div>
 

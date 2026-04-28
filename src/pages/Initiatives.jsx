@@ -9,23 +9,34 @@ function Initiatives() {
   const [hovered, setHovered] = useState(null);
   const [showOverlay, setShowOverlay] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
   const sliderRef = useRef(null);
+
   const visibleCards = isMobile ? 1 : 3;
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
+
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const cards = [
-    { title: "CSR", subtitle: "Initiatives", image: "/csr.jpg", path: "/csr" },
+    {
+      title: "CSR",
+      subtitle: "Initiatives",
+      image: "/csr.jpg",
+      path: "/csr",
+    },
+
     {
       title: "K-WORLD",
       subtitle: "Referral Programme",
       image: "/kworld.jpg",
       path: "/kworld",
     },
+
     {
       title: "EVENTS",
       subtitle: "Organised",
@@ -35,14 +46,18 @@ function Initiatives() {
   ];
 
   const nextSlide = () => {
-    if (index < cards.length - visibleCards) setIndex(index + 1);
+    if (index < cards.length - visibleCards) {
+      setIndex(index + 1);
+    }
   };
 
   const prevSlide = () => {
-    if (index > 0) setIndex(index - 1);
+    if (index > 0) {
+      setIndex(index - 1);
+    }
   };
 
-  // 🔥 DRAG SUPPORT
+  // DRAG SUPPORT
   const startX = useRef(0);
   const isDragging = useRef(false);
 
@@ -53,16 +68,19 @@ function Initiatives() {
 
   const handleEnd = (x) => {
     if (!isDragging.current) return;
+
     const diff = startX.current - x;
+
     if (diff > 50) nextSlide();
     if (diff < -50) prevSlide();
+
     isDragging.current = false;
   };
 
   return (
     <>
       <Navbar />
-      {/* 🔥 GLOBAL FIX (NO SCROLL MOBILE) */}
+
       <style>
         {`
           html, body {
@@ -89,14 +107,14 @@ function Initiatives() {
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
-          paddingTop: "8px",
+          paddingTop: isMobile ? "4px" : "8px",
         }}
       >
         <div
           style={{
             display: "flex",
-            gap: isMobile ? "20px" : "40px",
-            padding: isMobile ? "0 16px" : "0 40px",
+            gap: isMobile ? "14px" : "40px",
+            padding: isMobile ? "0 12px" : "0 40px",
             flex: 1,
           }}
         >
@@ -136,98 +154,118 @@ function Initiatives() {
               display: "flex",
               flexDirection: "column",
               position: "relative",
+              overflow: "hidden", // ✅ IMPORTANT FIX
             }}
           >
             {/* MOBILE OVERLAY */}
-{isMobile && (
-  <>
-    {/* 🔥 SLIDING PANEL */}
-    <div
-      style={{
-        position: "absolute",
-        top: "110px",
-        left: "50%",
+            {isMobile && (
+              <>
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "90px",
+                    left: "50%",
 
-        transform: showOverlay
-          ? "translate(-50%, 0)"
-          : "translate(120%, 0)",
+                    transform: showOverlay
+                      ? "translate(-50%, 0)"
+                      : "translate(120%, 0)",
 
-        width: "90%",
-        background: "#fff",
-        borderRadius: "16px",
-        padding: "20px",
-        zIndex: 10,
+                    width: "88%",
+                    background: "#fff",
+                    borderRadius: "18px",
+                    padding: "18px",
+                    zIndex: 10,
 
-        transition: "transform 0.4s ease",
-      }}
-    >
-      {/* CLOSE BUTTON */}
-      <div
-        onClick={() => setShowOverlay(false)}
-        style={{
-          position: "absolute",
-          top: "-15px",
-          left: "15px",
-          width: "35px",
-          height: "35px",
-          background: "#b68d2c",
-          borderRadius: "50%",
-          color: "#fff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-        }}
-      >
-        ×
-      </div>
+                    transition: "transform 0.4s ease",
 
-      <h3 style={{ color: "#b68d2c", margin: 0 }}>
-        BUILDING TODAY, SHAPING TOMORROW.
-      </h3>
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+                  }}
+                >
+                  {/* CLOSE BUTTON */}
+                  <div
+                    onClick={() => setShowOverlay(false)}
+                    style={{
+                      position: "absolute",
+                      top: "-14px",
+                      left: "14px",
 
-      <p style={{ fontSize: "14px", color: "#555" }}>
-        Have a look at all our initiatives.
-      </p>
-    </div>
+                      width: "34px",
+                      height: "34px",
 
-    {/* 🔥 FIXED ℹ BUTTON (VISIBLE ALWAYS) */}
-    {!showOverlay && (
-      <div
-        onClick={() => setShowOverlay(true)}
-        style={{
-          position: "fixed",          // 🔥 IMPORTANT FIX
-          top: "25%",                 // center vertically
-          right: "0",
-          transform: "translateY(-50%)",
+                      background: "#b68d2c",
+                      borderRadius: "50%",
 
-          zIndex: 9999,               // always on top
+                      color: "#fff",
 
-          background: "#b68d2c",
-          color: "#fff",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
 
-          width: "42px",
-          height: "42px",
+                      cursor: "pointer",
 
-          borderTopLeftRadius: "22px",
-          borderBottomLeftRadius: "22px",
+                      fontSize: "18px",
+                    }}
+                  >
+                    ×
+                  </div>
 
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+                  <h3
+                    style={{
+                      color: "#b68d2c",
+                      margin: 0,
+                      fontSize: "18px",
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    BUILDING TODAY, SHAPING TOMORROW.
+                  </h3>
 
-          cursor: "pointer",
-          boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: "#555",
+                      marginTop: "10px",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    Have a look at all our initiatives.
+                  </p>
+                </div>
 
-          transition: "all 0.3s ease",
-        }}
-      >
-        ℹ
-      </div>
-    )}
-  </>
-)}
+                {!showOverlay && (
+                  <div
+                    onClick={() => setShowOverlay(true)}
+                    style={{
+                      position: "fixed",
+                      top: "24%",
+                      right: "0",
+                      transform: "translateY(-50%)",
 
+                      zIndex: 9999,
+
+                      background: "#b68d2c",
+                      color: "#fff",
+
+                      width: "40px",
+                      height: "40px",
+
+                      borderTopLeftRadius: "20px",
+                      borderBottomLeftRadius: "20px",
+
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+
+                      cursor: "pointer",
+
+                      boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+                    }}
+                  >
+                    ℹ
+                  </div>
+                )}
+              </>
+            )}
 
             {/* SLIDER */}
             <div
@@ -240,18 +278,25 @@ function Initiatives() {
               style={{
                 overflow: "hidden",
                 width: "100%",
-                height: "calc(100vh - 120px)",
+                height: isMobile
+                  ? "calc(100vh - 150px)"
+                  : "calc(100vh - 120px)",
+
                 cursor: "grab",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  gap: "24px",
+
+                  gap: isMobile ? "14px" : "24px",
+
                   height: "100%",
+
                   transition: "transform 0.4s ease",
+
                   transform: isMobile
-                    ? `translateX(-${index * 100}%)`
+                    ? `translateX(calc(-${index} * (78vw + 14px)))`
                     : `translateX(calc(-${index} * ((100% - 48px)/3 + 24px)))`,
                 }}
               >
@@ -265,25 +310,38 @@ function Initiatives() {
                       onMouseLeave={() => setHovered(null)}
                       onClick={() => navigate(card.path)}
                       style={{
-                        minWidth: isMobile ? "100%" : `calc((100% - 48px) / 3)`,
+                        minWidth: isMobile
+                          ? "78vw"
+                          : `calc((100% - 48px) / 3)`,
+
                         height: "100%",
+
                         display: "flex",
                         flexDirection: "column",
+
                         cursor: "pointer",
-                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+
+                        transition:
+                          "transform 0.3s ease, box-shadow 0.3s ease",
+
                         transform:
                           !isMobile && isHovered
-                            ? "translateX(10px)" // 🔥 move right ONLY
+                            ? "translateX(10px)"
                             : "translateX(0px)",
+
                         zIndex: isHovered ? 2 : 1,
                       }}
                     >
                       {/* IMAGE */}
                       <div
                         style={{
-                          height: "calc(100% - 110px)",
+                          height: isMobile
+                            ? "calc(100% - 72px)"
+                            : "calc(100% - 110px)",
+
                           borderRadius: "22px",
                           overflow: "hidden",
+
                           boxShadow: isHovered
                             ? "0 10px 25px rgba(0,0,0,0.15)"
                             : "none",
@@ -303,17 +361,28 @@ function Initiatives() {
                       {/* LABEL */}
                       <div
                         style={{
-                          marginTop: "18px",
+                          marginTop: isMobile ? "10px" : "18px",
+
                           background: "#e6dfd2",
-                          padding: "14px 18px",
+
+                          padding: isMobile
+                            ? "10px 14px"
+                            : "14px 18px",
+
+                          borderRadius: isMobile ? "16px" : "0",
                         }}
                       >
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: isMobile ? "20px" : "32px",
+
+                            fontSize: isMobile ? "18px" : "32px",
+
                             fontWeight: "800",
+
                             color: "#a57c1b",
+
+                            lineHeight: "1.2",
                           }}
                         >
                           {card.title}
@@ -321,9 +390,13 @@ function Initiatives() {
 
                         <p
                           style={{
-                            margin: 0,
-                            fontSize: isMobile ? "14px" : "17.5px",
+                            margin: "4px 0 0",
+
+                            fontSize: isMobile ? "12px" : "17.5px",
+
                             color: "#555",
+
+                            lineHeight: "1.4",
                           }}
                         >
                           {card.subtitle}
@@ -335,33 +408,105 @@ function Initiatives() {
               </div>
             </div>
 
-            {/* ARROWS */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: isMobile ? "100px" : "110px",
-                left: 0,
-                right: 0,
-                display: "flex",
-                justifyContent: "space-between",
-                pointerEvents: "none",
-                padding: isMobile ? "0 10px" : "0",
-              }}
-            >
-              <div
-                onClick={prevSlide}
-                style={{ ...navStyle, pointerEvents: "all" }}
-              >
-                ←
-              </div>
+            {/* ✅ MOBILE FIXED ARROWS */}
+            {isMobile ? (
+              <>
+{/* LEFT */}
+<div
+  onClick={prevSlide}
+  style={{
+    position: "absolute",
+    bottom: "110px",
+    left: "8px",
 
+    zIndex: 9999,
+
+    width: "38px",
+    height: "38px",
+
+    background: "#000",
+    color: "#fff",
+
+    borderRadius: "50%",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    fontSize: "16px",
+
+    cursor: "pointer",
+  }}
+>
+  ←
+</div>
+
+{/* RIGHT */}
+<div
+  onClick={nextSlide}
+  style={{
+    position: "absolute",
+    bottom: "110px",
+    right: "8px",
+
+    zIndex: 9999,
+
+    width: "38px",
+    height: "38px",
+
+    background: "#000",
+    color: "#fff",
+
+    borderRadius: "50%",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    fontSize: "16px",
+
+    cursor: "pointer",
+  }}
+>
+  →
+</div>
+              </>
+            ) : (
+              /* DESKTOP ARROWS */
               <div
-                onClick={nextSlide}
-                style={{ ...navStyle, pointerEvents: "all" }}
+                style={{
+                  position: "absolute",
+                  bottom: "110px",
+                  left: 0,
+                  right: 0,
+
+                  display: "flex",
+                  justifyContent: "space-between",
+
+                  pointerEvents: "none",
+                }}
               >
-                →
+                <div
+                  onClick={prevSlide}
+                  style={{
+                    ...navStyle,
+                    pointerEvents: "all",
+                  }}
+                >
+                  ←
+                </div>
+
+                <div
+                  onClick={nextSlide}
+                  style={{
+                    ...navStyle,
+                    pointerEvents: "all",
+                  }}
+                >
+                  →
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
@@ -380,13 +525,6 @@ const navStyle = {
   justifyContent: "center",
   cursor: "pointer",
   fontSize: "18px",
-};
-
-const navStyleMobile = {
-  ...navStyle,
-  width: "38px",
-  height: "38px",
-  fontSize: "16px",
 };
 
 export default Initiatives;
