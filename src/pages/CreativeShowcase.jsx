@@ -13,11 +13,19 @@ function Partners() {
   const startX = useRef(0);
   const isDragging = useRef(false);
 
-  // ✅ Responsive fix
+  // ✅ RESPONSIVE FIX
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const cards = [
@@ -44,14 +52,18 @@ function Partners() {
   const visibleCards = isMobile ? 2 : 3;
 
   const nextSlide = () => {
-    if (index < cards.length - visibleCards) setIndex(index + 1);
+    if (index < cards.length - visibleCards) {
+      setIndex(index + 1);
+    }
   };
 
   const prevSlide = () => {
-    if (index > 0) setIndex(index - 1);
+    if (index > 0) {
+      setIndex(index - 1);
+    }
   };
 
-  // 👉 Swipe
+  // ✅ SWIPE
   const handleStart = (x) => {
     startX.current = x;
     isDragging.current = true;
@@ -71,80 +83,80 @@ function Partners() {
   return (
     <>
       <Navbar />
+
       <style>
         {`
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden; /* 🚫 remove scroll */
-  }
+          html,
+          body,
+          #root {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+          }
 
-  * {
-    box-sizing: border-box;
-  }
+          * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+          }
 
-  /* Hide scrollbars */
-  div::-webkit-scrollbar {
-    display: none;
-  }
+          div::-webkit-scrollbar {
+            display: none;
+          }
 
-  /* ✅ Fix mobile viewport height issue (VERY IMPORTANT) */
-  @media (max-width: 768px) {
-    body {
-      height: 100dvh; /* 🔥 dynamic height fix */
-    }
-  }
-
-  /* ✅ Keep slider perfectly inside screen */
-  .fix-slider-height {
-    height: calc(100dvh - 120px) !important;
-  }
-
-  /* ✅ FIX ARROWS POSITION (your main issue) */
-  .fix-arrows {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 120px; /* desktop */
-  }
-
-  @media (max-width: 768px) {
-    .fix-arrows {
-      bottom: 80px !important; /* 🔥 not too low */
-      padding: 0 12px;
-    }
-  }
-`}
+          body {
+            overscroll-behavior: none;
+            background: #f5f2ec;
+          }
+        `}
       </style>
 
+      {/* MAIN CONTAINER */}
       <div
         style={{
           background: "#f5f2ec",
+
+          // ✅ REAL DEVICE FIX
           height: "100dvh",
+
           display: "flex",
           flexDirection: "column",
-          overflow: "visible", // 🔥 IMPORTANT FIX
-          paddingTop: "8px",
+
+          overflow: "hidden",
+
+          paddingTop: isMobile ? "4px" : "8px",
         }}
       >
         <div
           style={{
             display: "flex",
-            gap: isMobile ? "20px" : "40px",
-            padding: isMobile ? "0 16px" : "0 60px",
+
+            gap: isMobile ? "18px" : "40px",
+
+            padding: isMobile ? "0 14px" : "0 60px",
+
             flex: 1,
+
+            overflow: "hidden",
           }}
         >
-          {/* ✅ LEFT CONTENT (DESKTOP ONLY) */}
+          {/* LEFT CONTENT */}
           {!isMobile && (
-            <div style={{ width: "260px", paddingTop: "80px" }}>
+            <div
+              style={{
+                width: "260px",
+                paddingTop: "80px",
+                flexShrink: 0,
+              }}
+            >
               <h2
                 style={{
                   fontSize: "32px",
                   fontWeight: "800",
                   color: "#b68d2c",
                   lineHeight: "1.5",
+                  margin: 0,
                 }}
               >
                 BUILDING TRUST WITH EVERY MILESTONE.
@@ -159,88 +171,121 @@ function Partners() {
                 }}
               />
 
-              <p style={{ fontSize: "17.5px", color: "#555" }}>
+              <p
+                style={{
+                  fontSize: "17.5px",
+                  color: "#555",
+                  lineHeight: "1.6",
+                }}
+              >
                 We are happy to have you associated with us.
               </p>
             </div>
           )}
 
-          {/* RIGHT */}
+          {/* RIGHT SIDE */}
           <div
             style={{
               flex: 1,
               position: "relative",
+              overflow: "hidden",
             }}
           >
-            {/* ✅ MOBILE OVERLAY */}
+            {/* MOBILE OVERLAY */}
             {isMobile && (
               <>
-                {/* 🔥 SLIDING PANEL */}
+                {/* PANEL */}
                 <div
                   style={{
                     position: "absolute",
-                    top: "110px",
+
+                    top: "90px",
                     left: "50%",
 
                     transform: showOverlay
-                      ? "translate(-50%, 0)"
-                      : "translate(120%, 0)",
+                      ? "translate(-50%,0)"
+                      : "translate(130%,0)",
 
                     width: "92%",
+
                     background: "#fff",
-                    borderRadius: "16px",
-                    padding: "20px",
-                    zIndex: 10,
+
+                    borderRadius: "18px",
+
+                    padding: "18px",
+
+                    zIndex: 20,
+
                     boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
 
                     transition: "transform 0.4s ease",
                   }}
                 >
-                  {/* CLOSE BUTTON */}
+                  {/* CLOSE */}
                   <div
                     onClick={() => setShowOverlay(false)}
                     style={{
                       position: "absolute",
-                      top: "-15px",
-                      left: "15px",
-                      width: "35px",
-                      height: "35px",
-                      background: "#b68d2c",
+
+                      top: "-14px",
+                      left: "14px",
+
+                      width: "34px",
+                      height: "34px",
+
                       borderRadius: "50%",
+
+                      background: "#b68d2c",
                       color: "#fff",
+
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
+
                       fontWeight: "bold",
+
                       cursor: "pointer",
                     }}
                   >
                     ×
                   </div>
 
-                  <h3 style={{ color: "#b68d2c", margin: 0 }}>
+                  <h3
+                    style={{
+                      margin: 0,
+                      color: "#b68d2c",
+                      fontSize: "18px",
+                      lineHeight: "1.4",
+                    }}
+                  >
                     BUILDING TRUST WITH EVERY MILESTONE.
                   </h3>
 
-                  <p style={{ fontSize: "13px", color: "#555" }}>
+                  <p
+                    style={{
+                      marginTop: "10px",
+                      fontSize: "13px",
+                      lineHeight: "1.5",
+                      color: "#555",
+                    }}
+                  >
                     We are happy to have you associated with us.
                   </p>
                 </div>
 
-                {/* 🔥 FIXED ℹ BUTTON (ALWAYS VISIBLE) */}
+                {/* INFO BUTTON */}
                 {!showOverlay && (
                   <div
                     onClick={() => setShowOverlay(true)}
                     style={{
-                      position: "fixed", // 🔥 changed from absolute → FIXED
+                      position: "fixed",
+
                       top: "25%",
                       right: "0",
+
                       transform: "translateY(-50%)",
 
-                      zIndex: 9999, // 🔥 always on top
-
-                      background: "#b68d2c",
-                      color: "#fff",
+                      zIndex: 99999,
 
                       width: "42px",
                       height: "42px",
@@ -248,14 +293,16 @@ function Partners() {
                       borderTopLeftRadius: "22px",
                       borderBottomLeftRadius: "22px",
 
+                      background: "#b68d2c",
+                      color: "#fff",
+
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
 
                       cursor: "pointer",
-                      boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
 
-                      transition: "all 0.3s ease",
+                      boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
                     }}
                   >
                     ℹ
@@ -272,20 +319,31 @@ function Partners() {
               onMouseUp={(e) => handleEnd(e.clientX)}
               onMouseLeave={(e) => handleEnd(e.clientX)}
               style={{
-                overflow: "hidden", // 🔥 IMPORTANT FIX
-                height: "calc(100dvh - 140px)",
+                overflow: "hidden",
+
+                // ✅ REAL ANDROID FIX
+                height: isMobile
+                  ? "calc(100dvh - 170px)"
+                  : "calc(100vh - 140px)",
+
                 cursor: "grab",
+
+                position: "relative",
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  gap: isMobile ? "20px" : "32px",
+
+                  gap: isMobile ? "18px" : "32px",
+
                   height: "100%",
+
                   transition: "transform 0.4s ease",
+
                   transform: `translateX(calc(-${index} * ((100% - ${
-                    isMobile ? "20px" : "64px"
-                  })/${visibleCards} + ${isMobile ? "20px" : "32px"})))`,
+                    isMobile ? "18px" : "64px"
+                  }) / ${visibleCards} + ${isMobile ? "18px" : "32px"})))`,
                 }}
               >
                 {cards.map((card, i) => {
@@ -299,23 +357,31 @@ function Partners() {
                       onClick={() => navigate(card.path)}
                       style={{
                         minWidth: isMobile
-                          ? `calc((100% - 20px) / ${visibleCards})`
+                          ? `calc((100% - 18px) / ${visibleCards})`
                           : `calc((100% - 64px) / ${visibleCards})`,
+
+                        display: "flex",
+                        flexDirection: "column",
+
+                        cursor: "pointer",
+
+                        transition: "transform 0.35s ease",
 
                         transform:
                           !isMobile && isHovered ? "scaleX(1.05)" : "scaleX(1)",
+
                         transformOrigin: "left",
-                        transition: "transform 0.35s ease",
-                        display: "flex",
-                        flexDirection: "column",
-                        cursor: "pointer",
                       }}
                     >
                       {/* IMAGE */}
                       <div
                         style={{
-                          height: "calc(100% - 110px)",
+                          height: isMobile
+                            ? "calc(100% - 85px)"
+                            : "calc(100% - 110px)",
+
                           borderRadius: "22px",
+
                           overflow: "hidden",
                         }}
                       >
@@ -333,17 +399,27 @@ function Partners() {
                       {/* LABEL */}
                       <div
                         style={{
-                          marginTop: "18px",
+                          marginTop: isMobile ? "10px" : "18px",
+
                           background: "#e6dfd2",
-                          padding: "14px 18px",
+
+                          padding: isMobile ? "10px 12px" : "14px 18px",
+
+                          borderRadius: isMobile ? "14px" : "0",
                         }}
                       >
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: "clamp(18px, 4vw, 32px)", // 👈 responsive
+
+                            fontSize: isMobile
+                              ? "16px"
+                              : "clamp(18px, 4vw, 32px)",
+
                             fontWeight: "800",
+
                             color: "#a57c1b",
+
                             lineHeight: "1.2",
                           }}
                         >
@@ -356,54 +432,54 @@ function Partners() {
               </div>
             </div>
 
-{/* ARROWS */}
-<div
-  style={{
-    // ✅ FIX FOR REAL ANDROID DEVICES
-    position: "fixed",
+            {/* ARROWS */}
+            <div
+              style={{
+                position: isMobile ? "fixed" : "absolute",
 
-    bottom: "22px",
+                // ✅ MOBILE FIX
+                bottom: isMobile ? "22px" : "120px",
 
-    left: 0,
-    right: 0,
+                // ✅ DESKTOP ORIGINAL POSITION
+                left: isMobile ? 0 : "0",
+                right: isMobile ? 0 : "0",
 
-    width: "100%",
+                width: "100%",
 
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
 
-    padding: "0 14px",
+                // ✅ DESKTOP NORMAL
+                padding: isMobile ? "0 14px" : "0",
 
-    zIndex: 999999,
+                zIndex: 999999,
 
-    pointerEvents: "none",
-  }}
->
-  {/* LEFT */}
-  <div
-    onClick={prevSlide}
-    style={{
-      ...navStyle,
+                pointerEvents: "none",
+              }}
+            >
+              {/* LEFT */}
+              <div
+                onClick={prevSlide}
+                style={{
+                  ...navStyle,
+                  pointerEvents: "all",
+                }}
+              >
+                ←
+              </div>
 
-      pointerEvents: "all",
-    }}
-  >
-    ←
-  </div>
-
-  {/* RIGHT */}
-  <div
-    onClick={nextSlide}
-    style={{
-      ...navStyle,
-
-      pointerEvents: "all",
-    }}
-  >
-    →
-  </div>
-</div>
+              {/* RIGHT */}
+              <div
+                onClick={nextSlide}
+                style={{
+                  ...navStyle,
+                  pointerEvents: "all",
+                }}
+              >
+                →
+              </div>
+            </div>
           </div>
         </div>
       </div>
