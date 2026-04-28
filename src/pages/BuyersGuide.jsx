@@ -64,8 +64,8 @@ function BuyersGuide() {
     <>
       <Navbar />
       {/* 🔥 GLOBAL FIX (NO SCROLL + PERFECT MOBILE FIT) */}
-<style>
-{`
+      <style>
+        {`
   html, body {
     margin: 0;
     padding: 0;
@@ -93,8 +93,7 @@ function BuyersGuide() {
     overflow: hidden;
   }
 `}
-</style>
-
+      </style>
 
       <div
         style={{
@@ -148,50 +147,90 @@ function BuyersGuide() {
               position: "relative",
             }}
           >
-            {isMobile && showOverlay && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "110px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "92%",
-                  background: "#fff",
-                  borderRadius: "16px",
-                  padding: "20px",
-                  zIndex: 10,
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
-                }}
-              >
+            {isMobile && (
+              <>
+                {/* 🔥 SLIDING PANEL */}
                 <div
-                  onClick={() => setShowOverlay(false)}
                   style={{
                     position: "absolute",
-                    top: "-15px",
-                    left: "15px",
-                    width: "35px",
-                    height: "35px",
-                    background: "#b68d2c",
-                    borderRadius: "50%",
-                    color: "#fff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontWeight: "bold",
-                    cursor: "pointer",
+                    top: "110px",
+                    left: "50%",
+
+                    transform: showOverlay
+                      ? "translate(-50%, 0)"
+                      : "translate(120%, 0)",
+
+                    width: "92%",
+                    background: "#fff",
+                    borderRadius: "16px",
+                    padding: "20px",
+                    zIndex: 10,
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+
+                    transition: "transform 0.4s ease",
                   }}
                 >
-                  ×
+                  {/* CLOSE BUTTON */}
+                  <div
+                    onClick={() => setShowOverlay(false)}
+                    style={{
+                      position: "absolute",
+                      top: "-15px",
+                      left: "15px",
+                      width: "35px",
+                      height: "35px",
+                      background: "#b68d2c",
+                      borderRadius: "50%",
+                      color: "#fff",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                    }}
+                  >
+                    ×
+                  </div>
+
+                  <h3 style={{ color: "#b68d2c", margin: 0 }}>
+                    THIS IS HOW YOUR HOUSE HUNT GOES!
+                  </h3>
+
+                  <p style={{ fontSize: "13px", color: "#555" }}>
+                    We help you clear your ifs and buts of home buying.
+                  </p>
                 </div>
 
-                <h3 style={{ color: "#b68d2c", margin: 0 }}>
-                  THIS IS HOW YOUR HOUSE HUNT GOES!
-                </h3>
+                {/* 🔥 FIXED ℹ BUTTON */}
+                {!showOverlay && (
+                  <div
+                    onClick={() => setShowOverlay(true)}
+                    style={{
+                      position: "fixed", // 🔥 key fix
+                      top: "50%",
+                      right: "0",
+                      transform: "translateY(-50%)",
 
-                <p style={{ fontSize: "13px", color: "#555" }}>
-                  We help you clear your ifs and buts of home buying.
-                </p>
-              </div>
+                      zIndex: 9999,
+                      top: "25%",
+                      background: "#b68d2c",
+                      color: "#fff",
+                      width: "42px",
+                      height: "42px",
+                      borderTopLeftRadius: "22px",
+                      borderBottomLeftRadius: "22px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      cursor: "pointer",
+                      boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    ℹ
+                  </div>
+                )}
+              </>
             )}
 
             <div
@@ -296,7 +335,7 @@ function BuyersGuide() {
             <div
               style={{
                 position: "absolute",
-                bottom: "110px",
+                bottom: "120px",
                 left: 0,
                 right: 0,
                 display: "flex",

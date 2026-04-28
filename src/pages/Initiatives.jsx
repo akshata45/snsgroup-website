@@ -9,8 +9,8 @@ function Initiatives() {
   const [hovered, setHovered] = useState(null);
   const [showOverlay, setShowOverlay] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
   const sliderRef = useRef(null);
+  const visibleCards = isMobile ? 1 : 3;
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -33,8 +33,6 @@ function Initiatives() {
       path: "/events",
     },
   ];
-
-  const visibleCards = isMobile ? 2 : 3;
 
   const nextSlide = () => {
     if (index < cards.length - visibleCards) setIndex(index + 1);
@@ -64,7 +62,7 @@ function Initiatives() {
   return (
     <>
       <Navbar />
-            {/* 🔥 GLOBAL FIX (NO SCROLL MOBILE) */}
+      {/* 🔥 GLOBAL FIX (NO SCROLL MOBILE) */}
       <style>
         {`
           html, body {
@@ -149,6 +147,7 @@ function Initiatives() {
         position: "absolute",
         top: "110px",
         left: "50%",
+
         transform: showOverlay
           ? "translate(-50%, 0)"
           : "translate(120%, 0)",
@@ -192,31 +191,33 @@ function Initiatives() {
       </p>
     </div>
 
-    {/* 🔥 RIGHT SIDE REOPEN BUTTON */}
+    {/* 🔥 FIXED ℹ BUTTON (VISIBLE ALWAYS) */}
     {!showOverlay && (
       <div
         onClick={() => setShowOverlay(true)}
         style={{
-          position: "absolute",
-          top: "130px",   // aligned near panel
+          position: "fixed",          // 🔥 IMPORTANT FIX
+          top: "25%",                 // center vertically
           right: "0",
-          zIndex: 20,
+          transform: "translateY(-50%)",
+
+          zIndex: 9999,               // always on top
 
           background: "#b68d2c",
           color: "#fff",
 
-          width: "40px",
-          height: "40px",
+          width: "42px",
+          height: "42px",
 
-          borderTopLeftRadius: "20px",
-          borderBottomLeftRadius: "20px",
+          borderTopLeftRadius: "22px",
+          borderBottomLeftRadius: "22px",
 
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
 
           cursor: "pointer",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+          boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
 
           transition: "all 0.3s ease",
         }}
@@ -249,9 +250,9 @@ function Initiatives() {
                   gap: "24px",
                   height: "100%",
                   transition: "transform 0.4s ease",
-                  transform: `translateX(calc(-${index} * ((100% - ${
-                    isMobile ? "24px" : "48px"
-                  })/${visibleCards} + 24px)))`,
+                  transform: isMobile
+                    ? `translateX(-${index * 100}%)`
+                    : `translateX(calc(-${index} * ((100% - 48px)/3 + 24px)))`,
                 }}
               >
                 {cards.map((card, i) => {
@@ -264,9 +265,7 @@ function Initiatives() {
                       onMouseLeave={() => setHovered(null)}
                       onClick={() => navigate(card.path)}
                       style={{
-                        minWidth: `calc((100% - ${
-                          isMobile ? "24px" : "48px"
-                        }) / ${visibleCards})`,
+                        minWidth: isMobile ? "100%" : `calc((100% - 48px) / 3)`,
                         height: "100%",
                         display: "flex",
                         flexDirection: "column",
@@ -340,7 +339,7 @@ function Initiatives() {
             <div
               style={{
                 position: "absolute",
-                bottom: isMobile ? "120px" : "110px",
+                bottom: isMobile ? "100px" : "110px",
                 left: 0,
                 right: 0,
                 display: "flex",
@@ -381,6 +380,13 @@ const navStyle = {
   justifyContent: "center",
   cursor: "pointer",
   fontSize: "18px",
+};
+
+const navStyleMobile = {
+  ...navStyle,
+  width: "38px",
+  height: "38px",
+  fontSize: "16px",
 };
 
 export default Initiatives;

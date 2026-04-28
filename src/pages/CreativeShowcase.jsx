@@ -71,6 +71,52 @@ function Partners() {
   return (
     <>
       <Navbar />
+      <style>
+        {`
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* 🚫 remove scroll */
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Hide scrollbars */
+  div::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ✅ Fix mobile viewport height issue (VERY IMPORTANT) */
+  @media (max-width: 768px) {
+    body {
+      height: 100dvh; /* 🔥 dynamic height fix */
+    }
+  }
+
+  /* ✅ Keep slider perfectly inside screen */
+  .fix-slider-height {
+    height: calc(100dvh - 120px) !important;
+  }
+
+  /* ✅ FIX ARROWS POSITION (your main issue) */
+  .fix-arrows {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 120px; /* desktop */
+  }
+
+  @media (max-width: 768px) {
+    .fix-arrows {
+      bottom: 80px !important; /* 🔥 not too low */
+      padding: 0 12px;
+    }
+  }
+`}
+      </style>
 
       <div
         style={{
@@ -78,7 +124,7 @@ function Partners() {
           height: "100vh",
           display: "flex",
           flexDirection: "column",
-          overflow: "hidden",
+          overflow: "visible", // 🔥 IMPORTANT FIX
           paddingTop: "8px",
         }}
       >
@@ -127,98 +173,96 @@ function Partners() {
             }}
           >
             {/* ✅ MOBILE OVERLAY */}
-{isMobile && (
-  <>
-    {/* 🔥 SLIDING PANEL */}
-    <div
-      style={{
-        position: "absolute",
-        top: "110px",
-        left: "50%",
+            {isMobile && (
+              <>
+                {/* 🔥 SLIDING PANEL */}
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "110px",
+                    left: "50%",
 
-        transform: showOverlay
-          ? "translate(-50%, 0)"
-          : "translate(120%, 0)",
+                    transform: showOverlay
+                      ? "translate(-50%, 0)"
+                      : "translate(120%, 0)",
 
-        width: "92%",
-        background: "#fff",
-        borderRadius: "16px",
-        padding: "20px",
-        zIndex: 10,
-        boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+                    width: "92%",
+                    background: "#fff",
+                    borderRadius: "16px",
+                    padding: "20px",
+                    zIndex: 10,
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
 
-        transition: "transform 0.4s ease",
-      }}
-    >
-      {/* CLOSE BUTTON */}
-      <div
-        onClick={() => setShowOverlay(false)}
-        style={{
-          position: "absolute",
-          top: "-15px",
-          left: "15px",
-          width: "35px",
-          height: "35px",
-          background: "#b68d2c",
-          borderRadius: "50%",
-          color: "#fff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontWeight: "bold",
-          cursor: "pointer",
-        }}
-      >
-        ×
-      </div>
+                    transition: "transform 0.4s ease",
+                  }}
+                >
+                  {/* CLOSE BUTTON */}
+                  <div
+                    onClick={() => setShowOverlay(false)}
+                    style={{
+                      position: "absolute",
+                      top: "-15px",
+                      left: "15px",
+                      width: "35px",
+                      height: "35px",
+                      background: "#b68d2c",
+                      borderRadius: "50%",
+                      color: "#fff",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                    }}
+                  >
+                    ×
+                  </div>
 
-      <h3 style={{ color: "#b68d2c", margin: 0 }}>
-        BUILDING TRUST WITH EVERY MILESTONE.
-      </h3>
+                  <h3 style={{ color: "#b68d2c", margin: 0 }}>
+                    BUILDING TRUST WITH EVERY MILESTONE.
+                  </h3>
 
-      <p style={{ fontSize: "13px", color: "#555" }}>
-        We are happy to have you associated with us.
-      </p>
-    </div>
+                  <p style={{ fontSize: "13px", color: "#555" }}>
+                    We are happy to have you associated with us.
+                  </p>
+                </div>
 
-    {/* 🔥 FIXED ℹ BUTTON (ALWAYS VISIBLE) */}
-    {!showOverlay && (
-      <div
-        onClick={() => setShowOverlay(true)}
-        style={{
-          position: "fixed",   // 🔥 changed from absolute → FIXED
-          top: "30%",
-          right: "0",
-          transform: "translateY(-50%)",
+                {/* 🔥 FIXED ℹ BUTTON (ALWAYS VISIBLE) */}
+                {!showOverlay && (
+                  <div
+                    onClick={() => setShowOverlay(true)}
+                    style={{
+                      position: "fixed", // 🔥 changed from absolute → FIXED
+                      top: "25%",
+                      right: "0",
+                      transform: "translateY(-50%)",
 
-          zIndex: 9999,        // 🔥 always on top
+                      zIndex: 9999, // 🔥 always on top
 
-          background: "#b68d2c",
-          color: "#fff",
+                      background: "#b68d2c",
+                      color: "#fff",
 
-          width: "42px",
-          height: "42px",
+                      width: "42px",
+                      height: "42px",
 
-          borderTopLeftRadius: "22px",
-          borderBottomLeftRadius: "22px",
+                      borderTopLeftRadius: "22px",
+                      borderBottomLeftRadius: "22px",
 
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
 
-          cursor: "pointer",
-          boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+                      cursor: "pointer",
+                      boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
 
-          transition: "all 0.3s ease",
-        }}
-      >
-        ℹ
-      </div>
-    )}
-  </>
-)}
-
-
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    ℹ
+                  </div>
+                )}
+              </>
+            )}
 
             {/* SLIDER */}
             <div
@@ -228,7 +272,7 @@ function Partners() {
               onMouseUp={(e) => handleEnd(e.clientX)}
               onMouseLeave={(e) => handleEnd(e.clientX)}
               style={{
-                overflow: "hidden",
+                overflow: "hidden", // 🔥 IMPORTANT FIX
                 height: "calc(100vh - 140px)",
                 cursor: "grab",
               }}
@@ -236,12 +280,12 @@ function Partners() {
               <div
                 style={{
                   display: "flex",
-                  gap: "32px",
+                  gap: isMobile ? "20px" : "32px",
                   height: "100%",
                   transition: "transform 0.4s ease",
                   transform: `translateX(calc(-${index} * ((100% - ${
-                    isMobile ? "32px" : "64px"
-                  })/${visibleCards} + 32px)))`,
+                    isMobile ? "20px" : "64px"
+                  })/${visibleCards} + ${isMobile ? "20px" : "32px"})))`,
                 }}
               >
                 {cards.map((card, i) => {
@@ -254,9 +298,10 @@ function Partners() {
                       onMouseLeave={() => setHovered(null)}
                       onClick={() => navigate(card.path)}
                       style={{
-                        minWidth: `calc((100% - ${
-                          isMobile ? "32px" : "64px"
-                        }) / ${visibleCards})`,
+                        minWidth: isMobile
+                          ? `calc((100% - 20px) / ${visibleCards})`
+                          : `calc((100% - 64px) / ${visibleCards})`,
+
                         transform:
                           !isMobile && isHovered ? "scaleX(1.05)" : "scaleX(1)",
                         transformOrigin: "left",
@@ -315,9 +360,9 @@ function Partners() {
             <div
               style={{
                 position: "absolute",
-                bottom: "110px",
+                bottom: "120px", // same as BuyersGuide
                 left: 0,
-                right: 0,
+                right: "20px",
                 display: "flex",
                 justifyContent: "space-between",
                 pointerEvents: "none",
@@ -345,16 +390,15 @@ function Partners() {
 }
 
 const navStyle = {
-  width: "48px",
-  height: "48px",
+  width: "clamp(36px, 10vw, 44px)",
+  height: "clamp(36px, 10vw, 44px)",
+  minWidth: "36px",
   background: "#000",
   color: "#fff",
   borderRadius: "50%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  cursor: "pointer",
-  fontSize: "18px",
 };
 
 export default Partners;
