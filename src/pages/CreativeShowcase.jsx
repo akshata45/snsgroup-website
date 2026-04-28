@@ -121,7 +121,7 @@ function Partners() {
       <div
         style={{
           background: "#f5f2ec",
-          height: "100vh",
+          height: "100dvh",
           display: "flex",
           flexDirection: "column",
           overflow: "visible", // 🔥 IMPORTANT FIX
@@ -273,7 +273,7 @@ function Partners() {
               onMouseLeave={(e) => handleEnd(e.clientX)}
               style={{
                 overflow: "hidden", // 🔥 IMPORTANT FIX
-                height: "calc(100vh - 140px)",
+                height: "calc(100dvh - 140px)",
                 cursor: "grab",
               }}
             >
@@ -356,32 +356,54 @@ function Partners() {
               </div>
             </div>
 
-            {/* ARROWS */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: "120px", // same as BuyersGuide
-                left: 0,
-                right: "20px",
-                display: "flex",
-                justifyContent: "space-between",
-                pointerEvents: "none",
-              }}
-            >
-              <div
-                onClick={prevSlide}
-                style={{ ...navStyle, pointerEvents: "all" }}
-              >
-                ←
-              </div>
+{/* ARROWS */}
+<div
+  style={{
+    // ✅ FIX FOR REAL ANDROID DEVICES
+    position: "fixed",
 
-              <div
-                onClick={nextSlide}
-                style={{ ...navStyle, pointerEvents: "all" }}
-              >
-                →
-              </div>
-            </div>
+    bottom: "22px",
+
+    left: 0,
+    right: 0,
+
+    width: "100%",
+
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    padding: "0 14px",
+
+    zIndex: 999999,
+
+    pointerEvents: "none",
+  }}
+>
+  {/* LEFT */}
+  <div
+    onClick={prevSlide}
+    style={{
+      ...navStyle,
+
+      pointerEvents: "all",
+    }}
+  >
+    ←
+  </div>
+
+  {/* RIGHT */}
+  <div
+    onClick={nextSlide}
+    style={{
+      ...navStyle,
+
+      pointerEvents: "all",
+    }}
+  >
+    →
+  </div>
+</div>
           </div>
         </div>
       </div>
@@ -390,15 +412,30 @@ function Partners() {
 }
 
 const navStyle = {
-  width: "clamp(36px, 10vw, 44px)",
-  height: "clamp(36px, 10vw, 44px)",
-  minWidth: "36px",
+  width: "42px",
+  height: "42px",
+
+  minWidth: "42px",
+
   background: "#000",
   color: "#fff",
+
   borderRadius: "50%",
+
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+
+  cursor: "pointer",
+
+  fontSize: "16px",
+  fontWeight: "700",
+
+  flexShrink: 0,
+
+  userSelect: "none",
+
+  boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
 };
 
 export default Partners;
