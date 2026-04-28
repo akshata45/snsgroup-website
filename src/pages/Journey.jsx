@@ -333,18 +333,25 @@ function Journey() {
                     background: "#e7dfcc",
                     padding: "12px",
                     borderRadius: "6px",
-                    minHeight: "70px",
+
+                    height: "80px", // ✅ fixed height (same for all)
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
+                    overflow: "hidden", // ✅ prevent expansion
                   }}
                 >
                   <h3
                     style={{
                       margin: 0,
                       color: "#b08a3e",
-                      fontSize: "clamp(18px, 4vw, 26px)", // 👈 responsive
+                      fontSize: "clamp(18px, 4vw, 26px)",
                       fontWeight: "800",
+
+                      display: "-webkit-box", // ✅ clamp text
+                      WebkitLineClamp: 2, // max 2 lines
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
                     }}
                   >
                     {item.name}
@@ -354,7 +361,11 @@ function Journey() {
                     style={{
                       margin: 0,
                       color: "#444",
-                      fontSize: "clamp(14px, 3vw, 18.5px)", // 👈 responsive
+                      fontSize: "clamp(14px, 3vw, 18.5px)",
+
+                      whiteSpace: "nowrap", // ✅ keep location single line
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                     }}
                   >
                     @{item.loc}
