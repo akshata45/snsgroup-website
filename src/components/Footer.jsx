@@ -10,13 +10,13 @@ import { Link } from "react-router-dom";
 function Footer() {
   // ✅ Link Mapping
   const links = {
-    "Accolades": "/accolades",
+    Accolades: "/accolades",
     "About Us": "/story",
-    "Blogs": "/blogs",
+    Blogs: "/blogs",
     "NRI Corner": "/nri",
 
     "Get In Touch": "/contactus",
-    "Careers": "/careers",
+    Careers: "/careers",
     "Residential Projects": "/journey",
     "Commercial Projects": "/journey",
 

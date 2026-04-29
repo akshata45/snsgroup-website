@@ -30,7 +30,7 @@ const CurrencyCalculator = () => {
 
   const fetchRates = async () => {
     const res = await fetch(
-      `https://open.er-api.com/v6/latest/${fromCurrency}`
+      `https://open.er-api.com/v6/latest/${fromCurrency}`,
     );
     const data = await res.json();
 
@@ -94,9 +94,9 @@ const CurrencyCalculator = () => {
             </p>
 
             <p>
-              Ensure that the title report of the property contains no conditions
-              written in fine print and that there are no specific reservations
-              by the State Government.
+              Ensure that the title report of the property contains no
+              conditions written in fine print and that there are no specific
+              reservations by the State Government.
             </p>
 
             <p>

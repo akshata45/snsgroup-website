@@ -84,9 +84,7 @@ const BecomeVendor = () => {
 
             {/* COMPANY */}
             <div style={{ marginBottom: "25px" }}>
-              <label style={labelStyle}>
-                Name of Business or Company*
-              </label>
+              <label style={labelStyle}>Name of Business or Company*</label>
               <input
                 type="text"
                 name="companyName"

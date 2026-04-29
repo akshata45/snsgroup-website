@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
-
 const Blogs = () => {
   const blogs = [
     {
@@ -39,8 +38,8 @@ const Blogs = () => {
                 <h2>{blog.title}</h2>
                 <p>{blog.desc}</p>
                 <Link to={`/blog/${index}`}>
-  <button>Read More</button>
-</Link>
+                  <button>Read More</button>
+                </Link>
               </div>
             </div>
           ))}
@@ -56,7 +55,7 @@ const Blogs = () => {
           background: #f5f1e8;
           display: flex;
           justify-content: center;
-          textAlign: "justify", // ✅ FIX
+          textalign: "justify"; // ✅ FIX
         }
 
         .wrapper {
@@ -94,7 +93,6 @@ const Blogs = () => {
         .content {
           color: #201d1d;
           max-width: 500px;
-          
         }
 
         .content h2 {

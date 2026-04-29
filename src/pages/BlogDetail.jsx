@@ -66,52 +66,53 @@ const BlogDetail = () => {
       <Footer />
 
       {/* INLINE CSS */}
-      <style jsx>{`
-        .container {
-          padding: 60px 20px 80px;
-          background: #f5f1e8;
-          display: flex;
-          justify-content: center;
-        }
-
-        .wrapper {
-          max-width: 900px;
-          width: 100%;
-          color: #000;
-        }
-
-        h1 {
-          font-size: 32px;
-          margin-bottom: 20px;
-          color: #b88a2a;
-        }
-
-        img {
-          width: 100%;
-          border-radius: 12px;
-          margin-bottom: 25px;
-          img-rendering: optimizeQuality;
-          textAlign: "justify", // ✅ FIX
-        }
-
-        p {
-          font-size: 18px;
-          line-height: 1.8;
-          white-space: pre-line;
-          textAlign: "justify", // ✅ FIX
-        }
-
-        @media (max-width: 768px) {
-          h1 {
-            font-size: 24px;
-            textAlign: "justify", // ✅ FIX
-          }
-
+      <style jsx>
+        {`
           .container {
-            padding: 40px 15px 60px;
+            padding: 60px 20px 80px;
+            background: #f5f1e8;
+            display: flex;
+            justify-content: center;
           }
-        }
-      `}
+
+          .wrapper {
+            max-width: 900px;
+            width: 100%;
+            color: #000;
+          }
+
+          h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #b88a2a;
+          }
+
+          img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            img-rendering: optimizeQuality;
+            textalign: "justify"; // ✅ FIX
+          }
+
+          p {
+            font-size: 18px;
+            line-height: 1.8;
+            white-space: pre-line;
+            textalign: "justify"; // ✅ FIX
+          }
+
+          @media (max-width: 768px) {
+            h1 {
+              font-size: 24px;
+              textalign: "justify"; // ✅ FIX
+            }
+
+            .container {
+              padding: 40px 15px 60px;
+            }
+          }
+        `}
       </style>
     </>
   );

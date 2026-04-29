@@ -70,9 +70,7 @@ const ChannelPartner = () => {
           <form onSubmit={handleSubmit}>
             {/* NAME */}
             <div style={{ marginBottom: "25px" }}>
-              <label style={labelStyle}>
-                Name Of Channel Partner*
-              </label>
+              <label style={labelStyle}>Name Of Channel Partner*</label>
               <input
                 type="text"
                 name="name"
@@ -85,9 +83,7 @@ const ChannelPartner = () => {
 
             {/* RERA */}
             <div style={{ marginBottom: "25px" }}>
-              <label style={labelStyle}>
-                RERA ID Of Channel Partner**
-              </label>
+              <label style={labelStyle}>RERA ID Of Channel Partner**</label>
               <input
                 type="text"
                 name="rera"

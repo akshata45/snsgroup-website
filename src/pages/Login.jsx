@@ -56,7 +56,8 @@ function Login() {
     width: "100%",
     padding: "14px 12px",
     borderRadius: "8px",
-    border: focused === name ? "1px solid rgb(182, 141, 44)" : "1px solid #f5f1e8",
+    border:
+      focused === name ? "1px solid rgb(182, 141, 44)" : "1px solid #f5f1e8",
     background: "#f5f1e8",
     color: "#09332c",
     outline: "none",

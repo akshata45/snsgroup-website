@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-
 const Careers = () => {
   const [success, setSuccess] = useState(false);
 
@@ -35,7 +34,6 @@ const Careers = () => {
 
   return (
     <>
-
       <Navbar />
 
       {/* HERO */}
@@ -66,57 +64,60 @@ const Careers = () => {
             </div>
 
             <div className="hero-right">
-              <img src="/career-bg.jpg" alt="SNS Group careers Mumbai office team working" />
+              <img
+                src="/career-bg.jpg"
+                alt="SNS Group careers Mumbai office team working"
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* LEADERSHIP */}
-<section className="leadership">
-  <div className="container leadership-wrapper">
+      <section className="leadership">
+        <div className="container leadership-wrapper">
+          <div className="lead-img">
+            <img
+              src="/team.jpg"
+              alt="SNS Group leadership team collaboration"
+            />
+          </div>
 
-    <div className="lead-img">
-      <img src="/team.jpg" alt="SNS Group leadership team collaboration" />
-    </div>
+          <div className="lead-content">
+            <h3>LEADERSHIP THAT INSPIRES</h3>
 
-    <div className="lead-content">
-      <h3>LEADERSHIP THAT INSPIRES</h3>
+            <p>
+              Our leaders endeavour to create a conducive work environment built
+              on trust, tolerance, understanding, mutual cooperation and
+              respect. We collaborate to solve problems and work with a positive
+              mindset towards a common goal.
+            </p>
 
-      <p>
-        Our leaders endeavour to create a conducive work environment built on
-        trust, tolerance, understanding, mutual cooperation and respect. We
-        collaborate to solve problems and work with a positive mindset towards
-        a common goal.
-      </p>
+            <p className="lead-subtext">
+              Together, as an organization, we focus on meeting expectations of
+              all stakeholders, and believe that business success will follow.
+            </p>
 
-      <p className="lead-subtext">
-        Together, as an organization, we focus on meeting expectations of all
-        stakeholders, and believe that business success will follow.
-      </p>
+            <button className="outline-btn">EXPLORE</button>
+          </div>
 
-      <button className="outline-btn">EXPLORE</button>
-    </div>
-
-    {/* STATS */}
-    <div className="stats">
-      <div>
-        <h4>500+</h4>
-        <span>EMPLOYEES</span>
-      </div>
-      <div>
-        <h4>40+</h4>
-        <span>YEARS OF LEGACY</span>
-      </div>
-      <div>
-        <h4>12M+</h4>
-        <span>SQ. FT DEVELOPED</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
+          {/* STATS */}
+          <div className="stats">
+            <div>
+              <h4>500+</h4>
+              <span>EMPLOYEES</span>
+            </div>
+            <div>
+              <h4>40+</h4>
+              <span>YEARS OF LEGACY</span>
+            </div>
+            <div>
+              <h4>12M+</h4>
+              <span>SQ. FT DEVELOPED</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ATS */}
       <section className="ats-section">
@@ -205,7 +206,7 @@ const Careers = () => {
       <Footer />
 
       {/* STYLES */}
-<style>{`
+      <style>{`
 body {
   margin: 0;
   overflow-x: hidden;
@@ -581,7 +582,6 @@ textarea {
 }
 
 `}</style>
-
     </>
   );
 };

@@ -23,7 +23,11 @@ function Journey() {
       { name: "ESTORIA HEIGHTS", loc: "Malad", img: "/estoria1.jpg" },
       { name: "DEV DARSHAN", loc: "Bhandup", img: "/dev-darshan1.jpg" },
       { name: "ARHAM ARCADE", loc: "Kharghar", img: "/arham-arcade1.jpg" },
-      { name: "CHANDAN PRIDE", loc: "Ghatkopar East", img: "/chandan-pride1.jpg" },
+      {
+        name: "CHANDAN PRIDE",
+        loc: "Ghatkopar East",
+        img: "/chandan-pride1.jpg",
+      },
       { name: "LAKE MARVEL PAWNA", loc: "Lonavala", img: "/lake-marvel1.jpg" },
       { name: "DEV ASHISH", loc: "Bhandup", img: "/dev-ashish1.jpg" },
       { name: "PREM ASHISH", loc: "Ghatkopar West", img: "/prem-ashish1.jpg" },
@@ -83,10 +87,18 @@ function Journey() {
             BUILDING <br /> TODAY, <br /> SHAPING <br /> TOMORROW.
           </h1>
 
-          <div style={{ height: "2px", width: "60px", background: "#000", margin: "20px 0" }} />
+          <div
+            style={{
+              height: "2px",
+              width: "60px",
+              background: "#000",
+              margin: "20px 0",
+            }}
+          />
 
           <p style={{ color: "#555" }}>
-            Explore our landmark residential and commercial developments crafted with precision and trust.
+            Explore our landmark residential and commercial developments crafted
+            with precision and trust.
           </p>
 
           <select

@@ -23,9 +23,12 @@ function AboutSlider() {
 
       setIsMobile(w < 768);
 
-      if (w < 420) setCardsPerView(1.2);
-      else if (w < 600) setCardsPerView(2);
-      else if (w < 768) setCardsPerView(3);
+      if (w < 420)
+        setCardsPerView(1.4); // 👈 was 1.2 (too big)
+      else if (w < 600)
+        setCardsPerView(2.2); // 👈 better spacing
+      else if (w < 768)
+        setCardsPerView(2.8); // 👈 shows ~3 cards
       else if (w < 1024) setCardsPerView(2);
       else if (w < 1400) setCardsPerView(3);
       else setCardsPerView(4);
@@ -145,6 +148,7 @@ function AboutSlider() {
 
   return (
     <>
+    
       <style>
         {`
   html, body {
@@ -275,8 +279,14 @@ function AboutSlider() {
               gap: `${gap}px`,
               width: "100%",
               height: "100%",
+
               overflowX: isMobile ? "auto" : "hidden",
+
+              /* 🔥 PREMIUM SCROLL */
               scrollSnapType: isMobile ? "x mandatory" : "none",
+              scrollBehavior: "smooth",
+              WebkitOverflowScrolling: "touch",
+
               cursor: "grab",
             }}
           >
@@ -295,6 +305,10 @@ function AboutSlider() {
                     justifyContent: "flex-end",
                     cursor: "pointer",
                     scrollSnapAlign: "start",
+                    scrollSnapStop: "always",
+                    paddingLeft: isMobile ? "10px" : "0px",
+                    paddingRight: isMobile ? "10px" : "0px",
+
                     transition: "transform 0.7s cubic-bezier(0.25, 1, 0.3, 1)",
                   }}
                   onMouseEnter={(e) => {
