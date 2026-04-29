@@ -241,8 +241,17 @@ function BuyersGuide() {
               onMouseLeave={(e) => handleEnd(e.clientX)}
               style={{
                 overflow: "hidden",
-                height: "calc(100vh - 140px)",
+
+                /* ✅ Android FIX */
+                height: isMobile
+                  ? "calc(100dvh - 220px)"
+                  : "calc(100vh - 140px)",
+
                 cursor: "grab",
+
+                /* ✅ Prevent extra vertical stretching */
+                display: "flex",
+                alignItems: "flex-start",
               }}
             >
               <div
@@ -312,7 +321,7 @@ function BuyersGuide() {
                           /* ✅ Better spacing */
                           padding: isMobile ? "12px 10px" : "14px 18px",
 
-                          borderRadius: isMobile ? "14px" : "0px",
+                          borderRadius: isMobile ? "4px" : "0px",
 
                           overflow: "hidden",
                         }}
