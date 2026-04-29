@@ -300,16 +300,43 @@ function BuyersGuide() {
                         style={{
                           marginTop: "18px",
                           background: "#e6dfd2",
-                          padding: "14px 18px",
+
+                          /* ✅ Fixed consistent height on mobile */
+                          minHeight: isMobile ? "92px" : "auto",
+
+                          /* ✅ Prevent Android overflow issue */
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+
+                          /* ✅ Better spacing */
+                          padding: isMobile ? "12px 10px" : "14px 18px",
+
+                          borderRadius: isMobile ? "14px" : "0px",
+
+                          overflow: "hidden",
                         }}
                       >
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: "clamp(18px, 3.5vw, 30px)", // 👈 responsive
+
+                            /* ✅ Better mobile scaling */
+                            fontSize: isMobile
+                              ? "clamp(15px, 3vw, 18px)"
+                              : "clamp(18px, 3.5vw, 30px)",
+
                             fontWeight: "800",
                             color: "#a57c1b",
-                            lineHeight: "1.2",
+
+                            /* ✅ Stops text from stretching box */
+                            lineHeight: "1.15",
+
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {card.title}
@@ -317,10 +344,22 @@ function BuyersGuide() {
 
                         <p
                           style={{
-                            margin: 0,
-                            fontSize: "clamp(14px, 2.8vw, 17.5px)", // 👈 responsive
+                            margin: "4px 0 0",
+
+                            fontSize: isMobile
+                              ? "clamp(12px, 2.5vw, 14px)"
+                              : "clamp(14px, 2.8vw, 17.5px)",
+
                             color: "#444",
-                            lineHeight: "1.4",
+
+                            lineHeight: "1.25",
+
+                            /* ✅ Prevent subtitle pushing box bigger */
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {card.subtitle}
