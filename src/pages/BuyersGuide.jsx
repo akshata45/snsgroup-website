@@ -241,7 +241,7 @@ function BuyersGuide() {
               onMouseLeave={(e) => handleEnd(e.clientX)}
               style={{
                 overflow: "hidden",
-                height: "calc(100vh - 140px)",
+                height: isMobile ? "auto" : "calc(100vh - 140px)",
                 cursor: "grab",
               }}
             >
@@ -278,12 +278,14 @@ function BuyersGuide() {
                         display: "flex",
                         flexDirection: "column",
                         cursor: "pointer",
+                        justifyContent: isMobile ? "flex-start" : "initial",
+
                       }}
                     >
                       {/* IMAGE */}
                       <div
                         style={{
-                          height: "calc(100% - 90px)", // ✅ match label height
+                          height: isMobile ? "550px" : "calc(100% - 90px)", // ✅ match label height
                           borderRadius: "22px",
                           overflow: "hidden",
                         }}
@@ -307,7 +309,7 @@ function BuyersGuide() {
                           padding: "12px 16px",
 
                           /* ✅ SMART HEIGHT (NOT HARD FIXED) */
-                          minHeight: isMobile ? "80px" : "110px",
+                          height: isMobile ? "80px" : "110px",
 
                           display: "flex",
                           flexDirection: "column",
