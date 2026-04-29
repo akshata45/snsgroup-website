@@ -264,23 +264,26 @@ function BuyersGuide() {
                       onMouseLeave={() => setHovered(null)}
                       onClick={() => navigate(card.path)}
                       style={{
-                        // ✅ ONLY CHANGE HERE (reduced width on desktop)
                         minWidth: isMobile
                           ? `calc((100% - 28px) / ${visibleCards})`
                           : "32%",
 
                         transform:
-                          !isMobile && isHovered ? "scaleX(1.05)" : "scaleX(1)",
+                          !isMobile && hovered === i
+                            ? "scaleX(1.05)"
+                            : "scaleX(1)",
                         transformOrigin: "left",
                         transition: "transform 0.35s ease",
+
                         display: "flex",
                         flexDirection: "column",
                         cursor: "pointer",
                       }}
                     >
+                      {/* IMAGE */}
                       <div
                         style={{
-                          height: "calc(100% - 110px)",
+                          height: "calc(100% - 90px)", // ✅ match label height
                           borderRadius: "22px",
                           overflow: "hidden",
                         }}
@@ -296,31 +299,52 @@ function BuyersGuide() {
                         />
                       </div>
 
+                      {/* LABEL */}
                       <div
                         style={{
                           marginTop: "18px",
                           background: "#e6dfd2",
-                          padding: "14px 18px",
+                          padding: "12px 16px",
+
+                          /* ✅ SMART HEIGHT (NOT HARD FIXED) */
+                          minHeight: isMobile ? "80px" : "110px",
+
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          gap: "6px",
                         }}
                       >
+                        {/* TITLE */}
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: "clamp(18px, 3.5vw, 30px)", // 👈 responsive
+                            fontSize: "clamp(18px, 3.5vw, 30px)",
                             fontWeight: "800",
                             color: "#a57c1b",
                             lineHeight: "1.2",
+
+                            /* ✅ CONTROL BUT DON'T OVER-RESTRICT */
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
                           }}
                         >
                           {card.title}
                         </h3>
 
+                        {/* SUBTEXT */}
                         <p
                           style={{
                             margin: 0,
-                            fontSize: "clamp(14px, 2.8vw, 17.5px)", // 👈 responsive
+                            fontSize: "clamp(14px, 2.8vw, 17.5px)",
                             color: "#444",
-                            lineHeight: "1.4",
+                            lineHeight: "1.3",
+
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {card.subtitle}

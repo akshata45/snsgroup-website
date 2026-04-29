@@ -400,12 +400,22 @@ function Partners() {
                       <div
                         style={{
                           marginTop: isMobile ? "10px" : "18px",
-
                           background: "#e6dfd2",
-
                           padding: isMobile ? "10px 12px" : "14px 18px",
 
-                          borderRadius: isMobile ? "14px" : "0",
+                          borderRadius: isMobile ? "4px" : "0",
+
+                          /* ✅ FIXED HEIGHT (KEY FIX) */
+                          height: isMobile ? "65px" : "90px",
+                          minHeight: isMobile ? "65px" : "90px",
+                          maxHeight: isMobile ? "65px" : "90px",
+
+                          /* ✅ PERFECT CENTER (NOT SPACE-BETWEEN ❌) */
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+
+                          overflow: "hidden",
                         }}
                       >
                         <h3
@@ -415,12 +425,19 @@ function Partners() {
                             fontSize: isMobile
                               ? "16px"
                               : "clamp(18px, 4vw, 32px)",
-
                             fontWeight: "800",
-
                             color: "#a57c1b",
-
                             lineHeight: "1.2",
+
+                            textAlign: "center",
+
+                            /* ✅ TEXT CONTROL (VERY IMPORTANT) */
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {card.title}

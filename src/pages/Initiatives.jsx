@@ -334,7 +334,7 @@ function Initiatives() {
                         style={{
                           height: isMobile
                             ? "calc(100% - 72px)"
-                            : "calc(100% - 110px)",
+                            : "calc(100% - 100px)",
 
                           borderRadius: "22px",
                           overflow: "hidden",
@@ -359,25 +359,36 @@ function Initiatives() {
                       <div
                         style={{
                           marginTop: isMobile ? "10px" : "18px",
-
                           background: "#e6dfd2",
-
                           padding: isMobile ? "10px 14px" : "14px 18px",
+                          borderRadius: isMobile ? "6px" : "0",
 
-                          borderRadius: isMobile ? "16px" : "0",
+                          /* 🔥 FIXED HEIGHT */
+                          height: isMobile ? "70px" : "100px",
+                          minHeight: isMobile ? "70px" : "100px",
+                          maxHeight: isMobile ? "70px" : "100px",
+
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+
+                          overflow: "hidden", // 🔥 prevent expansion
                         }}
                       >
                         <h3
                           style={{
                             margin: 0,
-
-                            fontSize: isMobile ? "18px" : "32px",
-
+                            fontSize: isMobile ? "18px" : "28px",
                             fontWeight: "800",
-
                             color: "#a57c1b",
-
                             lineHeight: "1.2",
+
+                            /* 🔥 LIMIT TEXT */
+                            display: "-webkit-box",
+                            WebkitLineClamp: 1, // 🔥 single line for consistency
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {card.title}
@@ -386,12 +397,16 @@ function Initiatives() {
                         <p
                           style={{
                             margin: "4px 0 0",
-
-                            fontSize: isMobile ? "12px" : "17.5px",
-
+                            fontSize: isMobile ? "12px" : "16px",
                             color: "#555",
+                            lineHeight: "1.3",
 
-                            lineHeight: "1.4",
+                            /* 🔥 LIMIT TEXT */
+                            display: "-webkit-box",
+                            WebkitLineClamp: 1,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {card.subtitle}
