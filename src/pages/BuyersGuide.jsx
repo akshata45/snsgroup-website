@@ -241,7 +241,7 @@ function BuyersGuide() {
               onMouseLeave={(e) => handleEnd(e.clientX)}
               style={{
                 overflow: "hidden",
-                height: isMobile ? "auto" : "calc(100vh - 140px)",
+                height: "calc(100vh - 140px)",
                 cursor: "grab",
               }}
             >
@@ -264,28 +264,23 @@ function BuyersGuide() {
                       onMouseLeave={() => setHovered(null)}
                       onClick={() => navigate(card.path)}
                       style={{
+                        // ✅ ONLY CHANGE HERE (reduced width on desktop)
                         minWidth: isMobile
                           ? `calc((100% - 28px) / ${visibleCards})`
                           : "32%",
 
                         transform:
-                          !isMobile && hovered === i
-                            ? "scaleX(1.05)"
-                            : "scaleX(1)",
+                          !isMobile && isHovered ? "scaleX(1.05)" : "scaleX(1)",
                         transformOrigin: "left",
                         transition: "transform 0.35s ease",
-
                         display: "flex",
                         flexDirection: "column",
                         cursor: "pointer",
-                        justifyContent: isMobile ? "flex-start" : "initial",
-
                       }}
                     >
-                      {/* IMAGE */}
                       <div
                         style={{
-                          height: isMobile ? "550px" : "calc(100% - 90px)", // ✅ match label height
+                          height: "calc(100% - 110px)",
                           borderRadius: "22px",
                           overflow: "hidden",
                         }}
@@ -301,52 +296,31 @@ function BuyersGuide() {
                         />
                       </div>
 
-                      {/* LABEL */}
                       <div
                         style={{
                           marginTop: "18px",
                           background: "#e6dfd2",
-                          padding: "12px 16px",
-
-                          /* ✅ SMART HEIGHT (NOT HARD FIXED) */
-                          height: isMobile ? "80px" : "110px",
-
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
-                          gap: "6px",
+                          padding: "14px 18px",
                         }}
                       >
-                        {/* TITLE */}
                         <h3
                           style={{
                             margin: 0,
-                            fontSize: "clamp(18px, 3.5vw, 30px)",
+                            fontSize: "clamp(18px, 3.5vw, 30px)", // 👈 responsive
                             fontWeight: "800",
                             color: "#a57c1b",
                             lineHeight: "1.2",
-
-                            /* ✅ CONTROL BUT DON'T OVER-RESTRICT */
-                            display: "-webkit-box",
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: "vertical",
-                            overflow: "hidden",
                           }}
                         >
                           {card.title}
                         </h3>
 
-                        {/* SUBTEXT */}
                         <p
                           style={{
                             margin: 0,
-                            fontSize: "clamp(14px, 2.8vw, 17.5px)",
+                            fontSize: "clamp(14px, 2.8vw, 17.5px)", // 👈 responsive
                             color: "#444",
-                            lineHeight: "1.3",
-
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
+                            lineHeight: "1.4",
                           }}
                         >
                           {card.subtitle}
