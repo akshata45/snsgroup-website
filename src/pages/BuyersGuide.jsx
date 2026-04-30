@@ -289,7 +289,7 @@ function BuyersGuide() {
                     >
                       <div
                         style={{
-                          height: "calc(100% - 110px)",
+                          height: "calc(100% - 90px)",
                           borderRadius: "22px",
                           overflow: "hidden",
                         }}
@@ -311,7 +311,7 @@ function BuyersGuide() {
                           background: "#e6dfd2",
 
                           /* ✅ Fixed consistent height on mobile */
-                          minHeight: isMobile ? "92px" : "auto",
+                          minHeight: isMobile ? "18px" : "auto",
 
                           /* ✅ Prevent Android overflow issue */
                           display: "flex",
@@ -319,9 +319,9 @@ function BuyersGuide() {
                           justifyContent: "center",
 
                           /* ✅ Better spacing */
-                          padding: isMobile ? "12px 10px" : "14px 18px",
+                          padding: isMobile ? "14px 12px" : "14px 18px",
 
-                          borderRadius: isMobile ? "4px" : "0px",
+                          borderRadius: isMobile ? "2px" : "0px",
 
                           overflow: "hidden",
                         }}
