@@ -184,144 +184,218 @@ const CurrencyCalculator = () => {
 
       <Footer />
 
-      <style jsx>{`
-        .container {
-          padding: 40px 12px 80px; /* 🔥 reduced bottom gap */
-          background: #f5f1e8;
-          min-height: auto;
-        }
+<style jsx>{`
+  /* GLOBAL SAFETY */
+  * {
+    box-sizing: border-box;
+  }
 
-        .wrapper {
-          max-width: 1100px;
-          margin: auto;
-          display: flex;
-          gap: 40px;
-          flex-wrap: wrap;
-          align-items: flex-start;
-        }
+  body {
+    overflow-x: hidden;
+  }
 
-        .left {
-          flex: 1;
-          min-width: 280px;
-          color: #000;
-        }
+  /* MAIN CONTAINER */
+  .container {
+    width: 100%;
+    padding: 40px 16px 60px;
+    background: #f5f1e8;
+    overflow-x: hidden;
+  }
 
-        .left h2 {
-          color: #b88a2a;
-        }
+  /* WRAPPER */
+  .wrapper {
+    max-width: 1100px;
+    margin: auto;
 
-        .highlight {
-          font-weight: 600;
-          margin: 10px 0 20px;
-        }
+    display: flex;
+    gap: 40px;
 
-        .left p {
-          font-size: 17px;
-          line-height: 1.6;
-          margin-bottom: 10px; /* 🔥 balanced spacing */
-          text-align: justify; /* ✅ FIXED */
-        }
+    align-items: flex-start;
 
-        .left p:last-child {
-          margin-bottom: 0;
-        }
+    width: 100%;
+  }
 
-        .source {
-          font-size: 17px;
-          margin-top: 10px;
-        }
+  /* LEFT TEXT */
+  .left {
+    flex: 1;
+    min-width: 0; /* 🔥 CRITICAL FIX */
+    color: #1a1a1a;
+  }
 
-        .card {
-          width: 100%;
-          max-width: 380px;
-          margin: 0 auto;
-          padding: 20px;
-          border-radius: 20px;
-          backdrop-filter: blur(20px);
-          background: rgba(255, 255, 255, 0.85);
-          border: 1px solid rgba(184, 138, 42, 0.5);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-          color: #000;
-        }
+  .left h2 {
+    color: #b88a2a;
+  }
 
-        .card h3 {
-          text-align: center;
-          margin-bottom: 15px;
-        }
+  .highlight {
+    font-weight: 600;
+    margin: 10px 0 20px;
+  }
 
-        .row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border-bottom: 2px solid #b88a2a;
-          margin-bottom: 15px;
-        }
+  .left p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    text-align: justify;
+    color: #333;
+  }
 
-        select,
-        input {
-          border: none;
-          background: transparent;
-          padding: 10px;
-          outline: none;
-          color: #000;
-          font-size: 17px;
-        }
+  .source {
+    font-size: 17px;
+    margin-top: 12px;
+  }
 
-        input {
-          text-align: right;
-        }
+  /* CARD */
+  .card {
+    flex: 1;
+    min-width: 0; /* 🔥 prevents overflow */
 
-        .swap {
-          text-align: center;
-          cursor: pointer;
-          font-size: 18px;
-          margin: 10px 0;
-          transition: 0.3s;
-        }
+    width: 100%;
+    max-width: 420px;
+    color: #111;
 
-        .swap:hover {
-          transform: rotate(180deg);
-          color: #b88a2a;
-        }
+    padding: 20px;
+    border-radius: 20px;
 
-        .result {
-          text-align: center;
-          margin-top: 15px;
-          padding: 12px;
-          border: 1px solid #b88a2a;
-          border-radius: 30px;
-          font-size: 17px;
-        }
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.9);
 
-        .chart {
-          margin-top: 15px;
-          width: 100%;
-          height: 140px;
-        }
+    border: 1px solid rgba(184, 138, 42, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
-        .rate {
-          text-align: center;
-          font-size: 17px;
-          margin-top: 10px;
-        }
+    overflow: hidden;
+  }
 
-        @media (max-width: 768px) {
-          .wrapper {
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-          }
+  .card h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #111;
+  }
 
-          .card {
-            max-width: 100%;
-            padding: 18px;
-          }
+  /* ROW FIX */
+  .row {
+    display: flex;
+    gap: 10px;
 
-          .container {
-            padding-bottom: 15px; /* 🔥 mobile fix */
-          }
-        }
-      `}</style>
+    align-items: center;
+
+    border-bottom: 2px solid #b88a2a;
+    margin-bottom: 15px;
+
+    width: 100%;
+  }
+
+  /* INPUT + SELECT FIX */
+  select,
+  input {
+    flex: 1; /* 🔥 equal width */
+    min-width: 0; /* 🔥 MOST IMPORTANT */
+
+    border: none;
+    background: transparent;
+    color: #111;
+
+    padding: 10px 6px;
+    outline: none;
+
+    font-size: 18px;
+  }
+
+  select {
+    max-width: 50%;
+  }
+
+  input {
+    text-align: right;
+  }
+
+  /* SWAP */
+  .swap {
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 10px 0;
+    transition: 0.3s;
+  }
+
+  .swap:hover {
+    transform: rotate(180deg);
+    color: #b88a2a;
+  }
+
+  /* RESULT */
+  .result {
+    text-align: center;
+    margin-top: 15px;
+    color: #111;
+
+    padding: 12px;
+
+    border: 1px solid #b88a2a;
+    border-radius: 30px;
+
+    font-size: 18px;
+
+    word-break: break-word; /* 🔥 prevents overflow */
+  }
+
+  /* CHART */
+  .chart {
+    margin-top: 15px;
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+  }
+
+  .rate {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+    color: #333;
+  }
+
+  /* TABLET */
+  @media (max-width: 900px) {
+    .wrapper {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .card {
+      max-width: 100%;
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .container {
+      padding: 25px 12px 40px;
+    }
+
+    .left p {
+      font-size: 15px;
+    }
+
+    .row {
+      gap: 6px;
+    }
+
+    select,
+    input {
+      font-size: 13px;
+      padding: 8px 4px;
+    }
+
+    .result {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .rate {
+      font-size: 14px;
+    }
+  }
+`}</style>
+
     </>
   );
 };
