@@ -34,7 +34,7 @@ function BuyersGuide() {
     },
   ];
 
-  const visibleCards = isMobile ? 2 : 2;
+  const visibleCards = isMobile ? 1 : 2;
 
   const nextSlide = () => {
     if (index < cards.length - visibleCards) setIndex(index + 1);
@@ -63,36 +63,30 @@ function BuyersGuide() {
   return (
     <>
       <Navbar />
-      {/* 🔥 GLOBAL FIX (NO SCROLL + PERFECT MOBILE FIT) */}
+
       <style>
         {`
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden; /* 🔥 removes vertical scroll */
-  }
+        html, body {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          overflow: hidden;
+        }
 
-  #root {
-    height: 100%;
-    overflow: hidden;
-  }
+        #root {
+          height: 100%;
+          overflow: hidden;
+        }
 
-  * {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-  }
+        * {
+          box-sizing: border-box;
+          -webkit-tap-highlight-color: transparent;
+        }
 
-  /* Hide scrollbars */
-  div::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Extra safety: prevent accidental overflow */
-  body.menu-open {
-    overflow: hidden;
-  }
-`}
+        div::-webkit-scrollbar {
+          display: none;
+        }
+      `}
       </style>
 
       <div
@@ -141,36 +135,34 @@ function BuyersGuide() {
             </div>
           )}
 
-          <div
-            style={{
-              flex: 1,
-              position: "relative",
-            }}
-          >
+          <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
+            
+            {/* ✅ MOBILE OVERLAY FIXED */}
             {isMobile && (
               <>
-                {/* 🔥 SLIDING PANEL */}
                 <div
                   style={{
                     position: "absolute",
-                    top: "110px",
-                    left: "50%",
+                    top: "90px",
+
+                    left: "16px",
+                    right: "16px",
 
                     transform: showOverlay
-                      ? "translate(-50%, 0)"
-                      : "translate(120%, 0)",
+                      ? "translateX(0)"
+                      : "translateX(120%)",
 
-                    width: "92%",
                     background: "#fff",
-                    borderRadius: "16px",
-                    padding: "20px",
+                    borderRadius: "18px",
+                    padding: "18px",
                     zIndex: 10,
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
 
                     transition: "transform 0.4s ease",
+
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+                    boxSizing: "border-box",
                   }}
                 >
-                  {/* CLOSE BUTTON */}
                   <div
                     onClick={() => setShowOverlay(false)}
                     style={{
@@ -185,7 +177,6 @@ function BuyersGuide() {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontWeight: "bold",
                       cursor: "pointer",
                     }}
                   >
@@ -201,18 +192,14 @@ function BuyersGuide() {
                   </p>
                 </div>
 
-                {/* 🔥 FIXED ℹ BUTTON */}
                 {!showOverlay && (
                   <div
                     onClick={() => setShowOverlay(true)}
                     style={{
-                      position: "fixed", // 🔥 key fix
-                      top: "50%",
+                      position: "fixed",
                       right: "0",
-                      transform: "translateY(-50%)",
-
-                      zIndex: 9999,
                       top: "25%",
+                      zIndex: 10000,
                       background: "#b68d2c",
                       color: "#fff",
                       width: "42px",
@@ -223,8 +210,6 @@ function BuyersGuide() {
                       alignItems: "center",
                       justifyContent: "center",
                       cursor: "pointer",
-                      boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
-                      transition: "all 0.3s ease",
                     }}
                   >
                     ℹ
@@ -233,178 +218,151 @@ function BuyersGuide() {
               </>
             )}
 
+            {/* SLIDER */}
             <div
               onTouchStart={(e) => handleStart(e.touches[0].clientX)}
               onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
-              onMouseDown={(e) => handleStart(e.clientX)}
-              onMouseUp={(e) => handleEnd(e.clientX)}
-              onMouseLeave={(e) => handleEnd(e.clientX)}
               style={{
-                overflow: "hidden",
-
-                /* ✅ Android FIX */
+                overflow: isMobile ? "visible" : "hidden",
                 height: isMobile
                   ? "calc(100dvh - 220px)"
                   : "calc(100vh - 140px)",
-
-                cursor: "grab",
-
-                /* ✅ Prevent extra vertical stretching */
                 display: "flex",
-                alignItems: "flex-start",
               }}
             >
               <div
                 style={{
                   display: "flex",
                   gap: "28px",
-                  height: "100%",
                   transition: "transform 0.4s ease",
-                  transform: `translateX(calc(-${index} * ((100% - 28px)/${visibleCards} + 28px)))`,
+                  transform: isMobile
+                    ? `translateX(-${index * 86}vw)`
+                    : `translateX(calc(-${index} * ((100% - 28px)/2 + 28px)))`,
                 }}
               >
-                {cards.map((card, i) => {
-                  const isHovered = hovered === i;
-
-                  return (
+                {cards.map((card, i) => (
+                  <div
+                    key={i}
+                    onClick={() => navigate(card.path)}
+                    style={{
+                      minWidth: isMobile ? "82vw" : "32%",
+                      display: "flex",
+                      flexDirection: "column",
+                      cursor: "pointer",
+                    }}
+                  >
                     <div
-                      key={i}
-                      onMouseEnter={() => setHovered(i)}
-                      onMouseLeave={() => setHovered(null)}
-                      onClick={() => navigate(card.path)}
                       style={{
-                        // ✅ ONLY CHANGE HERE (reduced width on desktop)
-                        minWidth: isMobile
-                          ? `calc((100% - 28px) / ${visibleCards})`
-                          : "32%",
-
-                        transform:
-                          !isMobile && isHovered ? "scaleX(1.05)" : "scaleX(1)",
-                        transformOrigin: "left",
-                        transition: "transform 0.35s ease",
-                        display: "flex",
-                        flexDirection: "column",
-                        cursor: "pointer",
+                        height: isMobile
+                          ? "calc(100% - 80px)"
+                          : "calc(100% - 100px)",
+                        borderRadius: "22px",
+                        overflow: "hidden",
                       }}
                     >
-                      <div
+                      <img
+                        src={card.image}
+                        alt=""
                         style={{
-                          height: "calc(100% - 90px)",
-                          borderRadius: "22px",
-                          overflow: "hidden",
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
                         }}
-                      >
-                        <img
-                          src={card.image}
-                          alt={card.title}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </div>
-
-                      <div
-                        style={{
-                          marginTop: "18px",
-                          background: "#e6dfd2",
-
-                          /* ✅ Fixed consistent height on mobile */
-                          minHeight: isMobile ? "18px" : "auto",
-
-                          /* ✅ Prevent Android overflow issue */
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
-
-                          /* ✅ Better spacing */
-                          padding: isMobile ? "14px 12px" : "14px 18px",
-
-                          borderRadius: isMobile ? "2px" : "0px",
-
-                          overflow: "hidden",
-                        }}
-                      >
-                        <h3
-                          style={{
-                            margin: 0,
-
-                            /* ✅ Better mobile scaling */
-                            fontSize: isMobile
-                              ? "clamp(15px, 3vw, 18px)"
-                              : "clamp(18px, 3.5vw, 30px)",
-
-                            fontWeight: "800",
-                            color: "#a57c1b",
-
-                            /* ✅ Stops text from stretching box */
-                            lineHeight: "1.15",
-
-                            display: "-webkit-box",
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: "vertical",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                          }}
-                        >
-                          {card.title}
-                        </h3>
-
-                        <p
-                          style={{
-                            margin: "4px 0 0",
-
-                            fontSize: isMobile
-                              ? "clamp(12px, 2.5vw, 14px)"
-                              : "clamp(14px, 2.8vw, 17.5px)",
-
-                            color: "#444",
-
-                            lineHeight: "1.25",
-
-                            /* ✅ Prevent subtitle pushing box bigger */
-                            display: "-webkit-box",
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: "vertical",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                          }}
-                        >
-                          {card.subtitle}
-                        </p>
-                      </div>
+                      />
                     </div>
-                  );
-                })}
+
+                    <div
+                      style={{
+                        marginTop: isMobile ? "10px" : "18px",
+                        background: "#e6dfd2",
+                        padding: isMobile ? "12px 14px" : "14px 18px",
+                        borderRadius: isMobile ? "6px" : "0",
+
+                        height: isMobile ? "70px" : "100px",
+                        minHeight: isMobile ? "70px" : "100px",
+                        maxHeight: isMobile ? "70px" : "100px",
+
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        overflow: "hidden",
+                      }}
+                    >
+                      <h3
+                        style={{
+                          margin: 0,
+                          fontSize: isMobile
+                            ? "clamp(23px, 3vw, 25px)"
+                            : "clamp(18px, 3.5vw, 30px)",
+                          fontWeight: "800",
+                          color: "#a57c1b",
+                          lineHeight: "1.15",
+                        }}
+                      >
+                        {card.title}
+                      </h3>
+
+                      <p
+                        style={{
+                          margin: "4px 0 0",
+                          fontSize: isMobile
+                            ? "clamp(15px, 2.5vw, 20px)"
+                            : "clamp(14px, 2.8vw, 17.5px)",
+                          color: "#444",
+                        }}
+                      >
+                        {card.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div
-              style={{
-                position: "absolute",
-                bottom: "120px",
-                left: 0,
-                right: 0,
-                display: "flex",
-                justifyContent: "space-between",
-                pointerEvents: "none",
-              }}
-            >
-              <div
-                onClick={prevSlide}
-                style={{ ...navStyle, pointerEvents: "all" }}
-              >
-                ←
-              </div>
+            {/* MOBILE ARROWS */}
+            {isMobile && (
+              <>
+                <div
+                  onClick={prevSlide}
+                  style={{
+                    position: "fixed",
+                    bottom: "90px",
+                    left: "12px",
+                    zIndex: 99999,
+                    width: "42px",
+                    height: "42px",
+                    background: "#000",
+                    color: "#fff",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  ←
+                </div>
 
-              <div
-                onClick={nextSlide}
-                style={{ ...navStyle, pointerEvents: "all" }}
-              >
-                →
-              </div>
-            </div>
+                <div
+                  onClick={nextSlide}
+                  style={{
+                    position: "fixed",
+                    bottom: "90px",
+                    right: "12px",
+                    zIndex: 99999,
+                    width: "42px",
+                    height: "42px",
+                    background: "#000",
+                    color: "#fff",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  →
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -422,7 +380,6 @@ const navStyle = {
   alignItems: "center",
   justifyContent: "center",
   cursor: "pointer",
-  fontSize: "18px",
 };
 
 export default BuyersGuide;
