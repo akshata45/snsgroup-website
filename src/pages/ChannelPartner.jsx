@@ -83,7 +83,7 @@ const ChannelPartner = () => {
 
             {/* RERA */}
             <div style={{ marginBottom: "25px" }}>
-              <label style={labelStyle}>RERA ID Of Channel Partner**</label>
+              <label style={labelStyle}>RERA ID Of Channel Partner</label>
               <input
                 type="text"
                 name="rera"
@@ -95,7 +95,7 @@ const ChannelPartner = () => {
 
             {/* FIRM */}
             <div style={{ marginBottom: "25px" }}>
-              <label style={labelStyle}>Firm Name*</label>
+              <label style={labelStyle}>Firm Name</label>
               <input
                 type="text"
                 name="firm"

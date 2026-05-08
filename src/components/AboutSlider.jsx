@@ -148,7 +148,6 @@ function AboutSlider() {
 
   return (
     <>
-    
       <style>
         {`
   html, body {
@@ -193,12 +192,23 @@ function AboutSlider() {
                 fontSize: "27px",
                 marginBottom: "8px",
                 fontWeight: "800",
+                lineHeight: "1.3",
               }}
             >
-              WE HAVE A LEGACY OF OVER 40 YEARS
+              BUILDING TRUST & LANDMARKS SINCE 2019
             </h2>
-            <p style={{ fontSize: "18px", color: "#555", margin: 0 }}>
-              “We don’t just build walls, we build a lifestyle”
+
+            <p
+              style={{
+                fontSize: "18px",
+                color: "#555",
+                margin: 0,
+                lineHeight: "1.8",
+                maxWidth: "900px",
+              }}
+            >
+              Delivering quality spaces with innovation, integrity, and
+              excellence.
             </p>
           </div>
         )}

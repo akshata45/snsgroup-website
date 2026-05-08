@@ -159,7 +159,7 @@ function Partners() {
                   margin: 0,
                 }}
               >
-                BUILDING TRUST WITH EVERY MILESTONE.
+                WHERE QUALITY MEETS TIMELESS CONSTRUCTION.
               </h2>
 
               <div
@@ -178,7 +178,7 @@ function Partners() {
                   lineHeight: "1.6",
                 }}
               >
-                We are happy to have you associated with us.
+                Creating lasting relationships through quality, commitment, and transparency.
               </p>
             </div>
           )}

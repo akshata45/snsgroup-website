@@ -6,6 +6,10 @@ const NRICorner = () => {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [amount, setAmount] = useState(10000000);
+  const [fromCurrency, setFromCurrency] = useState("INR");
+  const [toCurrency, setToCurrency] = useState("USD");
+  const [convertedAmount, setConvertedAmount] = useState(0);
 
   // Resize handler
   useEffect(() => {
@@ -24,6 +28,57 @@ const NRICorner = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+  useEffect(() => {
+    const rates = {
+      INR: {
+        USD: 0.012,
+        AED: 0.044,
+        GBP: 0.0095,
+        EUR: 0.011,
+        INR: 1,
+      },
+
+      USD: {
+        INR: 83,
+        AED: 3.67,
+        GBP: 0.79,
+        EUR: 0.92,
+        USD: 1,
+      },
+
+      AED: {
+        INR: 22.6,
+        USD: 0.27,
+        GBP: 0.21,
+        EUR: 0.25,
+        AED: 1,
+      },
+
+      GBP: {
+        INR: 105,
+        USD: 1.27,
+        AED: 4.67,
+        EUR: 1.17,
+        GBP: 1,
+      },
+
+      EUR: {
+        INR: 90,
+        USD: 1.09,
+        AED: 4,
+        GBP: 0.85,
+        EUR: 1,
+      },
+    };
+
+    const result = amount * rates[fromCurrency][toCurrency];
+
+    setConvertedAmount(
+      result.toLocaleString(undefined, {
+        maximumFractionDigits: 2,
+      }),
+    );
+  }, [amount, fromCurrency, toCurrency]);
 
   return (
     <>
@@ -132,7 +187,7 @@ const NRICorner = () => {
                   }}
                 >
                   BUILDING REAL ESTATE AND WINNING <br />
-                  HEARTS SINCE 1986
+                  HEARTS SINCE 2019
                 </h3>
 
                 <div
@@ -353,6 +408,371 @@ const NRICorner = () => {
               <h4 style={{ color: "#d4af37", fontSize: "20px" }}>URBAN</h4>
               <p style={{ fontSize: "17px" }}>
                 CITIES OFFER <br /> OPPORTUNITIES FOR REAL ESTATE
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    {/* CURRENCY CALCULATOR */}
+
+      <div
+        style={{
+          background:
+            "linear-gradient(180deg, #f8f5ef 0%, #f4efe6 50%, #f8f5ef 100%)",
+          padding: window.innerWidth < 768 ? "45px 16px" : "80px 40px",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* LEFT CURVE */}
+        {!isMobile && (
+          <div
+            style={{
+              position: "absolute",
+              left: "-200px",
+              bottom: "-180px",
+              width: "500px",
+              height: "500px",
+              borderRadius: "50%",
+              border: "1px solid rgba(184,138,42,0.08)",
+            }}
+          />
+        )}
+
+        {/* RIGHT CURVE */}
+        {!isMobile && (
+          <div
+            style={{
+              position: "absolute",
+              right: "-150px",
+              top: "-150px",
+              width: "420px",
+              height: "420px",
+              borderRadius: "50%",
+              border: "1px solid rgba(184,138,42,0.08)",
+            }}
+          />
+        )}
+
+        <div
+          style={{
+            maxWidth: "1150px",
+            margin: "0 auto",
+            background: "rgba(255,255,255,0.82)",
+            backdropFilter: "blur(12px)",
+            borderRadius: isMobile ? "22px" : "30px",
+            padding: isMobile ? "28px 20px" : "60px",
+            boxShadow:
+              "0 15px 50px rgba(0,0,0,0.05), 0 5px 20px rgba(184,138,42,0.08)",
+            border: "1px solid rgba(184,138,42,0.10)",
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          {/* TOP GOLD CIRCLE */}
+          <div
+            style={{
+              position: "absolute",
+              top: isMobile ? "-80px" : "-120px",
+              right: isMobile ? "-80px" : "-120px",
+              width: isMobile ? "180px" : "280px",
+              height: isMobile ? "180px" : "280px",
+              borderRadius: "50%",
+              background: "rgba(212,175,55,0.10)",
+            }}
+          />
+
+          {/* CONTENT */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              gap: isMobile ? "40px" : "60px",
+              position: "relative",
+              zIndex: 2,
+            }}
+          >
+            {/* LEFT SIDE */}
+            <div style={{ flex: 1 }}>
+              <p
+                style={{
+                  fontSize: isMobile ? "11px" : "13px",
+                  letterSpacing: isMobile ? "3px" : "4px",
+                  color: "#b88a2a",
+                  marginBottom: "18px",
+                  fontWeight: "600",
+                }}
+              >
+                GLOBAL INVESTMENT TOOL
+              </p>
+
+              <h2
+                style={{
+                  fontSize: isMobile ? "42px" : "62px",
+                  lineHeight: isMobile ? "1.1" : "1.05",
+                  color: "#2f2f2f",
+                  fontWeight: "300",
+                  marginBottom: "18px",
+                  letterSpacing: isMobile ? "-1px" : "2px",
+                }}
+              >
+                Currency <br />
+                Calculator
+              </h2>
+
+              <div
+                style={{
+                  width: isMobile ? "70px" : "90px",
+                  height: "2px",
+                  background: "linear-gradient(to right, #b88a2a, #d4af37)",
+                  marginBottom: "24px",
+                }}
+              />
+
+              <p
+                style={{
+                  fontSize: isMobile ? "15px" : "18px",
+                  lineHeight: isMobile ? "1.9" : "2",
+                  color: "#6d6d6d",
+                  maxWidth: "500px",
+                  fontWeight: "300",
+                }}
+              >
+                Instantly estimate your investment value across international
+                currencies for smarter NRI real estate planning.
+              </p>
+            </div>
+
+            {/* RIGHT SIDE */}
+            <div style={{ flex: 1 }}>
+              {/* INPUTS */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+                  gap: isMobile ? "16px" : "18px",
+                  marginBottom: "20px",
+                }}
+              >
+                {/* AMOUNT */}
+                <div style={{ gridColumn: "1 / -1" }}>
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      color: "#8d857d",
+                      fontSize: "12px",
+                      letterSpacing: "2px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    INVESTMENT AMOUNT
+                  </label>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      height: isMobile ? "58px" : "65px",
+                      background: "#fffdfa",
+                      border: "1px solid #eadfcf",
+                      borderRadius: "16px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <input
+                      type="number"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                      placeholder="Enter amount"
+                      style={{
+                        flex: 1,
+                        height: "100%",
+                        border: "none",
+                        background: "transparent",
+                        padding: isMobile ? "0 16px" : "0 22px",
+                        fontSize: isMobile ? "17px" : "20px",
+                        color: "#2f2f2f",
+                        outline: "none",
+                        fontWeight: "400",
+                        minWidth: 0,
+                      }}
+                    />
+
+                    <div
+                      style={{
+                        width: isMobile ? "60px" : "70px",
+                        height: "100%",
+                        background: "#f8f1e4",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#b88a2a",
+                        fontSize: isMobile ? "24px" : "28px",
+                        fontWeight: "500",
+                      }}
+                    >
+                      ₹
+                    </div>
+                  </div>
+                </div>
+
+                {/* FROM */}
+                <div>
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      color: "#8d857d",
+                      fontSize: "12px",
+                      letterSpacing: "2px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    FROM
+                  </label>
+
+                  <select
+                    value={fromCurrency}
+                    onChange={(e) => setFromCurrency(e.target.value)}
+                    style={{
+                      width: "100%",
+                      height: isMobile ? "58px" : "65px",
+                      border: "1px solid #eadfcf",
+                      borderRadius: "16px",
+                      padding: "0 16px",
+                      background: "#fffdfa",
+                      fontSize: isMobile ? "15px" : "17px",
+                      color: "#2f2f2f",
+                      outline: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <option value="INR">🇮🇳 INR</option>
+                    <option value="USD">🇺🇸 USD</option>
+                    <option value="AED">🇦🇪 AED</option>
+                    <option value="GBP">🇬🇧 GBP</option>
+                    <option value="EUR">🇪🇺 EUR</option>
+                  </select>
+                </div>
+
+                {/* TO */}
+                <div>
+                  <label
+                    style={{
+                      display: "block",
+                      marginBottom: "10px",
+                      color: "#8d857d",
+                      fontSize: "12px",
+                      letterSpacing: "2px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    TO
+                  </label>
+
+                  <select
+                    value={toCurrency}
+                    onChange={(e) => setToCurrency(e.target.value)}
+                    style={{
+                      width: "100%",
+                      height: isMobile ? "58px" : "65px",
+                      border: "1px solid #eadfcf",
+                      borderRadius: "16px",
+                      padding: "0 16px",
+                      background: "#fffdfa",
+                      fontSize: isMobile ? "15px" : "17px",
+                      color: "#2f2f2f",
+                      outline: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <option value="USD">🇺🇸 USD</option>
+                    <option value="AED">🇦🇪 AED</option>
+                    <option value="GBP">🇬🇧 GBP</option>
+                    <option value="EUR">🇪🇺 EUR</option>
+                    <option value="INR">🇮🇳 INR</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* RESULT CARD */}
+              <div
+                style={{
+                  marginTop: "28px",
+                  background:
+                    "linear-gradient(135deg, #fcfaf5 0%, #f5ecda 100%)",
+                  border: "1px solid rgba(184,138,42,0.18)",
+                  borderRadius: isMobile ? "18px" : "24px",
+                  padding: isMobile ? "24px" : "35px",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                {/* GOLD BAR */}
+                <div
+                  style={{
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    width: "5px",
+                    height: "100%",
+                    background: "linear-gradient(to bottom, #b88a2a, #d4af37)",
+                  }}
+                />
+
+                <p
+                  style={{
+                    fontSize: isMobile ? "11px" : "13px",
+                    letterSpacing: "2px",
+                    color: "#8c857d",
+                    marginBottom: "16px",
+                  }}
+                >
+                  ESTIMATED CONVERSION VALUE
+                </p>
+
+                <h1
+                  style={{
+                    fontSize: isMobile ? "42px" : "72px",
+                    color: "#1f1f1f",
+                    margin: 0,
+                    fontWeight: "300",
+                    lineHeight: "1",
+                    letterSpacing: isMobile ? "-1px" : "-2px",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  {convertedAmount}
+                </h1>
+
+                <p
+                  style={{
+                    marginTop: "14px",
+                    fontSize: isMobile ? "18px" : "24px",
+                    color: "#b88a2a",
+                    fontWeight: "500",
+                    letterSpacing: "1px",
+                  }}
+                >
+                  {toCurrency}
+                </p>
+              </div>
+
+              {/* FOOTNOTE */}
+              <p
+                style={{
+                  marginTop: "16px",
+                  color: "#9d958d",
+                  fontSize: isMobile ? "11px" : "14px",
+                  lineHeight: "1.8",
+                }}
+              >
+                *Indicative exchange values intended for investment estimation
+                purposes only.
               </p>
             </div>
           </div>
@@ -644,6 +1064,7 @@ const NRICorner = () => {
                 outline: "none",
                 fontSize: "14px",
                 resize: "none",
+                color: "#000", // Added black text color
               }}
             />
           </div>

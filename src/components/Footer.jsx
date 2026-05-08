@@ -224,8 +224,32 @@ function Footer() {
           </Link>
         </div>
 
-        <span style={{ opacity: 0.8 }}>
-          © {new Date().getFullYear()} SNS GROUP — Crafted with Excellence
+        <span
+          style={{
+            color: "rgba(48, 47, 47, 0.85)", // instead of opacity
+            fontWeight: "400",
+            letterSpacing: "0.3px",
+            WebkitFontSmoothing: "antialiased",
+            MozOsxFontSmoothing: "grayscale",
+            fontSize: "14px",
+          }}
+        >
+          © {new Date().getFullYear()} SNS GROUP — Building Futures Digitally
+          with{" "}
+          <a
+            href="https://viavistas.co.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "#809105",
+              textDecoration: "none",
+              fontWeight: "500",
+              fontSize: "14.5px",
+                
+            }}
+          >
+            ViaVistas
+          </a>
         </span>
       </div>
 

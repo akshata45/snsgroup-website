@@ -18,30 +18,30 @@ function Journey() {
 
   const projectsData = {
     Completed: [
-      { name: "ESTORIA HEIGHTS", loc: "Malad", img: "/estoria1.jpg" },
-      { name: "DEV DARSHAN", loc: "Bhandup", img: "/dev-darshan1.jpg" },
-      { name: "ARHAM ARCADE", loc: "Kharghar", img: "/arham-arcade1.jpg" },
+      { name: "ESTORIA HEIGHTS", loc: "Malad", img: "/Estoria-heights.jpg" },
+      { name: "DEV DARSHAN", loc: "Bhandup", img: "/Dev-Darshan2.jpg" },
+      { name: "ARHAM ARCADE", loc: "Kharghar", img: "/Arham-Arcade11.jpg" },
       {
         name: "CHANDAN PRIDE",
         loc: "Ghatkopar East",
-        img: "/chandan-pride1.jpg",
+        img: "/Chandan Pride.jpg",
       },
-      { name: "LAKE MARVEL PAWNA", loc: "Lonavala", img: "/lake-marvel1.jpg" },
-      { name: "DEV ASHISH", loc: "Bhandup", img: "/dev-ashish1.jpg" },
-      { name: "PREM ASHISH", loc: "Ghatkopar West", img: "/prem-ashish1.jpg" },
-      { name: "PREM KUNJ", loc: "Ghatkopar West", img: "/prem-kunj1.jpg" },
-      { name: "AASHIRWAD RESIDENCY", loc: "Borivali", img: "/aashirwad.jpg" },
+      { name: "LAKE MARVEL PAWNA", loc: "Lonavala", img: "/lake11.jpg" },
+      { name: "DEV ASHISH", loc: "Bhandup", img: "/Dev Ashish.jpg" },
+      { name: "PREM ASHISH", loc: "Ghatkopar West", img: "/Prem-Ashish.jpg" },
+      { name: "PREM KUNJ", loc: "Ghatkopar West", img: "/Prem-kung.jpg" },
+      { name: "AASHIRWAD RESIDENCY", loc: "Borivali", img: "/Ashirward-Residency.jpg" },
     ],
     Ongoing: [
-      { name: "S K PARADISE", loc: "Alibaug", img: "/sk-paradie1.jpg" },
-      { name: "AMBY VALLEY", loc: "Lonavala", img: "/amby-valley1.jpg" },
+      { name: "S K PARADISE", loc: "Alibaug", img: "/1.png" },
+      { name: "AMBY VALLEY", loc: "Lonavala", img: "/Amby-valley11.jpeg" },
       { name: "LOGISTIC WAREHOUSE", loc: "Wada", img: "/warehouse1.jpg" },
-      { name: "VILLA PROJECT", loc: "Karjat", img: "/villa1.jpg" },
+      { name: "VILLA PROJECT", loc: "Karjat", img: "/Villa-Project.jpg" },
     ],
     Upcoming: [
-      { name: "CHEMBUR", loc: "Mumbai", img: "/chembur.jpg" },
-      { name: "BHANDUP", loc: "Mumbai", img: "/chembur.jpg" },
-      { name: "KARJAT", loc: "Mumbai", img: "/chembur.jpg" },
+      { name: "CHEMBUR", loc: "Mumbai", img: "/chembur1.jpg" },
+      { name: "BHANDUP", loc: "Mumbai", img: "/building3.png" },
+      { name: "KARJAT", loc: "Mumbai", img: "/karjat.jpg" },
     ],
   };
 
@@ -401,7 +401,7 @@ const LeftContent = ({ selectedType, setSelectedType, setIndex, isMobile }) => (
         fontWeight: "700",
       }}
     >
-      BUILDING <br /> TODAY, <br /> SHAPING <br /> TOMORROW.
+      BUILDING <br /> LANDMARKS, <br /> CREATING <br /> FUTURES.
     </h1>
 
     <div
@@ -414,8 +414,7 @@ const LeftContent = ({ selectedType, setSelectedType, setIndex, isMobile }) => (
     />
 
     <p style={{ color: "#444", fontSize: "16.5px" }}>
-      Have a look through our luxury residences and prestigious commercial
-      spaces
+      Explore our thoughtfully crafted residential and commercial developments
     </p>
 
     <div

@@ -82,9 +82,9 @@ function Navbar() {
           <Link to="/journey" onClick={() => setMenuOpen(false)}>
             OUR PROJECTS
           </Link>
-          <Link to="/initiatives" onClick={() => setMenuOpen(false)}>
+          {/* <Link to="/initiatives" onClick={() => setMenuOpen(false)}>
             OUR INITIATIVES
-          </Link>
+          </Link> */}
           <Link to="/BuyersGuide" onClick={() => setMenuOpen(false)}>
             BUYER'S GUIDE
           </Link>

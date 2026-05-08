@@ -117,7 +117,7 @@ function BuyersGuide() {
                   lineHeight: "1.5",
                 }}
               >
-                THIS IS HOW YOUR HOUSE HUNT GOES!
+                YOUR JOURNEY TO THE PERFECT SPACE STARTS HERE
               </h2>
 
               <div
@@ -130,7 +130,7 @@ function BuyersGuide() {
               />
 
               <p style={{ fontSize: "17.5px", color: "#555" }}>
-                We help you clear your ifs and buts of home buying.
+                From planning to possession, we make every step seamless and transparent.
               </p>
             </div>
           )}

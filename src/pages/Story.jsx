@@ -55,9 +55,9 @@ function Story() {
     { icon: <FaChartLine />, num: "6+", label: "Years Experience" },
     { icon: <FaBuilding />, num: "1M+", label: "Sq.Ft Delivered" },
     { icon: <FaHardHat />, num: "25+", label: "Projects" },
-    { icon: <FaHome />, num: "10+", label: "Ongoing" },
-    { icon: <FaUsers />, num: "50+", label: "Clients" },
-    { icon: <FaCheckCircle />, num: "100%", label: "Commitment" },
+    { icon: <FaHome />, num: "Since 2019", label: "Built on Trust" },
+    { icon: <FaUsers />, num: "Trusted", label: "Driven by Excellence" },
+    { icon: <FaCheckCircle />, num: "100%", label: "Transparency & Ethics" },
   ];
 
   const ventures = [
@@ -68,17 +68,9 @@ function Story() {
     },
     { icon: <FaTruck />, title: "Logistics", desc: "Warehousing solutions." },
     { icon: <FaBriefcase />, title: "Finance", desc: "Financial ecosystem." },
-    {
-      icon: <FaGraduationCap />,
-      title: "Education",
-      desc: "Future-ready learning.",
-    },
+
     { icon: <FaCity />, title: "Townships", desc: "Urban development." },
-    {
-      icon: <FaMicrochip />,
-      title: "Tech Parks",
-      desc: "Next-gen infrastructure.",
-    },
+
   ];
 
   return (
@@ -692,7 +684,7 @@ function Story() {
             {
               img: "Ranjeet.jpg",
               name: "MR.RANJEET MAHATRE",
-              role: "ARCHITECT",
+              role: "CHIEF EXECUTIVE OFFICER (CEO)",
               desc: "Mr. Ranjeet Mahatre began his career as a Real Estate Consultant and Architect, developing a strong eye for structural precision and execution. His leadership transformed SNS Group into a trusted name known for quality and timely delivery.",
             },
             {
