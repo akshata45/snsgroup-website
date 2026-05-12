@@ -15,7 +15,9 @@ function BuyersGuide() {
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
+
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -29,7 +31,7 @@ function BuyersGuide() {
     {
       title: "NRI",
       subtitle: "Corner",
-      image: "/nri.jpg",
+      image: "/nri1.jpg",
       path: "/nri",
     },
   ];
@@ -37,11 +39,15 @@ function BuyersGuide() {
   const visibleCards = isMobile ? 1 : 2;
 
   const nextSlide = () => {
-    if (index < cards.length - visibleCards) setIndex(index + 1);
+    if (index < cards.length - visibleCards) {
+      setIndex(index + 1);
+    }
   };
 
   const prevSlide = () => {
-    if (index > 0) setIndex(index - 1);
+    if (index > 0) {
+      setIndex(index - 1);
+    }
   };
 
   const handleStart = (x) => {
@@ -66,27 +72,27 @@ function BuyersGuide() {
 
       <style>
         {`
-        html, body {
-          margin: 0;
-          padding: 0;
-          height: 100%;
-          overflow: hidden;
-        }
+          html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+          }
 
-        #root {
-          height: 100%;
-          overflow: hidden;
-        }
+          #root {
+            height: 100%;
+            overflow: hidden;
+          }
 
-        * {
-          box-sizing: border-box;
-          -webkit-tap-highlight-color: transparent;
-        }
+          * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+          }
 
-        div::-webkit-scrollbar {
-          display: none;
-        }
-      `}
+          div::-webkit-scrollbar {
+            display: none;
+          }
+        `}
       </style>
 
       <div
@@ -130,21 +136,26 @@ function BuyersGuide() {
               />
 
               <p style={{ fontSize: "17.5px", color: "#555" }}>
-                From planning to possession, we make every step seamless and transparent.
+                From planning to possession, we make every step seamless and
+                transparent.
               </p>
             </div>
           )}
 
-          <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
-            
-            {/* ✅ MOBILE OVERLAY FIXED */}
+          <div
+            style={{
+              flex: 1,
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            {/* MOBILE OVERLAY */}
             {isMobile && (
               <>
                 <div
                   style={{
                     position: "absolute",
                     top: "90px",
-
                     left: "16px",
                     right: "16px",
 
@@ -224,78 +235,141 @@ function BuyersGuide() {
               onTouchEnd={(e) => handleEnd(e.changedTouches[0].clientX)}
               style={{
                 overflow: isMobile ? "visible" : "hidden",
+
                 height: isMobile
                   ? "calc(100dvh - 220px)"
                   : "calc(100vh - 140px)",
+
                 display: "flex",
               }}
             >
+              {/* TRACK */}
               <div
                 style={{
                   display: "flex",
-                  gap: "28px",
-                  transition: "transform 0.4s ease",
+
+                  gap: isMobile ? "20px" : "28px",
+
+                  width: "100%",
+
+                  transition: "transform 0.45s ease",
+
                   transform: isMobile
                     ? `translateX(-${index * 86}vw)`
-                    : `translateX(calc(-${index} * ((100% - 28px)/2 + 28px)))`,
+                    : "translateX(0)",
+
+                  alignItems: "stretch",
                 }}
               >
                 {cards.map((card, i) => (
                   <div
                     key={i}
                     onClick={() => navigate(card.path)}
+                    onMouseEnter={() => !isMobile && setHovered(i)}
+                    onMouseLeave={() => !isMobile && setHovered(null)}
                     style={{
-                      minWidth: isMobile ? "82vw" : "32%",
+                      width: isMobile ? "82vw" : "420px",
+
+                      transform:
+                        !isMobile && hovered === i
+                          ? "translateX(0) scaleX(1.05)"
+                          : "translateX(0) scaleX(1)",
+
+                      transformOrigin: "left center",
+
+                      transition:
+                        "transform 0.75s cubic-bezier(0.22, 1, 0.36, 1)",
+
                       display: "flex",
+
                       flexDirection: "column",
+
                       cursor: "pointer",
+
+                      flexShrink: 0,
+
+                      position: "relative",
+
+                      zIndex: hovered === i ? 2 : 1,
                     }}
                   >
+                    {/* IMAGE */}
                     <div
                       style={{
                         height: isMobile
                           ? "calc(100% - 80px)"
                           : "calc(100% - 100px)",
+
                         borderRadius: "22px",
+
                         overflow: "hidden",
+
+                        position: "relative",
+
+                        background: "#ddd",
+
+                        flexShrink: 0,
                       }}
                     >
                       <img
                         src={card.image}
                         alt=""
+                        draggable="false"
                         style={{
                           width: "100%",
                           height: "100%",
+
                           objectFit: "cover",
+
+                          display: "block",
+
+                          transform: "none",
+
+                          transition: "none",
                         }}
                       />
                     </div>
 
+                    {/* LABEL */}
                     <div
                       style={{
                         marginTop: isMobile ? "10px" : "18px",
+
                         background: "#e6dfd2",
+
                         padding: isMobile ? "12px 14px" : "14px 18px",
+
                         borderRadius: isMobile ? "6px" : "0",
 
                         height: isMobile ? "70px" : "100px",
+
                         minHeight: isMobile ? "70px" : "100px",
+
                         maxHeight: isMobile ? "70px" : "100px",
 
                         display: "flex",
+
                         flexDirection: "column",
+
                         justifyContent: "center",
+
                         overflow: "hidden",
+
+                        flexShrink: 0,
                       }}
                     >
                       <h3
                         style={{
                           margin: 0,
+
                           fontSize: isMobile
                             ? "clamp(23px, 3vw, 25px)"
                             : "clamp(18px, 3.5vw, 30px)",
+
                           fontWeight: "800",
+
                           color: "#a57c1b",
+
                           lineHeight: "1.15",
                         }}
                       >
@@ -305,9 +379,11 @@ function BuyersGuide() {
                       <p
                         style={{
                           margin: "4px 0 0",
+
                           fontSize: isMobile
                             ? "clamp(15px, 2.5vw, 20px)"
                             : "clamp(14px, 2.8vw, 17.5px)",
+
                           color: "#444",
                         }}
                       >
@@ -337,6 +413,7 @@ function BuyersGuide() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    cursor: "pointer",
                   }}
                 >
                   ←
@@ -357,6 +434,7 @@ function BuyersGuide() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    cursor: "pointer",
                   }}
                 >
                   →
@@ -369,17 +447,5 @@ function BuyersGuide() {
     </>
   );
 }
-
-const navStyle = {
-  width: "48px",
-  height: "48px",
-  background: "#000",
-  color: "#fff",
-  borderRadius: "50%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  cursor: "pointer",
-};
 
 export default BuyersGuide;

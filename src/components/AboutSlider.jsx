@@ -40,7 +40,7 @@ function AboutSlider() {
   }, []);
 
   const cards = [
-    { title: "STORY", image: "/story1.jpg", path: "/story" },
+    { title: "STORY", image: "/story11.jpg", path: "/story" },
     { title: "PROJECTS", image: "/journey4.jpg", path: "/journey" },
     { title: "STRENGTHS", image: "/strength.jpg", path: "/story#strength" },
     {
@@ -290,14 +290,28 @@ function AboutSlider() {
               width: "100%",
               height: "100%",
 
-              overflowX: isMobile ? "auto" : "hidden",
+              overflowX: "auto",
+              overflowY: "hidden",
 
-              /* 🔥 PREMIUM SCROLL */
-              scrollSnapType: isMobile ? "x mandatory" : "none",
+              /* 🔥 ULTRA SMOOTH */
               scrollBehavior: "smooth",
               WebkitOverflowScrolling: "touch",
 
-              cursor: "grab",
+              /* 🔥 FIX SHRINKING */
+              scrollSnapType: isMobile ? "x proximity" : "none",
+
+              /* 🔥 GPU ACCELERATION */
+              transform: "translateZ(0)",
+              backfaceVisibility: "hidden",
+              perspective: "1000px",
+
+              /* 🔥 BETTER MOBILE FEEL */
+              touchAction: "pan-x",
+              overscrollBehaviorX: "contain",
+
+              cursor: isMobile ? "default" : "grab",
+
+              paddingBottom: "4px",
             }}
           >
             {cards.map((card, i) => {
@@ -309,6 +323,9 @@ function AboutSlider() {
                   onClick={() => navigate(card.path)}
                   style={{
                     flex: `0 0 ${cardWidth}`,
+                    minWidth: cardWidth,
+                    willChange: "transform",
+                    transform: "translateZ(0)",
                     height: isMobile ? "92%" : "100%",
                     display: "flex",
                     flexDirection: "column",
@@ -359,6 +376,9 @@ function AboutSlider() {
                       position: "relative",
                       height: isMobile ? "85%" : "88%",
                       borderRadius: "18px",
+                      willChange: "transform",
+                      backfaceVisibility: "hidden",
+                      transform: "translateZ(0)",
                       overflow: "hidden",
                       transformOrigin: "left center",
                       transition:
@@ -371,6 +391,9 @@ function AboutSlider() {
                     <img
                       src={card.image}
                       alt={card.title}
+                      loading="eager"
+                      decoding="async"
+                      draggable="false"
                       style={{
                         position: "absolute",
                         top: 0,
@@ -378,9 +401,16 @@ function AboutSlider() {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
+
                         transform: isMobile
-                          ? `translateX(${offset * 0.02}px)`
-                          : "none",
+                          ? `translate3d(${offset * 0.015}px,0,0)`
+                          : "translateZ(0)",
+
+                        willChange: "transform",
+                        backfaceVisibility: "hidden",
+
+                        /* 🔥 IMAGE SMOOTHNESS */
+                        imageRendering: "auto",
                       }}
                     />
                   </div>

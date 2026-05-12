@@ -22,7 +22,7 @@ const BlogDetail = () => {
     },
     {
       title: "Top Reasons to Invest in SNS Group Projects",
-      img: "/blog2.jpg",
+      img: "/blog2.png",
       content: `
         Investing in SNS Group projects offers numerous advantages, including prime locations, superior construction quality, and premium amenities.
 

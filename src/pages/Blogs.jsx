@@ -13,7 +13,7 @@ const Blogs = () => {
     {
       title: "Top Reasons to Invest in SNS Group Projects",
       desc: "Investing in SNS Group properties ensures long-term value appreciation, strategic locations, and premium amenities. Their projects are designed to meet the evolving needs of modern homebuyers while offering excellent connectivity and lifestyle benefits.",
-      img: "/blog2.jpg",
+      img: "/blog2.png",
     },
     {
       title: "Luxury Living Redefined by SNS Group",

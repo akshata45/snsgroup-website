@@ -55,9 +55,9 @@ function Story() {
     { icon: <FaChartLine />, num: "6+", label: "Years Experience" },
     { icon: <FaBuilding />, num: "1M+", label: "Sq.Ft Delivered" },
     { icon: <FaHardHat />, num: "25+", label: "Projects" },
-    { icon: <FaHome />, num: "Since 2019", label: "Built on Trust" },
-    { icon: <FaUsers />, num: "Trusted", label: "Driven by Excellence" },
-    { icon: <FaCheckCircle />, num: "100%", label: "Transparency & Ethics" },
+    { icon: <FaHome />, num: "Modern", label: "Design & Innovation" },
+    { icon: <FaUsers />, num: "Luxury", label: "Residential Spaces" },
+    { icon: <FaCheckCircle />, num: "Premium", label: "Commercial Projects" },
   ];
 
   const ventures = [
@@ -268,7 +268,7 @@ function Story() {
             }}
           >
             <img
-              src="/journey4.jpg"
+              src="/journey45.jpg"
               alt=""
               style={{
                 width: "100%",

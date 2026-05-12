@@ -32,19 +32,19 @@ function Partners() {
     {
       title: "SNS GROUP",
       subtitle: "",
-      image: "/img1.jpg",
+      image: "/img34.jpg",
       path: "/blogs",
     },
     {
       title: "VENDOR",
       subtitle: "",
-      image: "/img2.jpg",
+      image: "/img2.png",
       path: "/vendor-registration",
     },
     {
       title: "CHANNEL PARTNER",
       subtitle: "",
-      image: "/img3.jpg",
+      image: "/img33.jpg",
       path: "/channel-partner",
     },
   ];
