@@ -195,7 +195,7 @@ function AboutSlider() {
                 lineHeight: "1.3",
               }}
             >
-              BUILDING TRUST & LANDMARKS SINCE 2019
+              Where Vision Becomes Landmark
             </h2>
 
             <p
@@ -241,7 +241,7 @@ function AboutSlider() {
                 </div>
 
                 <h3 style={{ margin: 0, color: "#b08a3e", fontSize: "14px" }}>
-                  WE HAVE A LEGACY OF OVER 40 YEARS
+                  Where Vision Becomes Landmark
                 </h3>
 
                 <p

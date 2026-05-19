@@ -696,19 +696,19 @@ function Story() {
             {
               img: "Nishant.jpg",
               name: "MR. NISHANT SANGHAVI",
-              role: "CIVIL ENGINEER (CENG)",
+              role: "CIVIL ENGINEER (C.ENG)",
               desc: "Nishant Sanghavi leads execution, acquisitions, and operations with engineering precision, contributing significantly to the company’s rapid expansion.",
             },
             {
               img: "Suketu.jpg",
               name: "MR. SUKETU JOSHI",
-              role: "CHIEF BUSINESS HEAD (CBO)",
+              role: "CHIEF BUSINESS HEAD ",
               desc: "Suketu Joshi drives acquisitions and investor relations, ensuring growth through strategic expansion and strong compliance frameworks.",
             },
             {
               img: "Aayush.jpg",
               name: "MR. AAYUSH SHAH",
-              role: "INNOVATION HEAD (CIO)",
+              role: "INNOVATION HEAD ",
               desc: "Aayush Shah leads digital innovation and storytelling, elevating project presentation through cutting-edge design and technology.",
             },
           ].map((l, i) => (

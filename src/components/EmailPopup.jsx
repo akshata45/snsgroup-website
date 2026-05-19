@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 function EmailPopup() {
   const [show, setShow] = useState(false);
   const [dontShow, setDontShow] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  const [email, setEmail] = useState("");
+
+  const formRef = useRef();
 
   useEffect(() => {
     const hidden = localStorage.getItem("hidePopup");
@@ -21,13 +26,49 @@ function EmailPopup() {
     };
 
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // ✅ CLOSE
   const handleClose = () => {
     setShow(false);
+
     if (dontShow) {
       localStorage.setItem("hidePopup", "true");
+    }
+  };
+
+  // ✅ EMAIL SUBMIT
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!email) {
+      alert("Please enter your email");
+      return;
+    }
+
+    try {
+      await emailjs.sendForm(
+        "service_q3r5s1p", // SERVICE ID
+        "template_v931h27", // TEMPLATE ID
+        formRef.current,
+        "AjSolrByjuK-GsN6g", // PUBLIC KEY
+      );
+
+      alert("Enquiry submitted successfully!");
+
+      setEmail("");
+
+      setShow(false);
+
+      if (dontShow) {
+        localStorage.setItem("hidePopup", "true");
+      }
+    } catch (error) {
+      console.log(error);
+
+      alert("Failed to submit enquiry");
     }
   };
 
@@ -118,42 +159,63 @@ function EmailPopup() {
             curated investment opportunities.
           </p>
 
-          <input
-            type="email"
-            placeholder="Enter your email"
-            style={{
-              padding: "12px",
-              border: "1px solid #ddd",
-              marginBottom: "12px",
-              outline: "none",
-              borderRadius: "4px",
-              fontSize: "14px",
-              background: "#f5f5f5", // ✅ light background
-              color: "#333", // ✅ dark text
-            }}
-          />
+          {/* FORM */}
+          <form ref={formRef} onSubmit={handleSubmit}>
+            {/* HIDDEN */}
+            <input
+              type="hidden"
+              name="form_type"
+              value="Popup Enquiry"
+            />
 
-          <button
-            style={{
-              padding: "12px",
-              border: "none",
-              background: "linear-gradient(135deg,#c9a74d,#b08a3e)",
-              color: "#fff",
-              fontWeight: "600",
-              cursor: "pointer",
-              borderRadius: "4px",
-              fontSize: "14px",
-            }}
-          >
-            ENQUIRE NOW
-          </button>
+            {/* EMAIL */}
+            <input
+              type="email"
+              name="from_email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              style={{
+                width: "100%",
+                padding: "12px",
+                border: "1px solid #ddd",
+                marginBottom: "12px",
+                outline: "none",
+                borderRadius: "4px",
+                fontSize: "14px",
+                background: "#f5f5f5",
+                color: "#333",
+                boxSizing: "border-box",
+              }}
+            />
 
+            {/* BUTTON */}
+            <button
+              type="submit"
+              style={{
+                width: "100%",
+                padding: "12px",
+                border: "none",
+                background: "linear-gradient(135deg,#c9a74d,#b08a3e)",
+                color: "#fff",
+                fontWeight: "600",
+                cursor: "pointer",
+                borderRadius: "4px",
+                fontSize: "14px",
+              }}
+            >
+              ENQUIRE NOW
+            </button>
+          </form>
+
+          {/* CHECKBOX */}
           <div
             style={{
               marginTop: "12px",
               fontSize: "12px",
               color: "#333",
-              background: "#f5f5f5", // ✅ light background
+              background: "#f5f5f5",
               padding: "10px",
               borderRadius: "4px",
             }}
@@ -163,7 +225,7 @@ function EmailPopup() {
               checked={dontShow}
               onChange={(e) => setDontShow(e.target.checked)}
               style={{
-                accentColor: dontShow ? "#f3efef" : "#ccc", // ✅ light before click, dark after
+                accentColor: dontShow ? "#111" : "#ccc",
               }}
             />{" "}
             Do not show again
