@@ -437,7 +437,11 @@ function AboutSlider() {
           </div>
         </div>
 
-        {isMobile && <div style={callStyle}>📞 Call</div>}
+        {isMobile && (
+          <a href="tel:8879781001" style={{ textDecoration: "none" }}>
+            <div style={callStyle}>📞 Call</div>
+          </a>
+        )}
       </section>
     </>
   );

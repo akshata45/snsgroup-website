@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Careers = () => {
+  const formRef = useRef();
+
   const [success, setSuccess] = useState(false);
 
   const [form, setForm] = useState({
-    name: "",
-    email: "",
+    from_name: "",
+    from_email: "",
     phone: "",
     position: "",
     message: "",
@@ -20,16 +24,94 @@ const Careers = () => {
 
   const handleChange = (e) => {
     if (e.target.name === "resume") {
-      setForm({ ...form, resume: e.target.files[0] });
+      setForm({
+        ...form,
+        resume: e.target.files[0],
+      });
     } else {
-      setForm({ ...form, [e.target.name]: e.target.value });
+      setForm({
+        ...form,
+        [e.target.name]: e.target.value,
+      });
     }
   };
+const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleApply = (job) => {
+    setForm({
+      ...form,
+      position: job,
+    });
+
+    const whatsappMessage = `Hello SNS Group,
+
+I would like to apply for the position of ${job}.
+
+Name:
+Email:
+Phone:
+Experience:
+
+Please find my details below.`;
+
+    const whatsappUrl = `https://wa.me/918879781001?text=${encodeURIComponent(
+      whatsappMessage,
+    )}`;
+
+    window.open(whatsappUrl, "_blank");
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
-    setSuccess(true);
+
+    try {
+      await emailjs.sendForm(
+        "service_q3r5s1p",
+        "template_v931h27",
+        formRef.current,
+        "AjSolrByjuK-GsN6g",
+      );
+
+      setSuccess(true);
+
+      // OPEN WHATSAPP AFTER SUCCESS
+      const whatsappMessage = `Hello SNS Group,
+
+New Career Application Submitted
+
+Name: ${form.from_name}
+Email: ${form.from_email}
+Phone: ${form.phone}
+Position: ${form.position}
+
+Message:
+${form.message}`;
+
+      window.open(
+        `https://wa.me/918879781001?text=${encodeURIComponent(
+          whatsappMessage,
+        )}`,
+        "_blank",
+      );
+
+      setForm({
+        from_name: "",
+        from_email: "",
+        phone: "",
+        position: "",
+        message: "",
+        resume: null,
+      });
+
+      document.getElementById("resume-upload").value = "";
+
+      setTimeout(() => {
+        setSuccess(false);
+      }, 4000);
+    } catch (error) {
+      console.log("EMAIL ERROR:", error);
+      alert("Failed to submit application");
+    }
   };
 
   return (
@@ -98,7 +180,9 @@ const Careers = () => {
               all stakeholders, and believe that business success will follow.
             </p>
 
-            <button className="outline-btn">EXPLORE</button>
+            <button className="outline-btn" onClick={() => navigate("/story")}>
+              EXPLORE
+            </button>
           </div>
 
           {/* STATS */}
@@ -138,10 +222,7 @@ const Careers = () => {
                   <span>Full Time • Mumbai</span>
                 </div>
 
-                <button
-                  className="apply-btn"
-                  onClick={() => setForm({ ...form, position: job })}
-                >
+                <button className="apply-btn" onClick={() => handleApply(job)}>
                   Apply
                 </button>
               </div>
@@ -152,20 +233,43 @@ const Careers = () => {
           <div className="form-panel">
             <h3>Apply for Position</h3>
 
-            <form onSubmit={handleSubmit}>
+            <form ref={formRef} onSubmit={handleSubmit}>
+              {/* HIDDEN */}
+              <input
+                type="hidden"
+                name="form_type"
+                value="Career Application"
+              />
+
               <div className="field">
                 <label>Full Name</label>
-                <input name="name" required onChange={handleChange} />
+                <input
+                  name="from_name"
+                  required
+                  value={form.from_name}
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="field">
                 <label>Email Address</label>
-                <input name="email" required onChange={handleChange} />
+                <input
+                  name="from_email"
+                  type="email"
+                  required
+                  value={form.from_email}
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="field">
                 <label>Phone Number</label>
-                <input name="phone" required onChange={handleChange} />
+                <input
+                  name="phone"
+                  required
+                  value={form.phone}
+                  onChange={handleChange}
+                />
               </div>
 
               <div className="field">
@@ -179,15 +283,26 @@ const Careers = () => {
 
               <div className="field">
                 <label>Message</label>
-                <textarea name="message" onChange={handleChange} />
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                />
               </div>
 
               {/* UPLOAD */}
               <div className="upload-box">
-                <input type="file" name="resume" onChange={handleChange} />
+                <input
+                  id="resume-upload"
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleChange}
+                />
+
                 <div className="upload-inner">
-                  <p>📄 Upload Resume</p>
-                  <span>PDF / DOC</span>
+                  <p>📄 {form.resume ? form.resume.name : "Upload Resume"}</p>
+
+                  <span>PDF / DOC / DOCX</span>
                 </div>
               </div>
 
@@ -503,6 +618,7 @@ section {
   border-radius: 6px;
   background: #fafafa;
   color: #111;
+  box-sizing: border-box;
 }
 
 textarea {
@@ -525,6 +641,8 @@ textarea {
   height: 100%;
   opacity: 0;
   cursor: pointer;
+  left: 0;
+  top: 0;
 }
 
 .upload-inner p {

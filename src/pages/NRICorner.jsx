@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import emailjs from "@emailjs/browser";
 
 const NRICorner = () => {
   const sectionRef = useRef(null);
@@ -10,6 +11,62 @@ const NRICorner = () => {
   const [fromCurrency, setFromCurrency] = useState("INR");
   const [toCurrency, setToCurrency] = useState("USD");
   const [convertedAmount, setConvertedAmount] = useState(0);
+
+  const formRef = useRef();
+
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    project: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const keyMap = {
+      from_name: "name",
+      from_email: "email",
+      phone: "phone",
+      project_name: "project",
+      message: "message",
+    };
+
+    setForm({
+      ...form,
+      [keyMap[e.target.name]]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_q3r5s1p",
+        "template_v931h27",
+        formRef.current,
+        "AjSolrByjuK-GsN6g",
+      )
+      .then(
+        () => {
+          setSuccess(true);
+
+          setForm({
+            name: "",
+            phone: "",
+            email: "",
+            project: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.log(error.text);
+          alert("Failed to send enquiry");
+        },
+      );
+  };
+
+  const [success, setSuccess] = useState(false);
 
   // Resize handler
   useEffect(() => {
@@ -414,9 +471,7 @@ const NRICorner = () => {
         </div>
       </div>
 
-
-
-    {/* CURRENCY CALCULATOR */}
+      {/* CURRENCY CALCULATOR */}
 
       <div
         style={{
@@ -979,121 +1034,373 @@ const NRICorner = () => {
 
       <div
         style={{
-          background: "#f5f5f5",
-          padding: "60px 20px",
+          background: "#f5f1e8",
+          padding: isMobile ? "50px 16px" : "90px 20px",
         }}
       >
         <div
           style={{
-            maxWidth: "900px",
+            maxWidth: "1100px",
             margin: "0 auto",
-            background: "#eeeeee",
-            padding: window.innerWidth < 768 ? "30px 20px" : "50px 60px",
-            border: "1px solid #dcdcdc",
+            background: "#ffffff",
+            borderRadius: "24px",
+            padding: isMobile ? "30px 20px" : "60px",
+            boxShadow: "0 15px 45px rgba(0,0,0,0.08)",
+            border: "1px solid #ece7dc",
           }}
         >
-          {/* TITLE */}
-          <h3
+          {/* AUTOFILL FIX */}
+          <style>
+            {`
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus {
+          -webkit-text-fill-color: #000 !important;
+          -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+          box-shadow: 0 0 0px 1000px #ffffff inset !important;
+          transition: background-color 5000s ease-in-out 0s;
+          caret-color: #000 !important;
+        }
+
+        input,
+        textarea {
+          background: #ffffff !important;
+          color: #000000 !important;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+          color: #8b8b8b;
+        }
+      `}
+          </style>
+
+          {/* HEADING */}
+          <div style={{ marginBottom: "40px" }}>
+            <h2
+              style={{
+                fontSize: isMobile ? "28px" : "40px",
+                color: "#2f2f2f",
+                marginBottom: "12px",
+                fontWeight: "600",
+              }}
+            >
+              Connect With Our NRI Team
+            </h2>
+
+            <div
+              style={{
+                width: "70px",
+                height: "3px",
+                background: "#b88a2a",
+                marginBottom: "18px",
+              }}
+            />
+
+            <p
+              style={{
+                color: "#666",
+                fontSize: "16px",
+                lineHeight: "1.8",
+                maxWidth: "650px",
+              }}
+            >
+              Share your details and our dedicated relationship manager will
+              contact you shortly regarding investment opportunities and project
+              assistance.
+            </p>
+          </div>
+
+          {/* FORM */}
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
             style={{
-              fontSize: "18px",
-              color: "#333",
-              marginBottom: "30px",
+              display: "grid",
+              gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
+              gap: "28px",
             }}
           >
-            Kindly fill details in the form below
-          </h3>
+            <input type="hidden" name="form_type" value="NRI Inquiry" />
 
-          {/* INPUT FIELD STYLE */}
-          {[
-            { label: "Name *", placeholder: "Enter name" },
-            { label: "Email ID*", placeholder: "Enter email id" },
-            { label: "Mobile No.*", placeholder: "Enter mobile no." },
-          ].map((field, i) => (
-            <div key={i} style={{ marginBottom: "25px" }}>
+            {[
+              {
+                inputName: "from_name",
+                stateName: "name",
+                label: "Full Name",
+              },
+              {
+                inputName: "phone",
+                stateName: "phone",
+                label: "Mobile Number",
+              },
+              {
+                inputName: "from_email",
+                stateName: "email",
+                label: "Email Address",
+              },
+              {
+                inputName: "project_name",
+                stateName: "project",
+                label: "Interested Project",
+              },
+            ].map((field) => (
+              <div
+                key={field.inputName}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                }}
+              >
+                <label
+                  style={{
+                    fontSize: "15px",
+                    color: "#2f2f2f",
+                    fontWeight: "500",
+                  }}
+                >
+                  {field.label}
+                </label>
+
+                <input
+                  type="text"
+                  name={field.inputName}
+                  value={form[field.stateName]}
+                  onChange={handleChange}
+                  required={
+                    field.stateName === "name" || field.stateName === "phone"
+                  }
+                  style={{
+                    width: "100%",
+                    height: "58px",
+                    padding: "0 18px",
+                    borderRadius: "14px",
+                    border: "1px solid #d8d8d8",
+                    background: "#ffffff",
+                    fontSize: "16px",
+                    color: "#000000",
+                    fontWeight: "500",
+                    outline: "none",
+                    transition: "0.3s ease",
+                    boxSizing: "border-box",
+                    caretColor: "#000",
+                    WebkitTextFillColor: "#000",
+                    appearance: "none",
+                    WebkitAppearance: "none",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.border = "1px solid #b88a2a";
+                    e.target.style.boxShadow =
+                      "0 0 0 3px rgba(184,138,42,0.10)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.border = "1px solid #d8d8d8";
+                    e.target.style.boxShadow = "none";
+                  }}
+                />
+              </div>
+            ))}
+
+            {/* MESSAGE */}
+            <div
+              style={{
+                gridColumn: "1 / -1",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
               <label
                 style={{
-                  display: "block",
-                  fontSize: "14px",
-                  color: "#333",
-                  marginBottom: "8px",
+                  fontSize: "15px",
+                  color: "#2f2f2f",
                   fontWeight: "500",
                 }}
               >
-                {field.label}
+                Your Message
               </label>
 
-              <input
-                type="text"
-                placeholder={field.placeholder}
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                rows="5"
+                placeholder="Write your requirements..."
                 style={{
                   width: "100%",
-                  border: "none",
-                  borderBottom: "2px solid #b88a2a",
-                  padding: "10px 5px",
-                  background: "transparent",
-                  outline: "none",
+                  padding: "18px",
+                  borderRadius: "16px",
+                  border: "1px solid #d8d8d8",
+                  background: "#ffffff",
                   fontSize: "16px",
-                  color: "#000", // ✅ ADD THIS
+                  color: "#000000",
+                  fontWeight: "500",
+                  resize: "none",
+                  outline: "none",
+                  lineHeight: "1.7",
+                  boxSizing: "border-box",
+                  transition: "0.3s ease",
+                  caretColor: "#000",
+                  WebkitTextFillColor: "#000",
+                  appearance: "none",
+                  WebkitAppearance: "none",
+                }}
+                onFocus={(e) => {
+                  e.target.style.border = "1px solid #b88a2a";
+                  e.target.style.boxShadow = "0 0 0 3px rgba(184,138,42,0.10)";
+                }}
+                onBlur={(e) => {
+                  e.target.style.border = "1px solid #d8d8d8";
+                  e.target.style.boxShadow = "none";
                 }}
               />
             </div>
-          ))}
 
-          {/* TEXTAREA */}
-          <div style={{ marginBottom: "35px" }}>
-            <label
+            {/* BUTTON */}
+            <div
               style={{
-                display: "block",
-                fontSize: "14px",
-                color: "#333",
-                marginBottom: "8px",
-                fontWeight: "500",
+                gridColumn: "1 / -1",
+                display: "flex",
+                justifyContent: "center",
+                marginTop: "10px",
               }}
             >
-              Comments
-            </label>
+              <button
+                type="submit"
+                style={{
+                  background: "linear-gradient(135deg,#b88a2a,#d4af37)",
+                  color: "#fff",
+                  border: "none",
+                  padding: isMobile ? "16px 34px" : "18px 46px",
+                  borderRadius: "14px",
+                  fontSize: "15px",
+                  letterSpacing: "1px",
+                  fontWeight: "600",
+                  cursor: "pointer",
+                  transition: "0.35s ease",
+                  boxShadow: "0 15px 35px rgba(184,138,42,0.25)",
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.transform = "translateY(-3px)";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                }}
+              >
+                SUBMIT ENQUIRY
+              </button>
+            </div>
+          </form>
 
-            <textarea
-              rows="3"
+          {/* SUCCESS MESSAGE */}
+          {/* SUCCESS POPUP */}
+          {/* SUCCESS POPUP */}
+          {success && (
+            <div
               style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
                 width: "100%",
-                border: "none",
-                borderBottom: "2px solid #b88a2a",
-                padding: "10px 5px",
-                background: "transparent",
-                outline: "none",
-                fontSize: "14px",
-                resize: "none",
-                color: "#000", // Added black text color
-              }}
-            />
-          </div>
-
-          {/* BUTTON */}
-          <div style={{ textAlign: "center" }}>
-            <button
-              style={{
-                background: "#b88a2a",
-                color: "#000",
-                padding: "12px 40px",
-                border: "none",
-                cursor: "pointer",
-                fontSize: "14px",
-                fontWeight: "500",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#a67c1f";
-                e.currentTarget.style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#b88a2a";
-                e.currentTarget.style.transform = "translateY(0)";
+                height: "100%",
+                background: "rgba(0,0,0,0.45)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 9999,
+                padding: isMobile ? "20px" : "30px",
+                overflowY: "auto",
               }}
             >
-              Submit
-            </button>
-          </div>
+              <div
+                style={{
+                  background: "#ffffff",
+                  width: "100%",
+                  maxWidth: isMobile ? "100%" : "420px",
+                  borderRadius: isMobile ? "22px" : "26px",
+                  padding: isMobile ? "32px 22px" : "45px",
+                  textAlign: "center",
+                  boxShadow: "0 25px 70px rgba(0,0,0,0.18)",
+                  animation: "popupFade 0.35s ease",
+                }}
+              >
+                {/* ICON */}
+                <div
+                  style={{
+                    width: isMobile ? "72px" : "85px",
+                    height: isMobile ? "72px" : "85px",
+                    margin: "0 auto 22px",
+                    borderRadius: "50%",
+                    background: "#f8fafc",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: isMobile ? "36px" : "42px",
+                  }}
+                >
+                  ✅
+                </div>
+
+                {/* TITLE */}
+                <h3
+                  style={{
+                    fontSize: isMobile ? "24px" : "32px",
+                    color: "#111827",
+                    marginBottom: "14px",
+                    fontWeight: "600",
+                    lineHeight: "1.3",
+                  }}
+                >
+                  Form Submitted Successfully
+                </h3>
+
+                {/* TEXT */}
+                <p
+                  style={{
+                    color: "#6b7280",
+                    lineHeight: "1.8",
+                    fontSize: isMobile ? "14px" : "15px",
+                    marginBottom: "28px",
+                    padding: isMobile ? "0 4px" : "0",
+                  }}
+                >
+                  Thank you for contacting us. Our team will connect with you
+                  shortly.
+                </p>
+
+                {/* BUTTON */}
+                <button
+                  onClick={() => setSuccess(false)}
+                  style={{
+                    background: "linear-gradient(135deg,#b88a2a,#d4af37)",
+                    color: "#fff",
+                    border: "none",
+                    width: isMobile ? "100%" : "auto",
+                    padding: isMobile ? "15px 20px" : "14px 36px",
+                    borderRadius: "14px",
+                    cursor: "pointer",
+                    fontSize: isMobile ? "14px" : "15px",
+                    fontWeight: "600",
+                    letterSpacing: "0.5px",
+                    transition: "0.3s ease",
+                    boxShadow: "0 15px 35px rgba(184,138,42,0.25)",
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.transform = "translateY(0)";
+                  }}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

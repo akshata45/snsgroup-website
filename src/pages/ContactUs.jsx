@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -14,6 +15,7 @@ const ContactUs = () => {
   });
 
   const [success, setSuccess] = useState(false);
+  const formRef = useRef();
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,7 +27,18 @@ const ContactUs = () => {
   }, []);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const keyMap = {
+      from_name: "name",
+      from_email: "email",
+      phone: "phone",
+      project_name: "project",
+      message: "message",
+    };
+
+    setForm({
+      ...form,
+      [keyMap[e.target.name]]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -36,18 +49,31 @@ const ContactUs = () => {
       return;
     }
 
-    setSuccess(true);
+    emailjs
+      .sendForm(
+        "service_q3r5s1p",
+        "template_v931h27",
+        formRef.current,
+        "AjSolrByjuK-GsN6g",
+      )
+      .then(
+        () => {
+          setSuccess(true);
 
-    const msg = `Hello, I'm ${form.name}
-Phone: ${form.phone}
-Email: ${form.email}
-Project: ${form.project}
-Message: ${form.message}`;
-
-    window.open(
-      `https://wa.me/919999999999?text=${encodeURIComponent(msg)}`,
-      "_blank",
-    );
+          // Reset Form
+          setForm({
+            name: "",
+            phone: "",
+            email: "",
+            project: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.log(error.text);
+          alert("Failed to send enquiry");
+        },
+      );
   };
 
   // 🔥 Premium styles
@@ -141,14 +167,14 @@ Message: ${form.message}`;
                 <h4 style={{ color: "#b88a2a", fontSize: "17.5px" }}>
                   📞 PHONE
                 </h4>
-                <a href="tel:+919999999999">+91-9999999999</a>
+                <a href="tel: +918879781001"> +91 88797 81001</a>
               </div>
 
               <div>
                 <h4 style={{ color: "#b88a2a", fontSize: "17.5px" }}>
                   ✉ EMAIL
                 </h4>
-                <a href="mailto:info@snsgroup.one">info@snsgroup.one</a>
+                <a href="mailto:sales@snsgroup.one">sales@snsgroup.one</a>
               </div>
             </div>
 
@@ -171,127 +197,351 @@ Message: ${form.message}`;
           <div
             style={{
               marginTop: "70px",
-              backdropFilter: "blur(20px)",
-              background: "rgba(255,255,255,0.7)",
-              padding: isMobile ? "25px" : "50px",
-              borderRadius: "20px",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.1)",
+              background: "#ffffff",
+              borderRadius: "30px",
+              padding: isMobile ? "28px 20px" : "60px",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.08)",
+              border: "1px solid #ececec",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
+            <style>
+              {`
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover,
+      textarea:-webkit-autofill:focus {
+        -webkit-text-fill-color: #000 !important;
+        -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+        box-shadow: 0 0 0px 1000px #ffffff inset !important;
+        transition: background-color 5000s ease-in-out 0s;
+        caret-color: #000 !important;
+      }
+
+      input,
+      textarea {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #8b8b8b;
+      }
+    `}
+            </style>
+
             <h3
               style={{
-                fontSize: "22px",
-                marginBottom: "30px",
-                color: "#333",
+                fontSize: isMobile ? "30px" : "40px",
+                fontWeight: "500",
+                color: "#1f2937",
+                marginBottom: "14px",
+                letterSpacing: "-0.6px",
               }}
             >
               Get In Touch
             </h3>
 
+            <p
+              style={{
+                color: "#6b7280",
+                fontSize: "16px",
+                marginBottom: "48px",
+                lineHeight: "1.8",
+                maxWidth: "650px",
+                fontWeight: "400",
+              }}
+            >
+              Share your requirements and our team will connect with you shortly
+              with personalized assistance.
+            </p>
+
             <form
+              ref={formRef}
               onSubmit={handleSubmit}
               style={{
                 display: "grid",
                 gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-                gap: "25px",
-                columnGap: "40px", // 👈 horizontal space FIX
-                rowGap: "25px", // 👈 vertical space
+                gap: "34px",
+                columnGap: "38px",
               }}
             >
+              <input type="hidden" name="form_type" value="Contact Inquiry" />
+
               {[
-                { name: "name", label: "Full Name" },
-                { name: "phone", label: "Phone Number" },
-                { name: "email", label: "Email Address" },
-                { name: "project", label: "Interested Project" },
+                {
+                  inputName: "from_name",
+                  stateName: "name",
+                  label: "Full Name",
+                },
+                {
+                  inputName: "phone",
+                  stateName: "phone",
+                  label: "Phone Number",
+                },
+                {
+                  inputName: "from_email",
+                  stateName: "email",
+                  label: "Email Address",
+                },
+                {
+                  inputName: "project_name",
+                  stateName: "project",
+                  label: "Interested Project",
+                },
               ].map((field) => (
-                <div key={field.name} style={{ position: "relative" }}>
+                <div
+                  key={field.inputName}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "12px",
+                  }}
+                >
+                  <label
+                    style={{
+                      fontSize: "15px",
+                      color: "#374151",
+                      fontWeight: "500",
+                      letterSpacing: "0.2px",
+                    }}
+                  >
+                    {field.label}
+                  </label>
+
                   <input
-                    name={field.name}
-                    value={form[field.name]}
+                    type="text"
+                    name={field.inputName}
+                    value={form[field.stateName]}
                     onChange={handleChange}
-                    required={field.name === "name" || field.name === "phone"}
-                    style={inputPremium}
+                    required={
+                      field.stateName === "name" || field.stateName === "phone"
+                    }
+                    style={{
+                      width: "100%",
+                      height: "60px",
+                      padding: "0 20px",
+                      borderRadius: "16px",
+                      border: "1px solid #d6d6d6",
+                      background: "#ffffff",
+                      fontSize: "16px",
+                      color: "#000000",
+                      fontWeight: "500",
+                      outline: "none",
+                      transition: "0.3s ease",
+                      boxSizing: "border-box",
+                      caretColor: "#000",
+                      WebkitTextFillColor: "#000",
+                      appearance: "none",
+                      WebkitAppearance: "none",
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.border = "1px solid #b88a2a";
+                      e.target.style.boxShadow = "none";
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.border = "1px solid #d6d6d6";
+                    }}
                   />
-                  <label style={labelPremium}>{field.label}</label>
                 </div>
               ))}
 
-              <div style={{ gridColumn: "1 / -1", position: "relative" }}>
+              <div
+                style={{
+                  gridColumn: "1 / -1",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
+                <label
+                  style={{
+                    fontSize: "15px",
+                    color: "#374151",
+                    fontWeight: "500",
+                  }}
+                >
+                  Your Message
+                </label>
+
                 <textarea
                   name="message"
                   value={form.message}
                   onChange={handleChange}
-                  rows="4"
-                  style={{ ...inputPremium, resize: "none" }}
+                  rows="6"
+                  style={{
+                    width: "100%",
+                    minHeight: "140px",
+                    padding: "18px 20px",
+                    borderRadius: "16px",
+                    border: "1px solid #d6d6d6",
+                    background: "#ffffff",
+                    fontSize: "16px",
+                    color: "#000000",
+                    fontWeight: "500",
+                    caretColor: "#000",
+                    WebkitTextFillColor: "#000",
+                    outline: "none",
+                    transition: "0.3s ease",
+                    boxSizing: "border-box",
+                    resize: "none",
+                    appearance: "none",
+                    WebkitAppearance: "none",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.border = "1px solid #b88a2a";
+                    e.target.style.boxShadow = "none";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.border = "1px solid #d6d6d6";
+                  }}
                 />
-                <label style={labelPremium}>Your Message</label>
               </div>
 
-              <button
-                type="submit"
+              <div
                 style={{
                   gridColumn: "1 / -1",
-                  width: "fit-content",
-                  margin: "10px auto 0",
-                  padding: "14px 30px",
-                  background: "linear-gradient(135deg, #b88a2a, #d4af37)",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "10px",
-                  fontSize: "16px",
-                  letterSpacing: "1px",
-                  cursor: "pointer",
-                  transition: "0.3s",
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "10px",
                 }}
-                onMouseOver={(e) => (e.target.style.transform = "scale(1.05)")}
-                onMouseOut={(e) => (e.target.style.transform = "scale(1)")}
               >
-                SUBMIT ENQUIRY
-              </button>
+                <button
+                  type="submit"
+                  style={{
+                    background: "linear-gradient(135deg,#b88a2a,#d4af37)",
+                    color: "#fff",
+                    border: "none",
+                    padding: isMobile ? "16px 34px" : "18px 48px",
+                    borderRadius: "16px",
+                    fontSize: "15px",
+                    letterSpacing: "1.2px",
+                    fontWeight: "600",
+                    cursor: "pointer",
+                    transition: "0.35s ease",
+                    boxShadow: "0 16px 35px rgba(184,138,42,0.25)",
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.transform = "translateY(-3px)";
+                    e.target.style.boxShadow =
+                      "0 24px 40px rgba(184,138,42,0.35)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.transform = "translateY(0)";
+                    e.target.style.boxShadow =
+                      "0 16px 35px rgba(184,138,42,0.25)";
+                  }}
+                >
+                  SUBMIT ENQUIRY
+                </button>
+              </div>
             </form>
 
             {success && (
-              <p style={{ marginTop: "15px", color: "green" }}>
-                ✅ Enquiry submitted successfully!
-              </p>
-            )}
-
-            {/* WhatsApp */}
-            <div
-              style={{
-                marginTop: "30px",
-                display: "flex",
-                justifyContent: "center",
-              }}
-            >
-              <a
-                href="https://wa.me/919999999999"
-                target="_blank"
-                rel="noreferrer"
+              <div
                 style={{
-                  display: "inline-block",
-                  padding: "12px 28px",
-                  background: "#128c7e",
-                  color: "#fff",
-                  borderRadius: "30px",
-                  textDecoration: "none",
-                  fontSize: "14px",
-                  letterSpacing: "0.5px",
-                  boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-                  transition: "0.3s",
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.transform = "translateY(-2px)";
-                  e.target.style.boxShadow = "0 15px 30px rgba(0,0,0,0.15)";
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.transform = "translateY(0)";
-                  e.target.style.boxShadow = "0 10px 25px rgba(0,0,0,0.1)";
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  background: "rgba(0,0,0,0.45)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  zIndex: 9999,
+                  padding: isMobile ? "18px" : "25px",
+                  overflowY: "auto",
                 }}
               >
-                💬 Chat on WhatsApp
-              </a>
-            </div>
+                <div
+                  style={{
+                    background: "#fff",
+                    padding: isMobile ? "30px 20px" : "45px",
+                    borderRadius: isMobile ? "22px" : "26px",
+                    width: "100%",
+                    maxWidth: isMobile ? "100%" : "430px",
+                    textAlign: "center",
+                    boxShadow: "0 25px 70px rgba(0,0,0,0.18)",
+                    animation: "popupFade 0.35s ease",
+                  }}
+                >
+                  {/* ICON */}
+                  <div
+                    style={{
+                      width: isMobile ? "72px" : "82px",
+                      height: isMobile ? "72px" : "82px",
+                      margin: "0 auto 20px",
+                      borderRadius: "50%",
+                      background: "#fcfcfc",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: isMobile ? "34px" : "38px",
+                    }}
+                  >
+                    ✅
+                  </div>
+
+                  {/* TITLE */}
+                  <h3
+                    style={{
+                      fontSize: isMobile ? "24px" : "30px",
+                      color: "#111827",
+                      marginBottom: "14px",
+                      fontWeight: "600",
+                      lineHeight: "1.3",
+                    }}
+                  >
+                    Inquiry Submitted
+                  </h3>
+
+                  {/* TEXT */}
+                  <p
+                    style={{
+                      color: "#6b7280",
+                      lineHeight: "1.8",
+                      fontSize: isMobile ? "14px" : "15px",
+                      marginBottom: "28px",
+                      padding: isMobile ? "0 5px" : "0",
+                    }}
+                  >
+                    Thank you for contacting SNS GROUP. Our team will connect
+                    with you shortly.
+                  </p>
+
+                  {/* BUTTON */}
+                  <button
+                    onClick={() => setSuccess(false)}
+                    style={{
+                      background: "linear-gradient(135deg,#b88a2a,#d4af37)",
+                      color: "#fff",
+                      border: "none",
+                      width: isMobile ? "100%" : "auto",
+                      padding: isMobile ? "15px 20px" : "14px 36px",
+                      borderRadius: "14px",
+                      cursor: "pointer",
+                      fontSize: isMobile ? "14px" : "15px",
+                      fontWeight: "600",
+                      letterSpacing: "0.5px",
+                      transition: "0.3s ease",
+                    }}
+                    onMouseOver={(e) => {
+                      e.target.style.transform = "translateY(-2px)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.target.style.transform = "translateY(0)";
+                    }}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

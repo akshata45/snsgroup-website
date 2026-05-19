@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 function Footer() {
   // ✅ Link Mapping
   const links = {
-    Accolades: "/accolades",
     "About Us": "/story",
     Blogs: "/blogs",
     "NRI Corner": "/nri",
@@ -56,7 +55,7 @@ function Footer() {
         }}
       >
         {[
-          ["Accolades", "About Us", "Blogs", "NRI Corner"],
+          [ "About Us", "Blogs", "NRI Corner"],
           [
             "Get In Touch",
             "Careers",
@@ -132,50 +131,13 @@ function Footer() {
           <div
             style={{
               fontSize: "20px",
-              fontWeight: "500",
+              fontWeight: "400",
               color: "#2b2b2b",
+              fontFamily: "poppins, sans-serif",
             }}
           >
             Experience Luxury Living
           </div>
-        </div>
-
-        {/* ICONS */}
-        <div style={{ display: "flex", gap: "16px" }}>
-          {[FaFacebookF, FaXTwitter, FaInstagram, FaLinkedinIn, FaYoutube].map(
-            (Icon, i) => (
-              <div
-                key={i}
-                style={{
-                  width: "42px",
-                  height: "42px",
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.6)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(198,167,94,0.25)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  transition: "all 0.4s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#c6a75e";
-                  e.currentTarget.style.transform =
-                    "translateY(-6px) scale(1.05)";
-                  e.currentTarget.style.boxShadow =
-                    "0 10px 30px rgba(198,167,94,0.35)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "rgba(255,255,255,0.6)";
-                  e.currentTarget.style.transform = "translateY(0) scale(1)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                <Icon size={15} />
-              </div>
-            ),
-          )}
         </div>
       </div>
 
