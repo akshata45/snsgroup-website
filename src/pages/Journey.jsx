@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 function Journey() {
+  const navigate = useNavigate();
   const [selectedType, setSelectedType] = useState("Completed");
   const [isMobile, setIsMobile] = useState(false);
   const [index, setIndex] = useState(0);
   const [showOverlay, setShowOverlay] = useState(true);
+  
 
   const sliderRef = useRef(null);
 
@@ -32,12 +35,29 @@ function Journey() {
       { name: "PREM KUNJ", loc: "Ghatkopar West", img: "/Prem-kung.jpg" },
       { name: "AASHIRWAD RESIDENCY", loc: "Borivali", img: "/Ashirward-Residency.jpg" },
     ],
-    Ongoing: [
-      { name: "S K PARADISE", loc: "Alibaug", img: "/1.png" },
-      { name: "AMBY VALLEY", loc: "Lonavala", img: "/Amby-valley11.jpeg" },
-      { name: "LOGISTIC WAREHOUSE", loc: "Wada", img: "/warehouse1.jpg" },
-      { name: "VILLA PROJECT", loc: "Karjat", img: "/Villa-Project.jpg" },
-    ],
+Ongoing: [
+{
+  name: "S K PARADISE",
+  loc: "Alibaug",
+  img: "/1.png",
+  path: "/sk-paradise",
+},
+  {
+    name: "AMBY VALLEY",
+    loc: "Lonavala",
+    img: "/Amby-valley11.jpeg",
+  },
+  {
+    name: "LOGISTIC WAREHOUSE",
+    loc: "Wada",
+    img: "/warehouse1.jpg",
+  },
+  {
+    name: "VILLA PROJECT",
+    loc: "Karjat",
+    img: "/Villa-Project.jpg",
+  },
+],
     Upcoming: [
       { name: "CHEMBUR", loc: "Mumbai", img: "/chembur1.jpg" },
       { name: "BHANDUP", loc: "Mumbai", img: "/building3.png" },
@@ -271,17 +291,23 @@ function Journey() {
               paddingLeft: isMobile ? "10px" : "0px",
             }}
           >
-            {cards.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  flex: `0 0 ${cardWidth}%`,
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  transition: "0.4s",
-                }}
+{cards.map((item, i) => (
+  <div
+    key={i}
+    onClick={() => {
+      if (item.path) {
+        navigate(item.path);
+      }
+    }}
+    style={{
+      flex: `0 0 ${cardWidth}%`,
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      transition: "0.4s",
+      cursor: item.path ? "pointer" : "default",
+    }}
                 onMouseEnter={(e) => {
                   if (!isMobile) {
                     const el = e.currentTarget;
@@ -364,7 +390,7 @@ function Journey() {
                     style={{
                       margin: 0,
                       color: "#444",
-                      fontSize: "clamp(13px, 3vw, 16px)",
+                      fontSize: "clamp(14px, 3vw, 16px)",
 
                       whiteSpace: "nowrap",
                       overflow: "hidden",

@@ -20,6 +20,7 @@ import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
 import Careers from "./pages/Careers";
 import EmailPopup from "./components/EmailPopup";
+import SKParadise from "./pages/sk-paradise";
 function App() {
   return (
     <>
@@ -44,6 +45,7 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blog/:id" element={<BlogDetail />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path="/sk-paradise" element={<SKParadise />} />
       </Routes>
     </>
   );
