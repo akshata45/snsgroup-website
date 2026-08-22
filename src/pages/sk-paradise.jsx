@@ -155,7 +155,7 @@ function SKParadise() {
     }}
   >
     <img
-      src="/map1.jpg"
+      src="/1.png"
       alt="S K Paradise Alibaug"
       style={{
         width: "100%",
