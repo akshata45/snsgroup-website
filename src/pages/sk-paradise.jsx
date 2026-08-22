@@ -38,7 +38,98 @@ function SKParadise() {
       }}
     >
       <Navbar />
+{/* =====================================================
+    S.K. PARADISE SECTION NAVIGATION
+===================================================== */}
 
+<div
+  style={{
+    position: "sticky",
+    top: 0,
+    zIndex: 1000,
+    width: "100%",
+    background: "#f5f1e8",
+    backdropFilter: "blur(10px)",
+    borderBottom: "1px solid rgba(198,167,94,0.25)",
+    boxShadow: "0 4px 18px rgba(0,0,0,0.05)",
+  }}
+>
+  <div
+    style={{
+      maxWidth: "1200px",
+      margin: "auto",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: isMobile
+        ? "flex-start"
+        : "center",
+      gap: isMobile ? "28px" : "42px",
+      padding: isMobile
+        ? "14px 20px"
+        : "15px 25px",
+      overflowX: isMobile
+        ? "auto"
+        : "visible",
+      whiteSpace: "nowrap",
+      scrollbarWidth: "none",
+    }}
+  >
+    {[
+      {
+        label: "OVERVIEW",
+        id: "overview",
+      },
+      {
+        label: "EXPERIENCE",
+        id: "experience",
+      },
+      {
+        label: "FLOOR PLANS",
+        id: "floor-plans",
+      },
+      {
+        label: "REASONS TO BUY",
+        id: "reasons",
+      },
+      {
+        label: "AMENITIES",
+        id: "amenities",
+      },
+      {
+        label: "LOCATION",
+        id: "location",
+      },
+    ].map((item) => (
+      <button
+        key={item.id}
+        onClick={() => {
+          document
+            .getElementById(item.id)
+            ?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+        }}
+        style={{
+          border: "none",
+          background: "transparent",
+          padding: "3px 0",
+          color: "#b08a3e",
+          fontSize: isMobile
+            ? "11px"
+            : "12px",
+          fontWeight: "600",
+          letterSpacing: "1.4px",
+          cursor: "pointer",
+          flexShrink: 0,
+          position: "relative",
+        }}
+      >
+        {item.label}
+      </button>
+    ))}
+  </div>
+</div>
       {/* =====================================================
           HERO
       ===================================================== */}
@@ -64,7 +155,7 @@ function SKParadise() {
     }}
   >
     <img
-      src="/1.png"
+      src="/map1.jpg"
       alt="S K Paradise Alibaug"
       style={{
         width: "100%",
@@ -199,9 +290,11 @@ function SKParadise() {
       ===================================================== */}
 
 <section
+  id="overview"
   style={{
     padding: isMobile ? "60px 5%" : "100px 8%",
     background: "#f5f1e8",
+    scrollMarginTop: isMobile ? "60px" : "65px",
   }}
 >
   {/* ================= TITLE ================= */}
@@ -488,6 +581,7 @@ function SKParadise() {
       ===================================================== */}
 
 <section
+  id="experience"
   style={{
     padding: isMobile
       ? "55px 20px"
@@ -495,8 +589,11 @@ function SKParadise() {
     backgroundImage: "url('/blog2.png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    backgroundAttachment: isMobile ? "scroll" : "fixed",
+    backgroundAttachment: isMobile
+      ? "scroll"
+      : "fixed",
     position: "relative",
+    scrollMarginTop: isMobile ? "60px" : "65px",
   }}
 >
   {/* BACKGROUND OVERLAY */}
@@ -505,7 +602,8 @@ function SKParadise() {
     style={{
       position: "absolute",
       inset: 0,
-      background: "rgba(245, 245, 245, 0.29)",
+      background:
+        "rgba(245, 245, 245, 0.29)",
       zIndex: 0,
     }}
   />
@@ -518,7 +616,7 @@ function SKParadise() {
       zIndex: 1,
     }}
   >
-    <SectionTitle title="CONFIGURATIONS" />
+    <SectionTitle title="THE S.K PARADISE EXPERIENCE" />
 
     <div
       style={{
@@ -531,227 +629,351 @@ function SKParadise() {
         gap: "20px",
       }}
     >
-      <Configuration
-        title="2 BHK"
-        area="Coming Soon"
-        isMobile={isMobile}
-        onEnquire={scrollToContact}
-      />
+      {/* CONNECTIVITY */}
 
-      <Configuration
-        title="3 BHK"
-        area="Coming Soon"
-        isMobile={isMobile}
-        onEnquire={scrollToContact}
-      />
+      <div
+        style={{
+          background:
+            "rgba(250, 248, 243, 0.94)",
+          border:
+            "1px solid rgba(198, 167, 94, 0.35)",
+          padding: isMobile
+            ? "25px 20px"
+            : "28px 22px",
+          minHeight: isMobile
+            ? "180px"
+            : "200px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          boxShadow:
+            "0 10px 30px rgba(29, 45, 99, 0.07)",
+          transition:
+            "all 0.3s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform =
+              "translateY(-4px)";
+            e.currentTarget.style.boxShadow =
+              "0 16px 35px rgba(29, 45, 99, 0.12)";
+            e.currentTarget.style.border =
+              "1px solid rgba(198, 167, 94, 0.65)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform =
+              "translateY(0)";
+            e.currentTarget.style.boxShadow =
+              "0 10px 30px rgba(29, 45, 99, 0.07)";
+            e.currentTarget.style.border =
+              "1px solid rgba(198, 167, 94, 0.35)";
+          }
+        }}
+      >
+        <div
+          style={{
+            color: "#c6a75e",
+            fontSize: "11px",
+            letterSpacing: "2px",
+            marginBottom: "12px",
+          }}
+        >
+          CONNECTIVITY · 01
+        </div>
 
-      <Configuration
-        title="4 BHK"
-        area="Coming Soon"
-        isMobile={isMobile}
-        onEnquire={scrollToContact}
-      />
+        <h3
+          style={{
+            margin: 0,
+            color: "#1d2d63",
+            fontSize: isMobile
+              ? "23px"
+              : "27px",
+            fontWeight: "500",
+            letterSpacing: "1px",
+          }}
+        >
+          WELL CONNECTED
+        </h3>
+
+        <div
+          style={{
+            width: "35px",
+            height: "1px",
+            background: "#c6a75e",
+            margin: "15px 0",
+          }}
+        />
+
+        <p
+          style={{
+            margin: 0,
+            color: "#777",
+            fontSize: isMobile
+              ? "13px"
+              : "14px",
+            lineHeight: "1.7",
+            letterSpacing: "0.4px",
+          }}
+        >
+          Just 45 mins via Ro-Ro and 15 mins
+          by speed boat from Mumbai.
+        </p>
+      </div>
+
+      {/* NATURE */}
+
+      <div
+        style={{
+          background:
+            "rgba(248, 246, 240, 0.97)",
+          border:
+            "1px solid rgba(198, 167, 94, 0.45)",
+          padding: isMobile
+            ? "25px 20px"
+            : "28px 22px",
+          minHeight: isMobile
+            ? "180px"
+            : "200px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          boxShadow:
+            "0 12px 32px rgba(29, 45, 99, 0.09)",
+          transition:
+            "all 0.3s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform =
+              "translateY(-4px)";
+            e.currentTarget.style.boxShadow =
+              "0 18px 40px rgba(29, 45, 99, 0.14)";
+            e.currentTarget.style.border =
+              "1px solid rgba(198, 167, 94, 0.7)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform =
+              "translateY(0)";
+            e.currentTarget.style.boxShadow =
+              "0 12px 32px rgba(29, 45, 99, 0.09)";
+            e.currentTarget.style.border =
+              "1px solid rgba(198, 167, 94, 0.45)";
+          }
+        }}
+      >
+        <div
+          style={{
+            color: "#c6a75e",
+            fontSize: "11px",
+            letterSpacing: "2px",
+            marginBottom: "12px",
+          }}
+        >
+          SURROUNDINGS · 02
+        </div>
+
+        <h3
+          style={{
+            margin: 0,
+            color: "#1d2d63",
+            fontSize: isMobile
+              ? "23px"
+              : "27px",
+            fontWeight: "500",
+            letterSpacing: "1px",
+          }}
+        >
+          COASTAL LIVING
+        </h3>
+
+        <div
+          style={{
+            width: "35px",
+            height: "1px",
+            background: "#c6a75e",
+            margin: "15px 0",
+          }}
+        />
+
+        <p
+          style={{
+            margin: 0,
+            color: "#777",
+            fontSize: isMobile
+              ? "13px"
+              : "14px",
+            lineHeight: "1.7",
+            letterSpacing: "0.4px",
+          }}
+        >
+          Nature-filled surroundings, serene
+          pathways and refreshing sea breeze.
+        </p>
+      </div>
+
+      {/* LIFESTYLE */}
+
+      <div
+        style={{
+          background:
+            "rgba(250, 248, 243, 0.94)",
+          border:
+            "1px solid rgba(198, 167, 94, 0.35)",
+          padding: isMobile
+            ? "25px 20px"
+            : "28px 22px",
+          minHeight: isMobile
+            ? "180px"
+            : "200px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          boxShadow:
+            "0 10px 30px rgba(29, 45, 99, 0.07)",
+          transition:
+            "all 0.3s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform =
+              "translateY(-4px)";
+            e.currentTarget.style.boxShadow =
+              "0 16px 35px rgba(29, 45, 99, 0.12)";
+            e.currentTarget.style.border =
+              "1px solid rgba(198, 167, 94, 0.65)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform =
+              "translateY(0)";
+            e.currentTarget.style.boxShadow =
+              "0 10px 30px rgba(29, 45, 99, 0.07)";
+            e.currentTarget.style.border =
+              "1px solid rgba(198, 167, 94, 0.35)";
+          }
+        }}
+      >
+        <div
+          style={{
+            color: "#c6a75e",
+            fontSize: "11px",
+            letterSpacing: "2px",
+            marginBottom: "12px",
+          }}
+        >
+          LIFESTYLE · 03
+        </div>
+
+        <h3
+          style={{
+            margin: 0,
+            color: "#1d2d63",
+            fontSize: isMobile
+              ? "23px"
+              : "27px",
+            fontWeight: "500",
+            letterSpacing: "1px",
+          }}
+        >
+          ELEVATED LIVING
+        </h3>
+
+        <div
+          style={{
+            width: "35px",
+            height: "1px",
+            background: "#c6a75e",
+            margin: "15px 0",
+          }}
+        />
+
+        <p
+          style={{
+            margin: 0,
+            color: "#777",
+            fontSize: isMobile
+              ? "13px"
+              : "14px",
+            lineHeight: "1.7",
+            letterSpacing: "0.4px",
+          }}
+        >
+          Modern amenities, family-friendly
+          spaces and thoughtful everyday comfort.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
+
       {/* =====================================================
-          AMENITIES
+          FLOOR PLANS
       ===================================================== */}
 
 <section
+  id="floor-plans"
   style={{
     padding: isMobile
       ? "55px 20px"
       : "80px 8%",
     background: "#fff",
-    overflow: "hidden",
+    scrollMarginTop: isMobile ? "60px" : "65px",
   }}
 >
-  <SectionTitle title="AMENITIES" />
+  <SectionTitle title="FLOOR PLANS" />
 
   <div
     style={{
-      maxWidth: "1000px",
-      margin: "auto",
       display: "grid",
       gridTemplateColumns: isMobile
-        ? "1fr 1fr"
-        : "repeat(4, 1fr)",
-      gap: isMobile ? "12px" : "18px",
+        ? "1fr"
+        : "repeat(3, 1fr)",
+      gap: isMobile ? "15px" : "15px",
+      width: "100%",
     }}
   >
-    {[
-      {
-        title: "Swimming Pool",
-        icon: "🏊",
-      },
-      {
-        title: "Club House",
-        icon: "♜",
-      },
-      {
-        title: "Garden",
-        icon: "♧",
-      },
-      {
-        title: "Kids Play Area",
-        icon: "⚽",
-      },
-      {
-        title: "Gymnasium",
-        icon: "♙",
-      },
-      {
-        title: "Indoor Games",
-        icon: "◈",
-      },
-      {
-        title: "Security",
-        icon: "♢",
-      },
-      {
-        title: "Parking",
-        icon: "▱",
-      },
-    ].map((amenity, index) => (
-      <div
-        key={index}
-        style={{
-          position: "relative",
-          minHeight: isMobile ? "125px" : "155px",
-          padding: isMobile
-            ? "20px 10px"
-            : "28px 15px",
-          background: "#f8f6f1",
-          border: "1px solid rgba(198,167,94,0.22)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          cursor: "default",
-          transition:
-            "transform 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
-          overflow: "hidden",
-        }}
-        onMouseEnter={(e) => {
-          if (isMobile) return;
+    <FloorPlan
+      image="/floorplan1.jpg"
+      isMobile={isMobile}
+    />
 
-          e.currentTarget.style.transform =
-            "translateY(-6px)";
+    <FloorPlan
+      image="/floorplan2.jpg"
+      isMobile={isMobile}
+    />
 
-          e.currentTarget.style.background =
-            "#ffffff";
-
-          e.currentTarget.style.boxShadow =
-            "0 15px 35px rgba(29,45,99,0.10)";
-        }}
-        onMouseLeave={(e) => {
-          if (isMobile) return;
-
-          e.currentTarget.style.transform =
-            "translateY(0)";
-
-          e.currentTarget.style.background =
-            "#f8f6f1";
-
-          e.currentTarget.style.boxShadow =
-            "none";
-        }}
-      >
-        {/* TOP GOLD LINE */}
-
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: isMobile ? "30px" : "40px",
-            height: "2px",
-            background: "#c6a75e",
-          }}
-        />
-
-        {/* ICON */}
-
-        <div
-          style={{
-            width: isMobile ? "45px" : "60px",
-            height: isMobile ? "45px" : "60px",
-            border: "1px solid rgba(198,167,94,0.55)",
-            borderRadius: "50%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: isMobile ? "12px" : "15px",
-            color: "#430a09",
-            fontSize: isMobile ? "20px" : "23px",
-            background: "#fff",
-            transition: "all 0.35s ease",
-          }}
-          onMouseEnter={(e) => {
-            if (isMobile) return;
-
-            e.currentTarget.style.transform =
-              "rotate(8deg) scale(1.08)";
-
-            e.currentTarget.style.borderColor =
-              "#c6a75e";
-          }}
-          onMouseLeave={(e) => {
-            if (isMobile) return;
-
-            e.currentTarget.style.transform =
-              "rotate(0deg) scale(1)";
-          }}
-        >
-          {amenity.icon}
-        </div>
-
-        {/* TITLE */}
-
-        <h3
-          style={{
-            margin: 0,
-            color: "#430a09",
-            fontSize: isMobile ? "12px" : "16px",
-            fontWeight: "600",
-            letterSpacing: isMobile ? "0.2px" : "0.5px",
-            lineHeight: "1.4",
-          }}
-        >
-          {amenity.title}
-        </h3>
-
-        {/* SMALL GOLD DETAIL */}
-
-        <div
-          style={{
-            width: "18px",
-            height: "1px",
-            background: "#c6a75e",
-            marginTop: "10px",
-            opacity: 0.7,
-          }}
-        />
-      </div>
-    ))}
+    <FloorPlan
+      image="/floorplan3.jpg"
+      isMobile={isMobile}
+    />
   </div>
 </section>
 
-      {/* =====================================================
+            {/* =====================================================
           TOP REASONS
       ===================================================== */}
 
 <section
+  id="reasons"
   style={{
     padding: isMobile
       ? "50px 5% 60px"
       : "65px 8% 75px",
     background: "#f5f1e8",
     overflow: "hidden",
+    scrollMarginTop: isMobile ? "60px" : "65px",
   }}
 >
   <SectionTitle title="TOP REASONS TO BUY" />
@@ -906,73 +1128,69 @@ function SKParadise() {
     ))}
   </div>
 </section>
-
       {/* =====================================================
-          GALLERY
+          AMENITIES
       ===================================================== */}
 
-      <section
-        style={{
-          padding: isMobile
-            ? "55px 20px"
-            : "80px 8%",
-          background: "#ddd",
-        }}
-      >
-        <SectionTitle title="GALLERY" />
+{/* =====================================================
+    AMENITIES
+===================================================== */}
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: isMobile
-              ? "1fr 1fr"
-              : "repeat(4, 1fr)",
-            gap: "15px",
-            maxWidth: "1100px",
-            margin: "auto",
-          }}
-        >
-          <GalleryImage isMobile={isMobile} />
-          <GalleryImage isMobile={isMobile} />
-          <GalleryImage isMobile={isMobile} />
-          <GalleryImage isMobile={isMobile} />
-        </div>
-      </section>
+<section
+  id="amenities"
+  style={{
+    padding: isMobile
+      ? "55px 20px"
+      : "80px 8%",
+    background: "#ddd",
+    scrollMarginTop: isMobile ? "60px" : "65px",
+  }}
+>
+  <SectionTitle title="AMENITIES" />
 
-      {/* =====================================================
-          FLOOR PLANS
-      ===================================================== */}
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: isMobile
+        ? "1fr 1fr"
+        : "repeat(4, 1fr)",
+      gap: "15px",
+      maxWidth: "1100px",
+      margin: "auto",
+    }}
+  >
+    <GalleryImage
+      image="/amenity1.jpeg"
+    //   title="Swimming Pool"
+      isMobile={isMobile}
+    />
 
-      <section
-        style={{
-          padding: isMobile
-            ? "55px 20px"
-            : "80px 8%",
-          background: "#fff",
-        }}
-      >
-        <SectionTitle title="FLOOR PLANS" />
+    <GalleryImage
+      image="/amenity2.png"
+    //   title="Club House"
+      isMobile={isMobile}
+    />
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: isMobile
-              ? "1fr"
-              : "repeat(3, 1fr)",
-            gap: "15px",
-          }}
-        >
-          <FloorPlan isMobile={isMobile} />
-          <FloorPlan isMobile={isMobile} />
-          <FloorPlan isMobile={isMobile} />
-        </div>
-      </section>
+    <GalleryImage
+      image="/amenity3.jpg"
+    //   title="Kids Play Area"
+      isMobile={isMobile}
+    />
+
+    <GalleryImage
+      image="/amenity4.jpeg"
+    //   title="Garden"
+      isMobile={isMobile}
+    />
+  </div>
+</section>
 
       {/* =====================================================
           LOCATION
       ===================================================== */}
 
 <section
+  id="location"
   style={{
     background: "#f5f1e8",
     color: "#1d2d63",
@@ -980,6 +1198,7 @@ function SKParadise() {
       ? "50px 5% 60px"
       : "65px 8% 75px",
     overflow: "hidden",
+    scrollMarginTop: isMobile ? "60px" : "65px",
   }}
 >
   <div
@@ -1448,10 +1667,10 @@ function SectionTitle({ title, light = false }) {
       <h2
         style={{
           margin: 0,
-          fontSize: "20px",
+          fontSize: "32px",
           letterSpacing: "2px",
           fontWeight: "600",
-          color: light ? "#fff" : "#222",
+          color: light ? "#c6a75e" : "#222",
         }}
       >
         {title}
@@ -1661,24 +1880,66 @@ function Reason({
    GALLERY
 ========================================================= */
 
-function GalleryImage() {
+/* =========================================================
+   AMENITY IMAGE
+========================================================= */
+
+function GalleryImage({ image, title, isMobile }) {
   return (
     <div
       style={{
         width: "100%",
         overflow: "hidden",
+        position: "relative",
+        background: "#fff",
+        border: "1px solid rgba(198,167,94,0.35)",
+        boxShadow: "0 8px 25px rgba(0,0,0,0.08)",
       }}
     >
       <img
-        src="/1.png"
-        alt="S K Paradise"
+        src={image}
+        alt={title || "S K Paradise Amenity"}
         style={{
           width: "100%",
-          height: "280px",
+          height: isMobile ? "180px" : "280px",
           objectFit: "cover",
           display: "block",
+          transition: "transform 0.5s ease",
+        }}
+        onMouseEnter={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform = "scale(1.05)";
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isMobile) {
+            e.currentTarget.style.transform = "scale(1)";
+          }
         }}
       />
+
+      {/* AMENITY NAME */}
+
+      <div
+        style={{
+          position: "absolute",
+          left: "0",
+          right: "0",
+          bottom: "0",
+          padding: isMobile
+            ? "12px 10px"
+            : "15px 14px",
+          background:
+            "linear-gradient(to top, rgba(29,45,99,0.9), rgba(29,45,99,0))",
+          color: "#fff",
+          fontSize: isMobile ? "11px" : "13px",
+          fontWeight: "600",
+          letterSpacing: "1px",
+          textTransform: "uppercase",
+        }}
+      >
+        {title}
+      </div>
     </div>
   );
 }
@@ -1688,21 +1949,22 @@ function GalleryImage() {
    FLOOR PLAN
 ========================================================= */
 
-function FloorPlan() {
+function FloorPlan({ image, isMobile }) {
   return (
     <div
       style={{
         border: "1px solid #aaa",
         padding: "5px",
         overflow: "hidden",
+        background: "#fff",
       }}
     >
       <img
-        src="/1.png"
+        src={image}
         alt="S K Paradise Floor Plan"
         style={{
           width: "100%",
-          height: "280px",
+          height: isMobile ? "260px" : "280px",
           objectFit: "contain",
           display: "block",
         }}
