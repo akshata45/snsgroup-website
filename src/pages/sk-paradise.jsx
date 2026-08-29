@@ -5,10 +5,10 @@ import Footer from "../components/Footer";
 function SKParadise() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [selectedFloorPlan, setSelectedFloorPlan] = useState(null);
+  const [selectedAmenity, setSelectedAmenity] = useState(null);
   const floorPlanSliderRef = useRef(null);
   const [isFloorPlanPaused, setIsFloorPlanPaused] = useState(false);
 
-  const [selectedAmenity, setSelectedAmenity] = useState(null);
 
 const amenitySliderRef = useRef(null);
 
@@ -23,7 +23,6 @@ const amenitySliderRef = useRef(null);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
 
   useEffect(() => {
   const slider = amenitySliderRef.current;
@@ -637,18 +636,21 @@ const amenitySliderRef = useRef(null);
           CONFIGURATIONS
       ===================================================== */}
 
-      <section
-        id="experience"
-        style={{
-          padding: isMobile ? "55px 20px" : "80px 8%",
-          backgroundImage: "url('/blog2.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: isMobile ? "scroll" : "fixed",
-          position: "relative",
-          scrollMarginTop: isMobile ? "60px" : "65px",
-        }}
-      >
+<section
+  id="experience"
+  style={{
+    padding: isMobile ? "55px 20px" : "80px 8%",
+    backgroundImage: "url('/blog2.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundAttachment: isMobile ? "scroll" : "fixed",
+    position: "relative",
+    scrollMarginTop: isMobile ? "60px" : "65px",
+
+    // SAME FONT AS THE REST OF YOUR PAGE
+    fontFamily: "inherit",
+  }}
+>
         {/* BACKGROUND OVERLAY */}
 
         <div
@@ -729,7 +731,7 @@ const amenitySliderRef = useRef(null);
                 style={{
                   margin: 0,
                   color: "#1d2d63",
-                  fontSize: isMobile ? "23px" : "27px",
+                  fontSize: isMobile ? "23px" : "22px",
                   fontWeight: "500",
                   letterSpacing: "1px",
                 }}
@@ -809,7 +811,7 @@ const amenitySliderRef = useRef(null);
                 style={{
                   margin: 0,
                   color: "#1d2d63",
-                  fontSize: isMobile ? "23px" : "27px",
+                  fontSize: isMobile ? "23px" : "22px",
                   fontWeight: "500",
                   letterSpacing: "1px",
                 }}
@@ -890,7 +892,7 @@ const amenitySliderRef = useRef(null);
                 style={{
                   margin: 0,
                   color: "#1d2d63",
-                  fontSize: isMobile ? "23px" : "27px",
+                  fontSize: isMobile ? "23px" : "22px",
                   fontWeight: "500",
                   letterSpacing: "1px",
                 }}
@@ -1268,7 +1270,7 @@ const amenitySliderRef = useRef(null);
           /> */}
 
           <GalleryImage
-            image="/car parking.jpg"
+            image="/stilt_parking.jpg"
             //   title="Car Park"
             isMobile={isMobile}
           />
