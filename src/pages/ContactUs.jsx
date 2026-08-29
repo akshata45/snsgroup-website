@@ -158,8 +158,8 @@ const ContactUs = () => {
                     lineHeight: "1.8",
                   }}
                 >
-                  Surya House, ONGC Colony, Vidya Vihar East, Vidyavihar,
-                  Mumbai, Maharashtra - 400077
+                  Damji Shamji Corporate Square, 302, B Wing, Laxmi Nagar,
+                  Ghatkopar-E, Mumbai- 400 075.
                 </p>
               </div>
 
@@ -167,7 +167,10 @@ const ContactUs = () => {
                 <h4 style={{ color: "#b88a2a", fontSize: "17.5px" }}>
                   📞 PHONE
                 </h4>
-                <a href="tel: +918879781001"> +91 88797 81001</a>
+                <a href="tel: +918879781001">
+                  {" "}
+                  +91 88797 81001 / +91 77982 41040
+                </a>
               </div>
 
               <div>
@@ -181,14 +184,17 @@ const ContactUs = () => {
             {/* MAP */}
             <div style={{ flex: 1 }}>
               <iframe
-                title="map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.688204333282!2d72.8987664!3d19.077441600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8829dd1f08b%3A0x901e75397e8354e3!2sSurya%20House%2C%20Mumbai!5e0!3m2!1sen!2sin"
+                title="Damji Shamji Corporate Square Location"
+                src="https://www.google.com/maps?q=Damji+Shamji+Corporate+Square,+Mumbai&output=embed"
                 style={{
                   width: "100%",
                   height: isMobile ? "280px" : "420px",
                   border: 0,
+                  display: "block",
                 }}
                 loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
           </div>
