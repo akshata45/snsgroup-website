@@ -9,8 +9,7 @@ function SKParadise() {
   const floorPlanSliderRef = useRef(null);
   const [isFloorPlanPaused, setIsFloorPlanPaused] = useState(false);
 
-
-const amenitySliderRef = useRef(null);
+  const amenitySliderRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -25,48 +24,43 @@ const amenitySliderRef = useRef(null);
   }, []);
 
   useEffect(() => {
-  const slider = amenitySliderRef.current;
+    const slider = amenitySliderRef.current;
 
-  if (!slider) return;
+    if (!slider) return;
 
-  let animationFrame;
-  let lastTime = performance.now();
+    let animationFrame;
+    let lastTime = performance.now();
 
-  const scrollSpeed = isMobile ? 0.35 : 0.45;
+    const scrollSpeed = isMobile ? 0.35 : 0.45;
 
-  const autoScroll = (time) => {
-    const currentSlider = amenitySliderRef.current;
+    const autoScroll = (time) => {
+      const currentSlider = amenitySliderRef.current;
 
-    if (!currentSlider) return;
+      if (!currentSlider) return;
 
-    const delta = time - lastTime;
-    lastTime = time;
+      const delta = time - lastTime;
+      lastTime = time;
 
-    currentSlider.scrollLeft +=
-      (scrollSpeed * delta) / 16.67;
+      currentSlider.scrollLeft += (scrollSpeed * delta) / 16.67;
 
-    const maxScroll =
-      currentSlider.scrollWidth -
-      currentSlider.clientWidth;
+      const maxScroll = currentSlider.scrollWidth - currentSlider.clientWidth;
 
-    if (currentSlider.scrollLeft >= maxScroll - 1) {
-      currentSlider.scrollTo({
-        left: 0,
-        behavior: "auto",
-      });
-    }
+      if (currentSlider.scrollLeft >= maxScroll - 1) {
+        currentSlider.scrollTo({
+          left: 0,
+          behavior: "auto",
+        });
+      }
 
-    animationFrame =
-      requestAnimationFrame(autoScroll);
-  };
+      animationFrame = requestAnimationFrame(autoScroll);
+    };
 
-  animationFrame =
-    requestAnimationFrame(autoScroll);
+    animationFrame = requestAnimationFrame(autoScroll);
 
-  return () => {
-    cancelAnimationFrame(animationFrame);
-  };
-}, [isMobile]);
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [isMobile]);
 
   useEffect(() => {
     const slider = floorPlanSliderRef.current;
@@ -253,17 +247,21 @@ const amenitySliderRef = useRef(null);
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "flex-start",
-            padding: isMobile ? "35px 22px 45px" : "55px 65px",
+            padding: isMobile ? "28px 18px 35px" : "55px 65px",
+            boxSizing: "border-box",
+            overflow: "hidden",
           }}
         >
           <p
             style={{
               fontSize: isMobile ? "12px" : "16px",
-              letterSpacing: isMobile ? "2px" : "3px",
-              margin: "0 0 10px",
+              letterSpacing: isMobile ? "1.5px" : "3px",
+              margin: "0 0 8px",
               color: "#333",
               lineHeight: "1.4",
               fontWeight: "500",
+              maxWidth: "100%",
+              overflowWrap: "break-word",
             }}
           >
             EXPERIENCE THE FUTURE OF
@@ -272,13 +270,16 @@ const amenitySliderRef = useRef(null);
           <h1
             style={{
               fontSize: isMobile
-                ? "clamp(34px, 11vw, 46px)"
+                ? "clamp(30px, 10vw, 44px)"
                 : "clamp(40px, 5vw, 72px)",
               color: "#b08a3e",
               margin: 0,
               fontWeight: "700",
               lineHeight: "1.05",
               letterSpacing: isMobile ? "0px" : "1px",
+              maxWidth: "100%",
+              overflowWrap: "break-word",
+              wordBreak: "break-word",
             }}
           >
             S.K. PARADISE
@@ -286,9 +287,9 @@ const amenitySliderRef = useRef(null);
 
           <p
             style={{
-              fontSize: isMobile ? "16px" : "20px",
-              letterSpacing: isMobile ? "2px" : "3px",
-              margin: isMobile ? "10px 0 20px" : "12px 0 22px",
+              fontSize: isMobile ? "15px" : "20px",
+              letterSpacing: isMobile ? "1.5px" : "3px",
+              margin: isMobile ? "8px 0 18px" : "12px 0 22px",
               color: "#430a09",
               fontWeight: "600",
             }}
@@ -301,49 +302,94 @@ const amenitySliderRef = useRef(null);
               width: "100%",
               maxWidth: "580px",
               color: "#555",
-              fontSize: isMobile ? "16px" : "18px",
-              lineHeight: isMobile ? "1.6" : "1.65",
-              textAlign: "justify",
+              fontSize: isMobile ? "14px" : "18px",
+              lineHeight: isMobile ? "1.55" : "1.65",
+              textAlign: isMobile ? "left" : "justify",
+              boxSizing: "border-box",
+              overflowWrap: "break-word",
+              wordBreak: "normal",
             }}
           >
-            <p style={{ margin: "0 0 12px" }}>
+            <p
+              style={{
+                margin: "0 0 10px",
+                maxWidth: "100%",
+              }}
+            >
               Alibaug is rapidly growing, making it the perfect time to invest
               in homes that blend comfort, elegance, and modern living.
             </p>
 
-            <p style={{ margin: "0 0 15px" }}>
+            <p
+              style={{
+                margin: "0 0 12px",
+                maxWidth: "100%",
+              }}
+            >
               Just 45 mins via Ro-Ro and 15 mins by speed boat, Alibaug offers
               excellent connectivity with stunning coastal beauty.
             </p>
 
             <ul
               style={{
-                margin: "15px 0 0",
-                paddingLeft: isMobile ? "18px" : "20px",
+                margin: "12px 0 0",
+                paddingLeft: isMobile ? "20px" : "20px",
+                width: "100%",
+                boxSizing: "border-box",
               }}
             >
-              <li style={{ marginBottom: "10px", paddingLeft: "3px" }}>
+              <li
+                style={{
+                  marginBottom: "8px",
+                  paddingLeft: "2px",
+                  overflowWrap: "break-word",
+                }}
+              >
                 Smartly designed{" "}
                 <strong style={{ color: "#430a09" }}>1 & 2 BHK homes</strong>{" "}
                 planned for convenience, functionality, and everyday comfort.
               </li>
 
-              <li style={{ marginBottom: "10px", paddingLeft: "3px" }}>
+              <li
+                style={{
+                  marginBottom: "8px",
+                  paddingLeft: "2px",
+                  overflowWrap: "break-word",
+                }}
+              >
                 Modern amenities that enhance your lifestyle and elevate
                 everyday living.
               </li>
 
-              <li style={{ marginBottom: "10px", paddingLeft: "3px" }}>
+              <li
+                style={{
+                  marginBottom: "8px",
+                  paddingLeft: "2px",
+                  overflowWrap: "break-word",
+                }}
+              >
                 Nature-filled surroundings with serene pathways and refreshing
                 sea breeze.
               </li>
 
-              <li style={{ marginBottom: "10px", paddingLeft: "3px" }}>
+              <li
+                style={{
+                  marginBottom: "8px",
+                  paddingLeft: "2px",
+                  overflowWrap: "break-word",
+                }}
+              >
                 Family-friendly spaces including safe and joyful play areas for
                 children.
               </li>
 
-              <li style={{ marginBottom: 0, paddingLeft: "3px" }}>
+              <li
+                style={{
+                  marginBottom: 0,
+                  paddingLeft: "2px",
+                  overflowWrap: "break-word",
+                }}
+              >
                 A home you'll be proud of brought to you by{" "}
                 <strong style={{ color: "#430a09" }}>SNS Group</strong> for
                 elevated living.
@@ -636,21 +682,21 @@ const amenitySliderRef = useRef(null);
           CONFIGURATIONS
       ===================================================== */}
 
-<section
-  id="experience"
-  style={{
-    padding: isMobile ? "55px 20px" : "80px 8%",
-    backgroundImage: "url('/blog2.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundAttachment: isMobile ? "scroll" : "fixed",
-    position: "relative",
-    scrollMarginTop: isMobile ? "60px" : "65px",
+      <section
+        id="experience"
+        style={{
+          padding: isMobile ? "55px 20px" : "80px 8%",
+          backgroundImage: "url('/blog2.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: isMobile ? "scroll" : "fixed",
+          position: "relative",
+          scrollMarginTop: isMobile ? "60px" : "65px",
 
-    // SAME FONT AS THE REST OF YOUR PAGE
-    fontFamily: "inherit",
-  }}
->
+          // SAME FONT AS THE REST OF YOUR PAGE
+          fontFamily: "inherit",
+        }}
+      >
         {/* BACKGROUND OVERLAY */}
 
         <div
@@ -1262,7 +1308,7 @@ const amenitySliderRef = useRef(null);
             //   title="Swimming Pool"
             isMobile={isMobile}
           />
-{/* 
+          {/* 
           <GalleryImage
             image="/amenity2.png"
             //   title="Club House"
@@ -1299,494 +1345,432 @@ const amenitySliderRef = useRef(null);
           LOCATION
       ===================================================== */}
 
-{/* =====================================================
+      {/* =====================================================
     LOCATION
 ===================================================== */}
 
-<section
-  id="location"
-  style={{
-    background: "#f5f1e8",
-    color: "#1d2d63",
-    padding: isMobile ? "50px 5% 60px" : "65px 8% 75px",
-    overflow: "hidden",
-    scrollMarginTop: isMobile ? "60px" : "65px",
-  }}
->
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: isMobile ? "1fr" : "0.9fr 1.1fr",
-      gap: isMobile ? "35px" : "65px",
-      maxWidth: "1100px",
-      margin: "auto",
-      alignItems: "center",
-    }}
-  >
-
-    {/* =================================================
+      <section
+        id="location"
+        style={{
+          background: "#f5f1e8",
+          color: "#1d2d63",
+          padding: isMobile ? "50px 5% 60px" : "65px 8% 75px",
+          overflow: "hidden",
+          scrollMarginTop: isMobile ? "60px" : "65px",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "0.9fr 1.1fr",
+            gap: isMobile ? "35px" : "65px",
+            maxWidth: "1100px",
+            margin: "auto",
+            alignItems: "center",
+          }}
+        >
+          {/* =================================================
         LEFT CONTENT
     ================================================= */}
 
-    <div>
-      <SectionTitle title="LOCATION & CONNECTIVITY" />
+          <div>
+            <SectionTitle title="LOCATION & CONNECTIVITY" />
 
-      {/* ADDRESS */}
+            {/* ADDRESS */}
 
-      <div
-        style={{
-          margin: isMobile ? "22px 0 25px" : "25px 0 30px",
-          padding: isMobile ? "20px 18px" : "24px 22px",
-          background: "rgba(255,255,255,0.45)",
-          borderLeft: "3px solid #c6a75e",
-          boxShadow: "0 8px 25px rgba(29,45,99,0.05)",
-        }}
-      >
-        <p
-          style={{
-            margin: "0 0 8px",
-            color: "#c6a75e",
-            fontSize: isMobile ? "11px" : "12px",
-            fontWeight: "600",
-            letterSpacing: "1.8px",
-          }}
-        >
-          OUR OFFICE
-        </p>
-
-        <p
-          style={{
-            margin: 0,
-            color: "#1d2d63",
-            fontSize: isMobile ? "15px" : "17px",
-            lineHeight: "1.7",
-            fontWeight: "500",
-          }}
-        >
-          Damji Shamji Corporate Square,
-          <br />
-          302, B Wing, Laxmi Nagar,
-          <br />
-          Ghatkopar-E, Mumbai - 400 075.
-        </p>
-      </div>
-
-      <p
-        style={{
-          margin: isMobile ? "22px 0 25px" : "25px 0 30px",
-          maxWidth: "500px",
-          color: "#666",
-          fontSize: isMobile ? "16px" : "18px",
-          lineHeight: "1.8",
-          letterSpacing: "0.2px",
-        }}
-      >
-        Strategically located in Ghatkopar East, Mumbai,
-        with convenient access to major roads, commercial
-        destinations and key areas of the city.
-      </p>
-
-      {/* CONNECTIVITY GRID */}
-
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          borderTop: "1px solid rgba(29,45,99,0.15)",
-          borderLeft: "1px solid rgba(29,45,99,0.15)",
-        }}
-      >
-        {[
-          "CONNECTIVITY",
-          "HOSPITALS",
-          "SCHOOLS",
-          "HIGHWAYS",
-          "SHOPPING",
-          "RESTAURANTS",
-        ].map((title, index) => (
-          <div
-            key={index}
-            style={{
-              minHeight: isMobile ? "78px" : "88px",
-
-              padding: isMobile
-                ? "15px 12px"
-                : "18px 17px",
-
-              display: "flex",
-              alignItems: "center",
-              gap: "14px",
-
-              borderRight:
-                "1px solid rgba(29,45,99,0.15)",
-
-              borderBottom:
-                "1px solid rgba(29,45,99,0.15)",
-
-              background:
-                index % 2 === 0
-                  ? "rgba(255,255,255,0.28)"
-                  : "transparent",
-
-              transition:
-                "background 0.3s ease, transform 0.3s ease",
-
-              cursor: "default",
-            }}
-
-            onMouseEnter={(e) => {
-              if (isMobile) return;
-
-              e.currentTarget.style.background = "#ffffff";
-
-              e.currentTarget.style.transform =
-                "translateY(-2px)";
-            }}
-
-            onMouseLeave={(e) => {
-              if (isMobile) return;
-
-              e.currentTarget.style.background =
-                index % 2 === 0
-                  ? "rgba(255,255,255,0.28)"
-                  : "transparent";
-
-              e.currentTarget.style.transform =
-                "translateY(0)";
-            }}
-          >
-            {/* NUMBER */}
-
-            <span
+            <div
               style={{
-                color: "#c6a75e",
-                fontSize: isMobile ? "12px" : "13px",
-                fontWeight: "600",
-                letterSpacing: "1px",
-                minWidth: "22px",
+                margin: isMobile ? "22px 0 25px" : "25px 0 30px",
+                padding: isMobile ? "20px 18px" : "24px 22px",
+                background: "rgba(255,255,255,0.45)",
+                borderLeft: "3px solid #c6a75e",
+                boxShadow: "0 8px 25px rgba(29,45,99,0.05)",
               }}
             >
-              {String(index + 1).padStart(2, "0")}
-            </span>
+              <p
+                style={{
+                  margin: "0 0 8px",
+                  color: "#c6a75e",
+                  fontSize: isMobile ? "11px" : "12px",
+                  fontWeight: "600",
+                  letterSpacing: "1.8px",
+                }}
+              >
+                OUR OFFICE
+              </p>
 
-            {/* TITLE */}
+              <p
+                style={{
+                  margin: 0,
+                  color: "#1d2d63",
+                  fontSize: isMobile ? "15px" : "17px",
+                  lineHeight: "1.7",
+                  fontWeight: "500",
+                }}
+              >
+                Damji Shamji Corporate Square,
+                <br />
+                302, B Wing, Laxmi Nagar,
+                <br />
+                Ghatkopar-E, Mumbai - 400 075.
+              </p>
+            </div>
 
-            <span
+            <p
               style={{
-                color: "#1d2d63",
-                fontSize: isMobile ? "14px" : "17px",
-                fontWeight: "600",
-                letterSpacing: "0.8px",
-                lineHeight: "1.4",
+                margin: isMobile ? "22px 0 25px" : "25px 0 30px",
+                maxWidth: "500px",
+                color: "#666",
+                fontSize: isMobile ? "16px" : "18px",
+                lineHeight: "1.8",
+                letterSpacing: "0.2px",
               }}
             >
-              {title}
-            </span>
+              Strategically located in Ghatkopar East, Mumbai, with convenient
+              access to major roads, commercial destinations and key areas of
+              the city.
+            </p>
+
+            {/* CONNECTIVITY GRID */}
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                borderTop: "1px solid rgba(29,45,99,0.15)",
+                borderLeft: "1px solid rgba(29,45,99,0.15)",
+              }}
+            >
+              {[
+                "CONNECTIVITY",
+                "HOSPITALS",
+                "SCHOOLS",
+                "HIGHWAYS",
+                "SHOPPING",
+                "RESTAURANTS",
+              ].map((title, index) => (
+                <div
+                  key={index}
+                  style={{
+                    minHeight: isMobile ? "78px" : "88px",
+
+                    padding: isMobile ? "15px 12px" : "18px 17px",
+
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+
+                    borderRight: "1px solid rgba(29,45,99,0.15)",
+
+                    borderBottom: "1px solid rgba(29,45,99,0.15)",
+
+                    background:
+                      index % 2 === 0
+                        ? "rgba(255,255,255,0.28)"
+                        : "transparent",
+
+                    transition: "background 0.3s ease, transform 0.3s ease",
+
+                    cursor: "default",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (isMobile) return;
+
+                    e.currentTarget.style.background = "#ffffff";
+
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (isMobile) return;
+
+                    e.currentTarget.style.background =
+                      index % 2 === 0
+                        ? "rgba(255,255,255,0.28)"
+                        : "transparent";
+
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  {/* NUMBER */}
+
+                  <span
+                    style={{
+                      color: "#c6a75e",
+                      fontSize: isMobile ? "12px" : "13px",
+                      fontWeight: "600",
+                      letterSpacing: "1px",
+                      minWidth: "22px",
+                    }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* TITLE */}
+
+                  <span
+                    style={{
+                      color: "#1d2d63",
+                      fontSize: isMobile ? "14px" : "17px",
+                      fontWeight: "600",
+                      letterSpacing: "0.8px",
+                      lineHeight: "1.4",
+                    }}
+                  >
+                    {title}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-    </div>
 
-
-    {/* =================================================
+          {/* =================================================
         RIGHT - GOOGLE MAP
     ================================================= */}
 
-    <div
-      style={{
-        position: "relative",
+          <div
+            style={{
+              position: "relative",
 
-        height: isMobile
-          ? "320px"
-          : "420px",
+              height: isMobile ? "320px" : "420px",
 
-        background: "#e8e3d8",
+              background: "#e8e3d8",
 
-        border:
-          "1px solid rgba(29,45,99,0.14)",
+              border: "1px solid rgba(29,45,99,0.14)",
 
-        overflow: "hidden",
+              overflow: "hidden",
 
-        boxShadow:
-          "0 18px 45px rgba(29,45,99,0.10)",
+              boxShadow: "0 18px 45px rgba(29,45,99,0.10)",
 
-        transition:
-          "transform 0.4s ease, box-shadow 0.4s ease",
-      }}
+              transition: "transform 0.4s ease, box-shadow 0.4s ease",
+            }}
+            onMouseEnter={(e) => {
+              if (isMobile) return;
 
-      onMouseEnter={(e) => {
-        if (isMobile) return;
+              e.currentTarget.style.transform = "translateY(-5px)";
 
-        e.currentTarget.style.transform =
-          "translateY(-5px)";
+              e.currentTarget.style.boxShadow =
+                "0 25px 55px rgba(29,45,99,0.16)";
+            }}
+            onMouseLeave={(e) => {
+              if (isMobile) return;
 
-        e.currentTarget.style.boxShadow =
-          "0 25px 55px rgba(29,45,99,0.16)";
-      }}
+              e.currentTarget.style.transform = "translateY(0)";
 
-      onMouseLeave={(e) => {
-        if (isMobile) return;
-
-        e.currentTarget.style.transform =
-          "translateY(0)";
-
-        e.currentTarget.style.boxShadow =
-          "0 18px 45px rgba(29,45,99,0.10)";
-      }}
-    >
-
-      {/* =================================================
+              e.currentTarget.style.boxShadow =
+                "0 18px 45px rgba(29,45,99,0.10)";
+            }}
+          >
+            {/* =================================================
           GOOGLE MAP
       ================================================= */}
 
-      <iframe
-        title="Damji Shamji Corporate Square Location"
-        src="https://www.google.com/maps?q=Damji+Shamji+Corporate+Square,+302,+B+Wing,+Laxmi+Nagar,+Ghatkopar+East,+Mumbai+400075&output=embed"
-        width="100%"
-        height="100%"
-        style={{
-          border: "0",
-          display: "block",
-          filter:
-            "saturate(0.8) contrast(0.95)",
-        }}
-        loading="lazy"
-        allowFullScreen
-        referrerPolicy="no-referrer-when-downgrade"
-      />
+            <iframe
+              title="Damji Shamji Corporate Square Location"
+              src="https://www.google.com/maps?q=Damji+Shamji+Corporate+Square,+302,+B+Wing,+Laxmi+Nagar,+Ghatkopar+East,+Mumbai+400075&output=embed"
+              width="100%"
+              height="100%"
+              style={{
+                border: "0",
+                display: "block",
+                filter: "saturate(0.8) contrast(0.95)",
+              }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            />
 
-
-      {/* =================================================
+            {/* =================================================
           PREMIUM GOLD FRAME
       ================================================= */}
 
-      <div
-        style={{
-          position: "absolute",
-          inset: "10px",
+            <div
+              style={{
+                position: "absolute",
+                inset: "10px",
 
-          border:
-            "1px solid rgba(198,167,94,0.60)",
+                border: "1px solid rgba(198,167,94,0.60)",
 
-          pointerEvents: "none",
+                pointerEvents: "none",
 
-          zIndex: 2,
-        }}
-      />
+                zIndex: 2,
+              }}
+            />
 
-
-      {/* =================================================
+            {/* =================================================
           LOCATION LABEL
       ================================================= */}
 
-      <div
-        style={{
-          position: "absolute",
+            <div
+              style={{
+                position: "absolute",
 
-          left: isMobile
-            ? "15px"
-            : "25px",
+                left: isMobile ? "15px" : "25px",
 
-          bottom: isMobile
-            ? "15px"
-            : "25px",
+                bottom: isMobile ? "15px" : "25px",
 
-          maxWidth: isMobile
-            ? "calc(100% - 30px)"
-            : "330px",
+                maxWidth: isMobile ? "calc(100% - 30px)" : "330px",
 
-          padding: isMobile
-            ? "12px 15px"
-            : "14px 20px",
+                padding: isMobile ? "12px 15px" : "14px 20px",
 
-          background:
-            "rgba(245,241,232,0.95)",
+                background: "rgba(245,241,232,0.95)",
 
-          backdropFilter:
-            "blur(8px)",
+                backdropFilter: "blur(8px)",
 
-          border:
-            "1px solid rgba(198,167,94,0.55)",
+                border: "1px solid rgba(198,167,94,0.55)",
 
-          boxShadow:
-            "0 8px 25px rgba(0,0,0,0.12)",
+                boxShadow: "0 8px 25px rgba(0,0,0,0.12)",
 
-          zIndex: 3,
+                zIndex: 3,
 
-          boxSizing: "border-box",
-        }}
-      >
+                boxSizing: "border-box",
+              }}
+            >
+              {/* LOCATION */}
 
-        {/* LOCATION */}
+              <p
+                style={{
+                  margin: 0,
 
-        <p
-          style={{
-            margin: 0,
+                  color: "#1d2d63",
 
-            color: "#1d2d63",
+                  fontSize: isMobile ? "15px" : "18px",
 
-            fontSize: isMobile
-              ? "15px"
-              : "18px",
+                  fontWeight: "600",
 
-            fontWeight: "600",
+                  letterSpacing: "1.2px",
 
-            letterSpacing: "1.2px",
+                  lineHeight: "1.4",
+                }}
+              >
+                GHATKOPAR EAST
+              </p>
 
-            lineHeight: "1.4",
-          }}
-        >
-          GHATKOPAR EAST
-        </p>
+              <p
+                style={{
+                  margin: "5px 0 0",
 
-        <p
-          style={{
-            margin: "5px 0 0",
+                  color: "#777",
 
-            color: "#777",
+                  fontSize: isMobile ? "9px" : "10px",
 
-            fontSize: isMobile
-              ? "9px"
-              : "10px",
+                  letterSpacing: "1.3px",
 
-            letterSpacing: "1.3px",
+                  lineHeight: "1.5",
+                }}
+              >
+                MUMBAI · MAHARASHTRA
+              </p>
 
-            lineHeight: "1.5",
-          }}
-        >
-          MUMBAI · MAHARASHTRA
-        </p>
+              {/* VIEW ON MAP */}
 
+              <a
+                href="https://maps.app.goo.gl/8rx3589zP9fTZy4YA"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-block",
 
-        {/* VIEW ON MAP */}
+                  marginTop: "9px",
 
-        <a
-          href="https://maps.app.goo.gl/8rx3589zP9fTZy4YA"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-block",
+                  color: "#c6a75e",
 
-            marginTop: "9px",
+                  fontSize: isMobile ? "9px" : "10px",
 
-            color: "#c6a75e",
+                  fontWeight: "600",
 
-            fontSize: isMobile
-              ? "9px"
-              : "10px",
+                  letterSpacing: "1.3px",
 
-            fontWeight: "600",
+                  textDecoration: "none",
 
-            letterSpacing: "1.3px",
+                  borderBottom: "1px solid rgba(198,167,94,0.6)",
 
-            textDecoration: "none",
+                  paddingBottom: "3px",
+                }}
+              >
+                VIEW ON GOOGLE MAPS ↗
+              </a>
+            </div>
 
-            borderBottom:
-              "1px solid rgba(198,167,94,0.6)",
-
-            paddingBottom: "3px",
-          }}
-        >
-          VIEW ON GOOGLE MAPS ↗
-        </a>
-
-      </div>
-
-
-      {/* =================================================
+            {/* =================================================
           TOP RIGHT GOLD CORNER
       ================================================= */}
 
-      <div
-        style={{
-          position: "absolute",
+            <div
+              style={{
+                position: "absolute",
 
-          top: 0,
-          right: 0,
+                top: 0,
+                right: 0,
 
-          width: "55px",
-          height: "55px",
+                width: "55px",
+                height: "55px",
 
-          borderTop:
-            "2px solid #c6a75e",
+                borderTop: "2px solid #c6a75e",
 
-          borderRight:
-            "2px solid #c6a75e",
+                borderRight: "2px solid #c6a75e",
 
-          pointerEvents: "none",
+                pointerEvents: "none",
 
-          zIndex: 4,
-        }}
-      />
+                zIndex: 4,
+              }}
+            />
 
-
-      {/* =================================================
+            {/* =================================================
           BOTTOM LEFT GOLD CORNER
       ================================================= */}
 
-      <div
-        style={{
-          position: "absolute",
+            <div
+              style={{
+                position: "absolute",
 
-          bottom: 0,
-          left: 0,
+                bottom: 0,
+                left: 0,
 
-          width: "55px",
-          height: "55px",
+                width: "55px",
+                height: "55px",
 
-          borderBottom:
-            "2px solid #c6a75e",
+                borderBottom: "2px solid #c6a75e",
 
-          borderLeft:
-            "2px solid #c6a75e",
+                borderLeft: "2px solid #c6a75e",
 
-          pointerEvents: "none",
+                pointerEvents: "none",
 
-          zIndex: 4,
-        }}
-      />
+                zIndex: 4,
+              }}
+            />
 
-
-      {/* =================================================
+            {/* =================================================
           LOCATION BADGE
       ================================================= */}
 
-      <div
-        style={{
-          position: "absolute",
+            <div
+              style={{
+                position: "absolute",
 
-          top: isMobile
-            ? "18px"
-            : "25px",
+                top: isMobile ? "18px" : "25px",
 
-          right: isMobile
-            ? "18px"
-            : "25px",
+                right: isMobile ? "18px" : "25px",
 
-          padding: "7px 11px",
+                padding: "7px 11px",
 
-          background:
-            "rgba(29,45,99,0.88)",
+                background: "rgba(29,45,99,0.88)",
 
-          color: "#fff",
+                color: "#fff",
 
-          fontSize: isMobile
-            ? "9px"
-            : "10px",
+                fontSize: isMobile ? "9px" : "10px",
 
-          letterSpacing: "1.3px",
+                letterSpacing: "1.3px",
 
-          zIndex: 3,
+                zIndex: 3,
 
-          pointerEvents: "none",
-        }}
-      >
-        LOCATION
-      </div>
-
-    </div>
-  </div>
-</section>
+                pointerEvents: "none",
+              }}
+            >
+              LOCATION
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
@@ -1998,7 +1982,6 @@ function Reason({ number, title, description }) {
     </div>
   );
 }
-
 
 /* =========================================================
    AMENITY IMAGE
